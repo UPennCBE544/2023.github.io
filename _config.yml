@@ -1,0 +1,8 @@
+# Site settings
+title: CBE544 2019
+subtitle: Test
+url: "https://CBE544-2019.github.io"
+baseurl: "/CBE544-2019.github.io"
+
+# Build settings
+permalink: pretty
