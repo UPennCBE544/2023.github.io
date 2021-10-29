@@ -32,7 +32,6 @@ We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dt
 
 1. [Introduction to ASE](ASE/)
 2. [Getting Started with DFT](ASE/Getting_Started/)
-3. [Adsorption with ASE](ASE/Adsorption)
 
 ### Resources ###
 
