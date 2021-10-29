@@ -14,8 +14,7 @@ We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dt
 * <font color="red"> Due Friday November 11 2021 </font>
 * [Problem Description](HW5.pdf)
   
-### Final Project ###
-* 60% of final grade 
+### Final Project ### 
 * <font color="red">Due TBD</font>
 * [Project Description and Requirements](Project/)
 * [Project Assignments](Project_Assignments/)
