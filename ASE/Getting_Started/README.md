@@ -12,7 +12,7 @@ ____
 
 ## Getting Started with DFT Calculations ##
 
-In the first exercise, we will be studying lithium cobalt oxide; how to determine the lattice constants, followed by surface relaxation of the 104 surface. For Homework 5, everyone will be studying the same system (104) LiCoO<sub>2</sub>. For the Final Project, you will use the same system but with dopants on multiple facets (104 and 001) to study ethylene carbonate adsorption.
+In the first exercise, we will be studying perovskite oxides and how to determine their lattice constants, followed by surface relaxation of the (001) surface of the perovskite. For Homework 5, everyone will be studying the same system (001) SrTiO<sub>3</sub>. 
 
 ## Contents ##
 
@@ -28,218 +28,159 @@ In the first exercise, we will be studying lithium cobalt oxide; how to determin
 
 ASE scripts can be run directly in the terminal (in the login node) or submitting to external nodes. Generally, you will be submitting jobs to external nodes and only small scripts will be run on the login node. By default, all output from any submitted script will be written *from the directory where the submission command was executed*, so make sure you are inside the calculation folder before running the submission command.
 
-To start this tutorial and the exercises that follow, log on to Chestnut and download the following:
+To start this tutorial and the exercises that follow, log on to Stampede2 and download the following:
 ```bash
-wget https://cbe544.github.io/CBE544-2019.github.io/HW.tar.gz
-tar -zxvf HW.tar.gz
+wget https://upenncbe544.github.io/CBE544-2021.github.io/ASE/HW5.tar.gz
+tar -zxvf HW5.tar.gz
 cd HW5
 ```
 
-There are two files that are necessary to run jobs on the Chestnut cluster. The first is `vasp-ase.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
+There are two files that are necessary to run jobs on the Stampede2 cluster. The first is `spede_esp.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
 
 ```bash
 #!/bin/bash
+#SBATCH -J jobname   #Job name
+#SBATCH -o out.%j #name of stdout output file
+#SBATCH -e err.%j #name of stderr error file
+#SBATCH -p development  #queue type
+#SBATCH -N 1 #no.of nodes
+#SBATCH --ntasks-per-node 64 #no.of mpi tasks
+#SBATCH -t 2:00:00 #run time (hh:mm:ss)
+#SBATCH --mail-user=username@seas.upenn.edu #provide your email for notification
+#SBATCH --mail-type=all #notify when job finishes
+#SBATCH -A TG-EVE210010 #Allocation (don't change this)
 
-#SBATCH -x node63,node64,node81                 #node to exclude due to problems. Do not change
-#SBATCH -p p_alevoj                             #partition to run on. do not change
-#SBATCH -N  2 #number of nodes
-#SBATCH --tasks-per-node=32                     #do not change
-#SBATCH -t 48:30:00 #time limit
-#SBATCH -J JOBNAME #job name                    #Name your job here
-#SBATCH -o out.%j #screen output                #output file name. %j is job number
-#SBATCH -e err.%j #errinfo                      #err file name
-#SBATCH --mail-user=EMAL@seas.upenn.edu         #add you email address here to be alerted when job ends
-#SBATCH --mail-type=end #notify when job finishes #mail when job ends
+# Define and create a unique scratch directory for this job
+submit_dir=${SLURM_SUBMIT_DIR}
+SLURM_SUBMIT_DIR=${SCRATCH}/${SLURM_JOBID}
+SCRATCH_DIRECTORY=${SCRATCH}/${SLURM_JOBID}
+mkdir -p ${SCRATCH_DIRECTORY}
+cd ${SCRATCH_DIRECTORY}
 
+# You can copy everything you need to the scratch directory
+# ${SLURM_SUBMIT_DIR} points to the path where this script was submitted from
+cp ${submit_dir}/sto-bulk.traj ${SCRATCH_DIRECTORY}
+cp ${submit_dir}/lattice.py ${SCRATCH_DIRECTORY}
 
-#export VASP_GAMMA=true
-module load ase-vasp/run        #load vasp and ase
+python lattice.py   #Python script to run
 
-python script-name.py   #name of script to run
+cp -r ${SCRATCH_DIRECTORY}/* ${submit_dir}
+cd ${submit_dir}
+rm -rf ${SCRATCH_DIRECTORY}
 ```
 
-Finally, the last line ```python script-name.py``` picks the script you want to run. Therefore, you need to change the name of the file depending on which script you are running. We will be using this script later in this section for performing calculations to compute the lattice constant of bulk LiCoO<sub>2</sub>. ALL SCRIPTS INVOLVING DFT CALCULATION MUST BE SUBMITTED WITH THE COMMAND `sbatch vasp-ase.sub` where the vasp-ase.sub script ends with `python script-name`. DO NOT SUBMIT A PYTHON SCRIPT THAT IS INTEDED TO DO DFT CALCULATION ON THE LOG IN NODE.
+Stampede requires us to run jobs on the $SCRATCH partition to reduce heavy I/O on the $WORK partition. Therefore the second block of code sets up environment variables for the submission directory and the $SCRATCH directory.
+
+Then, the lines ```cp ${submit_dir}/sto-bulk.traj ${SCRATCH_DIRECTORY}``` and ```cp ${submit_dir}/lattice.py ${SCRATCH_DIRECTORY}``` copy the relevant files to the $SCRATCH partition. You will need to edit these lines depending on the name of the python script and input files required.
+
+The line ```python lattice.py``` picks the script you want to run. Therefore, you need to change the name of the file depending on which script you are running. We will be using this script later in this section for performing calculations to compute the lattice constant of bulk SrTiO<sub>3</sub> perovskite.
 
 
-Let's look at how a typical ASE script is written. Open the [`relax.py`](energy.py) script. We import all the relevant ASE modules in for this calculation
+Let's look at how a typical ASE script for geometry optimization is written. Open the `relax.py` script, which will be used in a later section to perform a simple optimization on a (001) SrTiO<sub>3</sub> slab . We import all the relevant ASE modules in for this calculation
 
 ```python
-from ase import Atoms, Atom
-from ase.calculators.vasp import Vasp
-from ase.io import read,write
-import numpy as np
+from ase import io
+from ase import Atoms
+from espresso import espresso
+from ase.optimize import QuasiNewton
 ```
 
-`from ase.calculators import Vasp` imports the VASP calculator for the ASE interface, and `from ase.io import read, write` imports the read and write commands for trajectory files.
+`from ase import io` imports the input/output commands for trajectory files, `from ase import Atoms` imports the Atoms object, useful for editing and manipulating the system, `from espresso import espresso` imports the Quantum Espresso calculator for the ASE interface, and `from ase.optimize import QuasiNewton` imports the Quasi Newton algorithm to perform geometry optimization
 
 An existing trajectory can be read in:
 
 ```python
-# read in the slab
-slab = read('surface.traj')
+slab =  io.read('001-bo2-sto.traj') #read slab
+slab.set_pbc([True,True,True])     #set periodic boundaries in all directions to True
 ```
 
-Then, the VASP calculator is set up. All parameters related to the electronic structure calculation are included here. The following example shows typical parameters that we use in the group for LiCoO<sub>2</sub> calculations.
+Then, the Quantum ESPRESSO calculator is set up. All parameters related to the electronic structure calculation are included here. The following example shows typical parameters that we use in the group for calculations involving oxides.
 
 ```python
-calc = Vasp(prec='normal',	#scf accuracy
-            encut=520,		#plane-wave cutoff
-            xc='PBE',		#functional
-            lreal='Auto',	#sampling space
-            kpts=[4,4,1],	#kpoint sampling
-            nsw = 99,		#max number of ionic steps
-            ibrion = 2,		#ion iteration steps
-            ispin = 2,		#spin polarized
-            amix_mag = 0.800000,#mixing parameters
-            bmix = 0.000100,
-            bmix_mag= 0.000100,
-            amix = 0.20000,
-            sigma = 0.05000,	#smearing
-            ediff = 2.00e-04,	#energy difference for scf convergence
-            ediffg = -2.00e-02,	#force  cutoff for overall convergence
-            algo ='fast',
-            ismear = -5,	#smearing type
-            nelm = 250,		#max number of electronic steps
-            ncore = 16,
-            lasph= True,
-            ldautype = 2,	#Use Hubbard U
-            lmaxmix = 4,
-            lorbit = 11,
-            ldau = True,
-            ldauprint = 2,
-            ldau_luj={'Co':{'L':2, 'U':3.32, 'J':0},
-                      'Li':{'L':-1, 'U':0.0, 'J':0.0},
-                      'O':{'L':-1, 'U':0.0, 'J':0.0}
-                      },
-            lvtot = False,
-            lwave = False,
-            lcharg = False,
-	    gamma=True,		#center at gamma point
-)
+calc = espresso(pw=500,             #plane-wave cutoff
+                dw=5000,                    #density cutoff
+                xc='PBE',          #exchange-correlation functional
+                kpts=(5,5,1),       #k-point sampling;
+                nbands=-20,             #20 extra bands besides the bands needed to hold valence electrons
+                sigma=0.1,
+                nosym=True,
+                convergence= {'energy':1e-5,
+                    'mixing':0.1,
+                    'nmix':10,
+                    'mix':4,
+                    'maxsteps':500,
+                    'diag':'david'
+                    },  #convergence parameters for SCF
+                 dipole={'status':True}, #dipole correction to account for periodicity in z
+                 output = {'avoidio':False,
+                    'removewf':True,
+                    'wf_collect':False},
+                 spinpol=False,
+                 parflags='-npool 2',
+                 outdir='calcdir')   #output directory for Quantum Espresso files
 ```
 
-Finally, the VASP calculator is attached to the `slab` Atoms object, the energy calculation is ran, and the total energy of the system is output in the log file (defined in the `vasp-ase.sub` file above). 
+Finally, the Quantum ESPRESSO calculator is attached to the `slab` Atoms object, the relaxation calculation is run, and the total energy of the system is output in the log file. 
 
-Once the scripts and atoms object is set up you can submit a job, using:
+To submit any job on Stampede2, use:
 
 ```bash
-sbatch vasp-ase.sub
+sbatch stampede.sub
 ```
-
-#### Note about Running on Chestnut ####
-
-The designated nodes for running on chestnut that we are allotted to sometimes have difficultly in parellelization. If you have a job runnig for longer than expect (20-30 mintues for lattice and kpoints) or about 3-4 hours for the relaxation please go to the directory of the job and type cancel your job by typing `scancel JOBID`. Your JOBID can be found by typing sq and it will be listed on the far left column. After this edit the line in your vasp-ase.sub script which read "#SBATCH -x node63,node64,node81" to say "#SBATCH -x node63,node64,node81,node56,node57,node62,node55,node54". Then resubmit your job. 
-
 
 <a name='lattice-constant-determination'></a>
 
 #### Lattice Constant Determination ####
 
-Find the [`lattice-constant-a.py`](Lattice_Constant.py) script in the `lattice/a` folder. This script calculates the different energies of the system as a function of the lattice constant. Before you run this job, make sure you read the comments within to understand what it does.
+Find the `lattice.py` script in the `lattice` folder. This script calculates the different energies of the system as a function of the lattice constant. Before you run this job, make sure you read the comments within to understand what it does.
 
-The following lines have been added the the beginning of the script to vary to lattice size of the bulk LiCoO<sub>2</sub>. LiCoO<sub>2</sub> is symmetric in two directions therefore our a and b lattice constants are going to the same and both mus tbe changed at the same time. However the c lattice vector can be studied independent of a and b. In addition the unit cell is created on an angle. This can be seen in the b and c initial lattice parameters. 
-
-```python
-eps=0.03
-a0=2.835
-c0=4.71
-a=[a0,0,0]
-b=[a0/2,(a0/2)*np.sqrt(3),0]
-c=[a0/2,a0/(2*np.sqrt(3)),c0]
-for X in np.linspace(1-eps,1+eps,7):
-	p=read('init.traj')
- 	p.set_cell([[i*X for i in a],[j*X for j in b],c],scale_atoms=True)
-```
-
-Remember to change the script name to lattice-constant-a.py in the `vasp-ase.sub` file! Submit the script by running:
+Remember to add your email in the `stampede.sub` file to receive notifications on the job! Submit the script by running:
 
 ```bash
-sbatch vasp-ase.sub
+sbatch stampede.sub
+``` 
+
+The output trajectory `sto.traj` contains information on the energy of the system with respect to the given lattice constant. To obtain the lattice constant that minimizes the energy, you will be writing a simple Python script to perform an Equation of State fit of the obtained energies as a function of the lattice constant. 
+
+To proceed with writing this script, you will be modifying the example script provided here: [ASE-Equation of State](https://wiki.fysik.dtu.dk/ase/tutorials/eos/eos.html). Note that the sample script reads 5 configurations from the trajectory, but we have more configurations than that in our calculations. This script can be run on the login node directly. To execute the script you have written, use the command: 
+```bash
+python xyz.py
 ```
+The output plot (`xyz.png`) should show the fitted energies as a function of the lattice volumes, with the volume corresponding to the minimum and the bulk modulus displayed on the top. Use this, and the fact that we have a cubic lattice to determine the DFT lattice constant.
 
-To proceed with writing this script, you will be modifying the example script provided here: [ASE-Equation of State](https://wiki.fysik.dtu.dk/ase/tutorials/eos/eos.html). Note that the sample script reads 5 configurations from the trajectory, but we have 7 in our calculations.  
-
-The EOS module for ASE is only available in the new version of ase. In order to load this we must load ase/3.13.0 before running the script. This script can be run on the login node directly. To execute the script you have written, use the command:
-
-```python
-module load ase/3.13.0
-python EOS-script.py
-```
-
-This will plot the volumes vs energies and print the volume that related to the minimum energy. The output plot (EOS.png) should show the fitted energies as a function of the volume, with the volume corresponding to the minimum and the bulk modulus displayed on the top. To get the a<sub>DFT</sub> lattice constant take this volume and use this equation:
-
-a<sub>DFT</sub> = sqrt[{2*Volume}/{(4.71)*sqrt(3)}]
-
-Repeat this process with the c lattice constant by going to the lattice/c directory and running the script there. The process for the EOS will be the same but to get the c lattice constant you must use this formula.
-
-c<sub>DFT</sub> = sqrt[(Volume/6.959)<sup>2</sup>+1.4175<sup>2</sup>+0.818<sup>2</sup>]
-
-These equations come from the angles of the unit cell. For more information on how these equations were derived look up R3̅m spacegroup or ask Anthony.
-
-**HW 5:** Show your Python scripts for the EOS, Plot the Equation of State fits, and report the DFT lattice constants.
+**HW 5:** Show your Python script, Plot the Equation of State fit, and report the DFT lattice constant.
 
 <a name='convergence-with-k-points'></a>
 
 #### Convergence with k-Points ####
-The first thing that should be done here is the resize our bulk LiCoO<sub>2</sub> to the appropriate lattice constants. To do this return to the HW5 directory. Here you should see a script called resize.py. Put your values of a and c in line marked with #DFT lattice constant obtained previously. You can then run the python script on the login node by using: `python ressize.py` 
+Next, we will determine how well-converged the total energy is with respect to the number of k-points in each direction. First, take a look at the `resize.py` script which resizes the lattice to the DFT lattice constant computed in the previous exercise. Run this script directly in the login node to obtain the starting structure for the k-point calculations. Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the `stampede.sub` file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
 
-This should create a file called `LiCoO2-bulk-opt.traj`. This is what we will use to make the surface and test the kpoints. 
-
-Next, we will determine how well-converged the total energy is with respect to the number of k-points in each direction. You will be running the kptconv.py script in the k-points folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the vasp-ase.sub file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
-
-Note: There is a typo in the kpointconv.py script. It should read in LiCoO2-bulk-opt.traj. Please fix this before submission.
+From the plot, and your understanding of concepts in DFT, suggest your pick for the k-points and the rationale behind your choice.
 
 **HW 5:** Show the k-point convergence plot, your pick for the k-points, and your rationale.
 
+<a name='optimization'></a>
+
 #### Optimization ####
-Finally, you will be performing a geometry optimization on the 104 surface of LiCoO<sub>2</sub>. We will use the LiCoO2-bulk-opt.traj to make the surface. To proceed look at the file `build-surface.py`. This script reads in the optimized bulk trajectory and creates the 104 surface repeated with 6 layers. To proceed look at the file `build-surface.py`. This script reads in the optimized bulk trajectory and creates the 104 surface repeated with 6 layers.
-
-```python
-from ase.io import read,write
-from ase.build import surface,bulk
-from ase import atoms
-from ase.visualize import view
-
-p=read('LiCoO2-bulk-opt.traj')	#bulk input
-s1 = surface(p, (1,0,4), 6)     #type of surface you want
-s1.center(vacuum=10,axis=2)	#center strucutre
-write('LiCoO2-104.traj',s1)	#write trajectory
-```
-Similar to the EOS module the build module is also only available in ase/3.13.0. If you have left the terminal since the last time you loaded it you will need to reload it again before submitting the python script. This should go like this. 
+Finally, you will be performing a geometry optimization on the (001) BO2-terminated surface of SrTiO<sub>3</sub>. To proceed with this exercise, first take a look at the starting structure `001-bo2-sto.traj` in the `relax` folder by using the GUI. You should see a 2x2x4 surface of SrTiO<sub>3</sub>, with the bottom two layers fixed to the bulk positions. Next, take a look at the `relax.py` script discussed previously. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following lines (in addition to the script to run) in the `stampede.sub` file:
 
 ```bash
-module load ase/3.13.0
-python build-surface.py
+#SBATCH -p normal #queue type
+#SBATCH -N 1 #no.of nodes
+#SBATCH -t 48:00:00 #run time (hh:mm:ss)
 ```
-The resuting LiCoO2-104.traj should look something like this:
-<center><img src="Images/104-surface.png" alt="window" style="width: 400px;"/><br></center>
-
-
-We need to finish building our surface by repeating it in the y direction and constraining the bottom 3 layers. We can do this in ASE-GUI. Open the file (`ase-gui LiCoO2-104.traj` or `ag LiCoO2-104.traj`) and use the Edit -> Repeat to repeat the unit cell 4 times in the y direction. Once it has repeated click the set unit cell button. Now we must constrain the bottom three layers of our LiCoO<sub>2</sub>. To do this select the atoms in the bottom three layers of our slab and go to Tools -> Constratints -> Constrain Selected Atoms. It is easy to tell which Li and Co are in the bottoms 3 layers but the Oxygen atoms may be confusing. Use the Figures below for reference to  constrain the correct rows of atoms. 
-
-<center><img src="Images/104-surface-y1.png" alt="window" style="width: 400px;"/><br>
-<img src="Images/104-surface-x.png" alt="window" style="width: 400px;"/><br>
-<img src="Images/104-surface-y2.png" alt="window" style="width: 400px;"/><br>
-</center>
-
-Once it has been repeated and constrained save this atoms object by File -> Save and name your file in the line as surface.traj. Copy this trajectory file to the relax directory. Next move into the relax directory and take a look at the `relax.py` script discussed previously. Please be sure that the relax script is reading in the proper trajecotry files. You will be using this script for running the surface optimization calculations. Submit the calcualtion using the vasp-ase.sub script and be sure to change the file name accordingly.
-
-To check on the calculation while it is running use either 
-
+Take a look at the `opt.log` file after submitting the job, you should see something like this:
 ```bash
-more out.XXXXXX
-````
-or 
-```bash
-less out.XXXXX
+BFGSLineSearch:   0[  0]  12:27:27   -60932.887293       2.0460
+BFGSLineSearch:   1[  2]  14:16:48   -60933.316386       0.8612
+BFGSLineSearch:   2[  3]  14:59:04   -60933.508996       0.5930
+BFGSLineSearch:   3[  4]  15:32:44   -60933.583239       0.5081
+BFGSLineSearch:   4[  5]  16:07:11   -60933.612633       0.2711
+BFGSLineSearch:   5[  7]  17:02:23   -60933.626425       0.1151
 ```
-Once the calculation is completed and you have recieved an email go to the relax directory. The final energy will be printed in the last line of the out.XXXXX file. To see this line use the command `tail out.XXXXX`. Tail will print out the last few lines of the file. You should see something like this:
+The optimization step is printed in the first column, the wall clock time in the second, total energy (in eV) in the third, and the forces (in eV/Å) in the fourth and final column. Report the converged energy once the job finishes. Note that the forces should have converged to a value less than the cut-off specified in the `relax.py` script. 
 
-```bash
-Energy = -514.7679737
-max_forces = 0.015439
-```
-Please be sure that the force is below the criteria set. The Energy listed is the energy of the system.
+**HW 5:** Report the converged energy of the optimized structure. 
 
-**HW 5:** Report the converged energy of the optimized structure. Comment on the surface changes of the final structure. 
+**You must succesfully complete this task before proceeding to the Final Project**
 
