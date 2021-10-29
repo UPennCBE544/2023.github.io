@@ -13,7 +13,7 @@ ____
 
 ## Logging Into the Computing Clusters
 
-Once you account on Chestnut has been activated. Follow the instructions and tests to make sure everything is set up properly and functional.
+Once your account on Stampede2 has been activated, follow the instructions and tests to make sure everything is set up properly and functional.
 
 ## Contents
 1. [Installation](#installation)
@@ -29,13 +29,6 @@ Once you account on Chestnut has been activated. Follow the instructions and tes
 Download and install:
 
 * [XQuartz](http://www.xquartz.org/)
-
-To prevent X11 from timing out, open the terminal and type:
-
-```bash
-mkdir -p ~/.ssh
-echo $'\nHost *\n ForwardX11Timeout 1000000\n' >>~/.ssh/config
-```
 
 
 ### Windows
@@ -54,16 +47,19 @@ ____
 
 ## Logging onto the Clusters
 
-Your chestnut username will be your username of logging into Penn systems.
+For the [**Stampede2**](https://www.tacc.utexas.edu/systems/stampede2) cluster, make sure to read through the User Guide [here](https://portal.tacc.utexas.edu/user-guides/stampede2).
+
+login with your Stampede2 username (same as the TACC username, check your account [here](https://portal.tacc.utexas.edu/))and password (you will also be asked for Mulit-factor Authorization).
 
 Follow the instructions below for your system:
 
 ### Mac OSX
 
 Open "Applications-> Utilities -> Terminal" or "Command+Space" to search Terminal using "spotlight search"
-In a terminal:
+
+In a terminal type:
 ```bash
-ssh -X username@chestnut-login.seas.upenn.edu
+ssh -X username@stampede2.tacc.utexas.edu
 ```
 
 ### Windows 
@@ -71,18 +67,18 @@ Launch Xming. You will always need to have this open in order to forward graphic
 
 Start PuTTY, and:
 
-* “Session” → “Host Name” `username@chestnut-login.seas.upenn.edu` for Chestnut
+* “Session” → “Host Name” `stampede2.tacc.utexas.edu` for **Stampede2**
 * “Connection” → “SSH” → “X11” check “Enable X11 forwarding”
 * Back in “Session”, you can **save these settings for next time**.
 
-You can start putty several times, if you need several terminal windows; only one instance of Xming needed.
+You can start PuTTY several times, if you need several terminal windows; only one instance of Xming needed.
 
 
 ### Linux ###
 
 In a terminal:
 ```bash
-ssh -X username@chestnut-login.seas.upenn.edu
+ssh -X username@stampede2.tacc.utexas.edu
 ```
 ____
 
@@ -90,42 +86,39 @@ ____
 
 ### First Time Logging in ###
 
-For the **first login** only, add the following line to your ~/.bashrc script command:
-
-``` bash
-source /scratch/alevoj1/Scripts/group_bashrc
-````
-In order to do this you must use a text editor in the terminal. VIM and Nano are two popular text editors. Introductions to both of these are on the fron page of the group website. So do either:
+For the **first login** only, run the following command:
 
 ```bash
-vi ~/.bashrc
-```
-OR
-```bash
-nano ~/.bashrc
-```
-
-and paste the source line there. Once that is done exit the text editor and run this command in the terminal.
-
-```bash
+cp /home1/06157/csl1191/vojgroup/bash_script/bashrc_copy ~/.bashrc 
 source ~/.bashrc
+```
+
+This will enable you to run specific software on the Stampede2 cluster, including the ASE interface to Quantum ESPRESSO.
+
+There are two file partitions, the `home` and the `work2` partition. Go ahead and make a symbolic link to the `work2` partition using:
+
+```bash
+ln -s $WORK2 work2
 ```
 
 **Change the permission of files:**
 
 ```bash
 cd
-cd work
+cd work2
 mkdir CBE544
-chmod g+r ./
+chmod g+X $WORK2
+chgrp -R G-824120 CBE544
+chmod g+s CBE544
+chmod g+rX CBE544
 ```
 
-Do all of your work in the directory you have called CBE544.
+**Perform all your calculations from the work/CBE544**
 
 For example, Create a folder `hw5` under `CBE544` and perform all calculations of HW5 in `hw5`. If you have already started you jobs somewhere else, you can copy the entire folder to CBE544 once you have done all calculations (e.g. `cp -r folderpath ~/work/CBE544/hw5`).  However, you need to complete this step before sending us the report of HW5, and please include the path of `CBE544` folder in your report or email. You can obtain the path by 
 
 ```bash
-cd
+cdw
 cd CBE544
 pwd
 ```
@@ -155,5 +148,4 @@ and make sure the following commands work:
 import ase
 import numpy
 ```
-
 
