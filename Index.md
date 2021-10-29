@@ -6,13 +6,12 @@ permalink: /
 
 This website contains information about the CBE544 final course project, the homework problem set 5, as well as some tutorials to help you along the way.
 
-We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dtu.dk/ase/) with the [ASE interface for the Quantum ESPRESSO calculator](http://github.com/vossjo/ase-espresso) and [VASP](https://www.vasp.at/). Computing resources will be provided by [Texas Advanced Computing Center (TACC)](https://www.tacc.utexas.edu)'s [Stampede system](https://portal.tacc.utexas.edu/user-guides/stampede) and by the local SEAS Penn Chestnut Cluster. The tutorials cover the basic usage of the UNIX shell, scripting in Python, and performing calculations using ASE. As part of the requirements for the final project, you will need to have passed HW5 before even starting the final project and you will have to complete the exercises by their respective deadlines.
+We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dtu.dk/ase/) with the [ASE interface for the Quantum ESPRESSO calculator](http://github.com/vossjo/ase-espresso) and [Quantum Espresso](https://www.quantum-espresso.org/). Computing resources will be provided by [Texas Advanced Computing Center (TACC)](https://www.tacc.utexas.edu)'s [Stampede system](https://portal.tacc.utexas.edu/user-guides/stampede). The tutorials cover the basic usage of the UNIX shell, scripting in Python, and performing calculations using ASE. As part of the requirements for the final project, you will need to have passed HW5 before even starting the final project and you will have to complete the exercises by their respective deadlines.
 
 ## Projects ##
 
 ### Homework 5 ###
-* 4% of final grade (Note: the five homework problems contribute to a total of 20% of final grade)
-* <font color="red"> Due Friday April 10 2019 </font>
+* <font color="red"> Due Friday November 11 2021 </font>
 * [Problem Description](HW5.pdf)
   
 ### Final Project ###
