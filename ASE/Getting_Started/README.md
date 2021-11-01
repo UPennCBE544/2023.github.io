@@ -35,7 +35,7 @@ tar -zxvf HW5.tar.gz
 cd HW5
 ```
 
-There are two files that are necessary to run jobs on the Stampede2 cluster. The first is `spede_esp.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
+There are two files that are necessary to run jobs on the Stampede2 cluster. The first is `stampede.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
 
 ```bash
 #!/bin/bash
