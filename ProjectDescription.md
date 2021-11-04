@@ -59,11 +59,17 @@ You will build surfaces from the optimized bulks for your assigned materials and
 
 Perovskites
 
-Build three surfaces: (001)-AO terminated, (110) surface, and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below.
+Build three surfaces: (001)-AO terminated, (110) surface, and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
 
 Rutile Oxides
 
-Build two surfaces: (110) and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below.
+Build two surfaces: (110) and (111) surface. The final number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
+
+Once you have built both surface facets for you material, constrain the bottom half of the atoms to the bulk lattice positions. To do this select the atoms that you want to constrain, click Tools -> Constraints -> Constrain Selected Atoms. The constrained atoms should now have dashed 'X's on them. These should match the images above. Make sure that you are constraining a stoichiometric number of atoms. For the Rutile Oxides this means you should be constraining an integer multiple of MO2 atoms. For the Perovskites you should be constraining an integer multiple of ABO3 atoms.
+
+Next, we need to make sure we have the appropriate vacuum set up between slabs. We will insert 20 Angtroms of vacuum between slabs. To do this, copy the script titled vacuum.py into the directory with your trajectory and look at the script. It reads in a file called 'init.traj' and adds 10 Angstroms of vacuum on both sides of the slab (axis=2 refers to the z-axis) and then rewrites the file as 'init.traj'.
+
+Finally, we can relax these surfaces to get the initial structures that we will use for all of the adsorption and defect calculations going forward. Copy the relax.py script into each surface folder. Copy the stampede.sub script into each surface folder. Then, from each directory make sure your stampede.sub script is copying and running the relevant files. Then run the relaxation using the command ```sbatch stampede.sub```. 
 
 ### Task 2 ###
 
