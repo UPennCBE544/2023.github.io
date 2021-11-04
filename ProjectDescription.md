@@ -61,9 +61,17 @@ Perovskites
 
 Build three surfaces: (001)-AO terminated, (110) surface, and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
 
+<center><img src="../Images/perovskites_surfs.png" alt="window" style="width: 800px;"/><br>
+Schematic of Perovskite Surfaces
+</center>
+
 Rutile Oxides
 
 Build two surfaces: (110) and (111) surface. The final number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
+
+<center><img src="../Images/rutile_surfs.png" alt="window" style="width: 800px;"/><br>
+Schematic of Rutile Oxides Surfaces
+</center>
 
 Once you have built both surface facets for you material, constrain the bottom half of the atoms to the bulk lattice positions. To do this select the atoms that you want to constrain, click Tools -> Constraints -> Constrain Selected Atoms. The constrained atoms should now have dashed 'X's on them. These should match the images above. Make sure that you are constraining a stoichiometric number of atoms. For the Rutile Oxides this means you should be constraining an integer multiple of MO2 atoms. For the Perovskites you should be constraining an integer multiple of ABO3 atoms.
 
