@@ -14,7 +14,7 @@ permalink: /Project/
 5. [Final Report](#report)
 
 
-For the Final Project, you will be studying the relationship between a materials reactivity and its stability. The students will work in groups of four. Each group will probe a specific material class and each student will be probing a different material. Each group of students will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/16 at 5:00 PM (hard deadline)</font>.
+For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in two groups. Each group will probe a specific material class and each student will be probing a different material. Each group of students will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/16 at 5:00 PM (hard deadline)</font>.
 
 Please make use of the [Piazza](https://piazza.com/) page for troubleshooting, discussions and for sharing results.
 
@@ -29,7 +29,7 @@ alevoj@seas.upenn.edu, csl1191@seas.upenn.edu
 
 Goal: Determine whether a material's reactivity and stability are linked by testing for correlations between easily calculated descriptors.
 
-Plan: Use DFT to calculate oxygen adsorption energies and defect formation energies on surfaces of transition metals, semiconducting oxides, and metallic oxides.
+Plan: Use DFT to calculate oxygen adsorption energies and defect formation energies on surfaces of perovskite oxides and rutile oxides.
 
 ### Motivation ###
 
@@ -51,23 +51,19 @@ tar -zxvf FinalProject.tar.gz
 
 ```
 
-In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see three directories: rutiles, perovskites, and metals. Please check [Assignment](https://cbe544.github.io/Project_Assignments/) in order to determine which material group you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>.
+In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see two directories: rutiles and perovskites. Please check [Assignment](https://cbe544.github.io/Project_Assignments/) in order to determine which material you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>.
 
 ### Task 1 ###
 
-You will build surfaces from the optimized bulks for your assigned materials and run the relaxation. Please skip ahead to the section heading relevant to your assigned material.
+You will build surfaces from the optimized bulks for your assigned materials and run the relaxation. In order to build the surfaces, you will be using the surf_build.py script in the scripts directory. This script utilizes the build module in ASE to cut a surface from the optimized bulk trajectory. It reorients the surface so that the surface is perpendicular to the z-direction in the output file. Please skip ahead to the section heading relevant to your assigned material.
 
 Perovskites
 
-Build three surfaces: (001)-AO terminated and BO<sub>2</sub>-terminated surfaces and a (110) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below.
+Build three surfaces: (001)-AO terminated, (110) surface, and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below.
 
 Rutile Oxides
 
 Build two surfaces: (110) and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below.
-
-Metals
-
-You will not be required to build any surfaces as these have already been built and relaxed in our group.
 
 ### Task 2 ###
 
@@ -87,14 +83,6 @@ On the (110) surface, adsorb H on the O and M sites at coverages of 1 adsorbate 
 
 On the (111) surface, adsorb H on the O and M sites at coverages of 1 adsorbate per surface and 1 adsorbate per site. Relax these systems. See the figures below for a guide to the adsorption sites.
 
-Metals
-
-On the (111) surface, adsorb H on each site at coverages of 1 adsorbate per surface cell and 1 adsorbate per site. 
-
-On the (210) surface, adsorb H on each site at coverages of 1 adsorbate per surface cell and 1 adsorbate per site. 
-
-On the (100) surface, adsorb H on each site at coverages of 1 adsorbate per surface cell and 1 adsorbate per site. 
-
 ### Task 3 ###
 
 The final task will be creating surface defects and relaxing the systems. From these results, we will be able to calculate the defect formation energies. Please skip ahead to the section heading relevant to your assigned material.
@@ -110,14 +98,6 @@ On the (111) surface, create a
 Rutile Oxides
 
 On the (110) surface, create a metal defect, an O defect, and high coverage limit defects
-
-Metals
-
-On the (111) surfaces calculate surface metal defect.
-
-On the (211) surface, calculate each unique surface site metal defect. 
-
-On the (100) surface, calculate a metal defect, an O defect, and the high coverage limit equivalent defects.
 
 ### Organization ###
 
