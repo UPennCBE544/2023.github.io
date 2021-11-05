@@ -59,7 +59,7 @@ You will build surfaces from the optimized bulks for your assigned materials and
 
 ### Perovskites ###
 
-Build three surfaces: (001)-AO terminated, (110) surface, and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
+Build two surfaces: (110) surface and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
 
 <center><img src="../Images/perovskites_surfs.png" alt="window" style="width: 800px;"/><br>
 Schematic of Perovskite Surfaces
@@ -76,23 +76,28 @@ Schematic of Rutile Oxides Surfaces
 
 
 ### Everyone ###
-Once you have built both surface facets for you material, constrain the bottom half of the atoms to the bulk lattice positions. To do this select the atoms that you want to constrain, click Tools -> Constraints -> Constrain Selected Atoms. The constrained atoms should now have dashed 'X's on them. These should match the images above. Make sure that you are constraining a stoichiometric number of atoms. For the Rutile Oxides this means you should be constraining an integer multiple of MO2 atoms. For the Perovskites you should be constraining an integer multiple of ABO3 atoms.
+Once you have built both surface facets for you material, constrain the bottom half of the atoms to the bulk lattice positions. To do this select the atoms that you want to constrain, click Tools -> Constraints -> Constrain Selected Atoms. The constrained atoms should now have dashed 'X's on them. These should match the images above. Make sure that you are constraining a stoichiometric number of atoms. For the Rutile Oxides this means you should be constraining an integer multiple of MO2 atoms. For the Perovskites you should be constraining an integer multiple of ABO<sub>3</sub> atoms.
 
-Next, we need to make sure we have the appropriate vacuum set up between slabs. We will insert 20 Angtroms of vacuum between slabs. To do this, copy the script titled vacuum.py into the directory with your trajectory and look at the script. It reads in a file called 'init.traj' and adds 10 Angstroms of vacuum on both sides of the slab (axis=2 refers to the z-axis) and then rewrites the file as 'init.traj'.
+Next, we need to make sure we have the appropriate vacuum set up between slabs. We will use 20 Angtroms of vacuum between slabs. To do this, copy the script titled vacuum.py into the directory with your trajectory and look at the script. It reads in a file called 'init.traj', centers it in the unit cell, and adds 10 Angstroms of vacuum on both sides of the slab (axis=2 refers to the z-axis) and then rewrites the file as 'init.traj'.
 
 Finally, we can relax these surfaces to get the initial structures that we will use for all of the adsorption and defect calculations going forward. Copy the relax.py script into each surface folder. Copy the stampede.sub script into each surface folder. Then, from each directory make sure your stampede.sub script is copying and running the relevant files. Then run the relaxation using the command ```sbatch stampede.sub```. 
 
 ### Task 2 ###
 
-Using the relaxed surfaces you will adsorb Hydrogen and Oxygen species on several unique sites and at a high and low coverage limit. Please skip ahead to the section heading relevant to your assigned material.
+Using the relaxed surfaces you will adsorb O and OH species on several unique sites and coverages. Please skip ahead to the section heading relevant to your assigned material for detailed instructions.
 
 ### Perovskites ###
 
-On the (001)-AO terminated surface, adsorb H on the O and M sites at coverages of 1 adsorbate per surface and 1 adsorbate per site. Relax these systems. See the figures below for a guide to the adsorption sites.
+Step 1: Full coverages adsorptions and defects
 
-On the (001)-BO<sub>2</sub>-terminated surface, adsorb H on the O and M sites at coverages of 1 adsorbate per surface and 1 adsorbate per site. Relax these systems. See the figures below for a guide to the adsorption sites.
+On the (110) surface:
 
-On the (110) surface, adsorb H on the O and M sites at coverages of 1 adsorbate per surface and 1 adsorbate per site. Relax these systems. See the figures below for a guide to the adsorption sites.
+Open the relaxed surface trajectory using the ase-gui. We want to repeat the unit cell once in the x and y directions to create a 2x2 surface. This will allow for adsorbate-adsorbate interactions to be more accurately captured and for us to probe different adsorbate concentrations. To do this, click on View -> Repeat and then in the window that opens set the x and y boxes (the first and second boxes) equal to 2. Then click Set unit cell. You should now see the larger unit cell and surface looking like the image below. Save this trajectory as init.traj. You will be using this surface trajectory frequently to create your init.traj files for different adsorbate and defect calculations.
+
+Now we want to set up and run relaxations for O and OH adsorptions at full coverage. We know from previous work that the favored adsorption site on these surfaces is above the B site cation. So let's start by setting up an adsorption calculation for O. In order to add an adsorbate, click on the atom that you want to add the adsorbate directly above. Press Ctrl+A or click Edit -> Add Atom and in the window that comes up type O in the top box. In the box below Position you can enter a number corresponding to the number of Angstroms above the highlighted Atom you want to place the adsorbate. For the first oxygen adsorbate try 2.3 A like in the image below. Look at the side view and make sure the adsorbed oxygen is in a similar position to the ones in my system. Repeat the same for all four adsorption sites until you have a system with four O adsorbates located above the B site atoms  in the lattice.
+
+
+On the (111) surface...
 
 ### Rutile Oxides ###
 
