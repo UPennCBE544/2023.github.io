@@ -51,7 +51,14 @@ tar -zxvf FinalProject.tar.gz
 
 ```
 
-In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see two directories: rutiles and perovskites. Please check [Assignment](https://cbe544.github.io/Project_Assignments/) in order to determine which material you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>.
+In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see two directories: rutiles and perovskites. Please check [Assignment](https://cbe544.github.io/Project_Assignments/) in order to determine which material you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>. Move into the directory corresponding to your material.
+
+### Things to keep in mind ###
+For all of the calculations that you are running here on out, you will need to submit them using stampede.sub to the cluster. Do not run any of these jobs on the login node. 
+
+Each calculation must be carried out in its own directory. All of the files necessary to carry out the calculation must also be in the directory at the time you submit the job or else it will not work. Usually this means the directory should have an ASE trajectory (init.traj), a relaxation script (relax.py), and a submit script (stampede.sub).
+
+It is critical that you organize your directories consistently so that we can find the data later. See the Organization section below for additional guidance. 
 
 ### Task 1 ###
 
@@ -59,7 +66,34 @@ You will build surfaces from the optimized bulks for your assigned materials and
 
 ### Perovskites ###
 
-Build two surfaces: (110) surface and (111) surface. The number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
+You should already be in the directory corresponding to your material. In this directory make 2 new directories: 110 and 111. Move into the newly created 110 directory. Make a directory called clean and move into it. Copy the relaxed bulk trajectory (opt.traj) from the bulk/relax directory corresponding to your material into your 110/clean directory. Copy the surf_build.py from the scripts directory into this directory as well. Now you will build a 4 layer (110) slab model using the surf_build.py script. Look at the surf_build.py script. It should look like the text below: 
+
+```
+#!/usr/bin/env python
+import numpy as np
+
+from ase import io
+from espresso import espresso
+from ase import build
+from ase.geometry import get_layers
+import sys
+from ase.optimize import BFGS
+
+atoms =  io.read('opt.traj') #Optimized bulk FCC
+traj=io.Trajectory('init.traj','w')
+cell=atoms.get_cell() #Get cell of opt.traj
+symb = atoms.get_chemical_symbols()
+s1=build.surface(atoms, (1,1,0), 5) #cut a surface normal to the [1,1,0] direction and make it 5 layers deep in the z-direction.
+s1.center(vacuum=10, axis=2) #center the cell and add 10 Angstroms of vacuum to both sides of the slab in the z-direction
+
+traj.write(s1)
+```
+
+You will only need to change the indices in the ```s1=build.surface(atoms, (1,1,0), 5)``` line to correspond to the surface cut you are making. It is set to (110) by default.
+
+Build the (110) surface by running the surf_build.py script with the command ```python surf_build.py```. The script will cut the surface using the bulk opt.traj that you copied and save the surface slab as init.traj in the same directory. The actual number of layers we want is 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you need to remove the asymmetric ABO<sub>3</sub> atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves. Open init.traj in the GUI and remove the atoms as needed to create the (110) surface that looks exactly like the one below and save it as init.traj. 
+
+In the 111 directory repeat the same process but build the (111) surface and make it look exactly like the one below. You should now have an init.traj for both the (110) and the (111) surfaces in their own separate directories.
 
 <center><img src="../Images/perovskites_surfs.png" alt="window" style="width: 800px;"/><br>
 Schematic of Perovskite Surfaces
@@ -68,7 +102,34 @@ Schematic of Perovskite Surfaces
 
 ### Rutile Oxides ###
 
-Build two surfaces: (110) and (111) surface. The final number of layers should be 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you may need to create 5 layers using the surf_build.py script and then remove the asymmetric ABO3 atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves.
+You should already be in the directory corresponding to your material. In this directory make 2 new directories: 110 and 100. Move into the newly created 110 directory. Make a directory called clean and move into it. Copy the relaxed bulk trajectory (opt.traj) from the bulk/relax directory corresponding to your material into your 110/clean directory. Copy the surf_build.py from the scripts directory into this directory as well. Now you will build a 4 layer (110) slab model using the surf_build.py script. Look at the surf_build.py script. It should look like the text below: 
+
+```
+#!/usr/bin/env python
+import numpy as np
+
+from ase import io
+from espresso import espresso
+from ase import build
+from ase.geometry import get_layers
+import sys
+from ase.optimize import BFGS
+
+atoms =  io.read('opt.traj') #Optimized bulk FCC
+traj=io.Trajectory('init.traj','w')
+cell=atoms.get_cell() #Get cell of opt.traj
+symb = atoms.get_chemical_symbols()
+s1=build.surface(atoms, (1,1,0), 5) #cut a surface normal to the [1,1,0] direction and make it 5 layers deep in the z-direction.
+s1.center(vacuum=10, axis=2) #center the cell and add 10 Angstroms of vacuum to both sides of the slab in the z-direction
+
+traj.write(s1)
+```
+
+You will only need to change the indices in the ```s1=build.surface(atoms, (1,1,0), 5)``` line to correspond to the surface cut you are making. It is set to (110) by default.
+
+Build the (110) surface by running the surf_build.py script with the command ```python surf_build.py```. The script will cut the surface using the bulk opt.traj that you copied and save the surface slab as init.traj in the same directory. The actual number of layers we want is 4 and the final trajectory for the surfaces should resemble the ones below. In order to get these structures you need to remove the asymmetric MO<sub>2</sub> atoms from the top and bottom to end up with the desired terminations at 4 total layers. Pay attention to the axes in the images below as you orient yourselves. Open init.traj in the GUI and remove the atoms as needed to create the (110) surface that looks exactly like the one below and save it as init.traj. 
+
+In the 111 directory repeat the same process but build the (111) surface and make it look exactly like the one below. You should now have an init.traj for both the (110) and the (111) surfaces in their own separate directories.
 
 <center><img src="../Images/rutile_surfs.png" alt="window" style="width: 800px;"/><br>
 Schematic of Rutile Oxides Surfaces
@@ -88,16 +149,43 @@ Using the relaxed surfaces you will adsorb O and OH species on several unique si
 
 ### Perovskites ###
 
-Step 1: Full coverages adsorptions and defects
+Step 1: Full coverage O adsorption
 
 On the (110) surface:
 
 Open the relaxed surface trajectory using the ase-gui. We want to repeat the unit cell once in the x and y directions to create a 2x2 surface. This will allow for adsorbate-adsorbate interactions to be more accurately captured and for us to probe different adsorbate concentrations. To do this, click on View -> Repeat and then in the window that opens set the x and y boxes (the first and second boxes) equal to 2. Then click Set unit cell. You should now see the larger unit cell and surface looking like the image below. Save this trajectory as init.traj. You will be using this surface trajectory frequently to create your init.traj files for different adsorbate and defect calculations.
 
-Now we want to set up and run relaxations for O and OH adsorptions at full coverage. We know from previous work that the favored adsorption site on these surfaces is above the B site cation. So let's start by setting up an adsorption calculation for O. In order to add an adsorbate, click on the atom that you want to add the adsorbate directly above. Press Ctrl+A or click Edit -> Add Atom and in the window that comes up type O in the top box. In the box below Position you can enter a number corresponding to the number of Angstroms above the highlighted Atom you want to place the adsorbate. For the first oxygen adsorbate try 2.3 A like in the image below. Look at the side view and make sure the adsorbed oxygen is in a similar position to the ones in my system. Repeat the same for all four adsorption sites until you have a system with four O adsorbates located above the B site atoms  in the lattice.
+****Image****
 
+Now we want to set up and run relaxations for O and OH adsorptions at full coverage. We know from previous work that the favored adsorption site on these surfaces is above the B site cation. So let's start by setting up an adsorption calculation for O. In order to add an adsorbate, click on the atom that you want to add the adsorbate directly above. Press Ctrl+A or click Edit -> Add Atom and in the window that comes up type O in the top box. In the box below Position you can enter a number corresponding to the number of Angstroms above the highlighted Atom you want to place the adsorbate. For the first oxygen adsorbate try 2.3 A like in the image below. Look at the side view and make sure the adsorbed oxygen is in a similar position to the ones in my system. Repeat the same for all four adsorption sites until you have a system with four O adsorbates located above the B site atoms in the lattice.
 
-On the (111) surface...
+****IMage****
+
+Now in this directory copy the relax.py script and the stampede.sub script here from the scripts folder. Submit the job using sbatch stampede.sub. 
+
+Step 2: Full coverage OH adsorption
+
+Move to the directory for ohads/Ag. Copy the init.traj that you generated in the previous step to this directory using the cp command. Open this file using the GUI. Now add an H to the top of each O adsorbate at a position of 1 Angstrom above the O. The final structure should look like the images below.
+
+***Image***
+
+Copy relax.py and stampede.sub to this directory and submit the job. Now you are getting the hang of this process. 
+
+Step 3: Single adsorbate coverage for O and OH
+
+In two new directories (oads/Ag/0.25ML ohads/Ag/0.25ML) create init.traj files that have only one adsorbate instead of four. I would copy the init.traj files from the above steps into these directories and delete 3 of the adsorbates so that you get a file that looks like the ones below for O and OH respectively.
+
+***Images****
+
+Submit these relaxations as before.
+
+Step 4: Defects
+
+Go to the directory clean/. Make a directory clean/vac/. Cd into vac/. Make a directory clean/vac/1ML/. Cd into 1ML. Make four directories: Sr, SrO, Ag, and AgO2. Copy the clean relaxed init.traj into each of these directories. For the Sr case, you will remove the 4 topmost Sr atoms, save the init.traj, and submit the job. For the SrO you will be removing the same 4 atoms plus the O atoms coordinated to them. Your final structures will resemble those shown below. Relax all of these.
+
+****Image****
+
+On the (111) surface, you will repeat all of the same calculations as the (110) done previously. See images below for examples of each setup. 
 
 ### Rutile Oxides ###
 
@@ -123,25 +211,22 @@ On the (110) surface, create a metal defect, an O defect, and high coverage limi
 
 ### Organization ###
 
-Organization for the project is very important so that the data is accesbile once the class is over. We will structure is to be something like this for the 104 surface
+Organization for the project is very important so that the data is accesbile once the class is over. We will structure is to be something like this for the Perovskite 110 surface.
 
 ```bash
-~/CBE544/FinalProject/104/M-surf/noads/
-~/CBE544/FinalProject/104/M-surf/ads1/
-~/CBE544/FinalProject/104/M-surf/ads2/
-~/CBE544/FinalProject/104/M-surf/ads3/
-~/CBE544/FinalProject/104/M-surf/noads/bader
-~/CBE544/FinalProject/104/M-surf/ads1/bader
-~/CBE544/FinalProject/104/M-surf/ads2/bader
-~/CBE544/FinalProject/104/M-surf/ads3/bader
-~/CBE544/FinalProject/104/M-sub/noads/
-~/CBE544/FinalProject/104/M-sub/ads1/
-~/CBE544/FinalProject/104/M-sub/ads2/
-~/CBE544/FinalProject/104/M-sub/ads3/
-~/CBE544/FinalProject/104/M-sub/noads/bader
-~/CBE544/FinalProject/104/M-sub/ads1/bader
-~/CBE544/FinalProject/104/M-sub/ads2/bader
-~/CBE544/FinalProject/104/M-sub/ads3/bader
+~/CBE544/FinalProject/perovskites/srago3/110/clean/
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Sr
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/SrO
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/AgO2
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Sr
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/SrO
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/AgO2
+~/CBE544/FinalProject/perovskites/srago3/110/oads/1ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/oads/0.25ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
 ```
 This is an outline of all of the DFT calculations you will need to do, how to organize the files, and where to run each calculation. For the 001 surface it should be something like this:
 
