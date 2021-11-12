@@ -223,7 +223,7 @@ Don't forget to also run the full 1ML vac calculations.
 
 ### Rutile Oxides ###
 
-Step 1: O adsorption on the (110) cus site
+Step 1: O adsorption
 
 On the (110) surface:
 
@@ -233,13 +233,13 @@ Open the relaxed surface trajectory using the ase-gui. We want to repeat the uni
 Rutile oxide (110) surface repeated in the y to form a 1x2 slab model and rutile oxide (100) surface repeated in the x and y to form a 2x2 slab model.
 </center>
 
-Now we want to set up and run relaxations for O and OH adsorptions at full coverage. It will be useful to define the different adsorption sites for the (110) surface. See the figure below for naming conventions. The surface atoms are cus metal sites and bridging oxygen atoms. 
+Now we want to set up and run relaxations for O and OH adsorptions. It will be useful to define the different adsorption sites for the (110) surface. See the figure below for naming conventions. The surface atoms are cus metal sites and bridging oxygen atoms. 
 
 <center><img src="../Images/rutile_surf_descr_110.png" alt="window" style="width: 800px;"/><br>
 Rutile oxide (110) surface repeated in the y to form a 1x2 slab model and rutile oxide (100) surface repeated in the x and y to form a 2x2 slab model.
 </center>
 
-Let's start by setting up an adsorption calculation for O on the cus site. In order to add an adsorbate, click on the atom that you want to add the adsorbate directly above. Press Ctrl+A or click Edit -> Add Atom and in the window that comes up type O in the top box. In the box below Position you can enter a number corresponding to the number of Angstroms above the highlighted Atom you want to place the adsorbate. For the first oxygen adsorbate try 2 A like in the image below. Look at the side view and make sure the adsorbed oxygen is in a similar position to the ones in my system. Repeat the same for all both cus adsorption sites.
+Let's start by setting up an adsorption calculation for O on the cus site. In order to add an adsorbate, click on the atom that you want to add the adsorbate directly above. Press Ctrl+A or click Edit -> Add Atom and in the window that comes up type O in the top box. In the box below Position you can enter a number corresponding to the number of Angstroms above the highlighted Atom you want to place the adsorbate. For the first oxygen adsorbate try 2 A like in the image below. Look at the side view and make sure the adsorbed oxygen is in a similar position to the ones in my system. Repeat the same for both cus adsorption sites.
 
 <center><img src="../Images/rutile_o_ads_cus_110.png" alt="window" style="width: 800px;"/><br>
 Process for adsorbing O on the (110) surface cus site
@@ -247,65 +247,52 @@ Process for adsorbing O on the (110) surface cus site
 
 Now in this directory copy the relax.py script and the stampede.sub script here from the scripts folder. Submit the job using sbatch stampede.sub. 
 
-Step 2: OH adsorption on the (110) cus site
+Step 2: OH adsorption
 
-Move to the directory for ohads/Ag. Copy the init.traj that you generated in the previous step to this directory using the cp command. Open this file using the GUI. Now add an H to the top of each O adsorbate at a position of 1 Angstrom above the O. The final structure should look like the images below.
+Move to the directory for OHads-cus. Copy the Oads-cus init.traj that you generated in Step 1 to this directory using the cp command. Open this file using the GUI. Now add an H to the top of each O adsorbate at a position of 1 Angstrom above the O. The final structure should look like the images below.
 
-<center><img src="../Images/perov_oh_ads_full.png" alt="window" style="width: 800px;"/><br>
-Process for adsorbing OH at 1ML coverage on the (110) surface
+<center><img src="../Images/rutile_oh_ads_cus_110.png" alt="window" style="width: 800px;"/><br>
+Process for adsorbing OH on the (110) surface cus site
 </center>
 
 Copy relax.py and stampede.sub to this directory and submit the job. Now you are getting the hang of this process. 
 
-Step 3: Single adsorbate coverage for O and OH
+Step 3: Complete adsorption calculations
+In the two remaining adsorption directories (OHads-cus-br and OHads-br) copy the relaxed, clean init.traj for the (110) surface and create surfaces that are identical to those in the Figure below.
 
-In two new directories (oads/Ag/0.25ML ohads/Ag/0.25ML) create init.traj files that have only one adsorbate instead of four. I would copy the init.traj files from the above steps into these directories and delete 3 of the adsorbates so that you get a file that looks like the ones below for O and OH respectively.
-
-<center><img src="../Images/perov_ads_25.png" alt="window" style="width: 800px;"/><br>
-Schematic of Perovskite (110) surface with 0.25 ML O and OH Coverages
+<center><img src="../Images/rutile_110_ads.png" alt="window" style="width: 800px;"/><br>
+Schematic of Rutile oxide (110) surface with remaining adsorptions
 </center>
 
 Submit these relaxations as before.
 
-Step 4: Defects 0.25 ML
+Step 4: Defects
 
-Go to the directory clean/. Make a directory clean/vac/. Cd into vac/. Make two directories clean/vac/1ML/ and clean/vac/0.25ML/. Cd into 0.25ML. Make four directories: Sr, SrO, Ag, and AgO2. Copy the clean relaxed init.traj into each of these directories. For the Sr case, you will remove the topmost Sr atom, save the init.traj, and submit the job. For the SrO you will be removing the same atom plus the O atom coordinated to it. Your final structures will resemble those shown below. Relax all of these. For the Ag and AgO2 you will be removing Ag and AgO2 groups as shown highlighted below.
+Go to the clean/vac/0.5ML directory. For each defect directory copy in the relaxed, clean surface. Delete atoms corresponding to the defect (as highlighted in the Figure below) and then relax the trajectory.
 
-<center><img src="../Images/perovs_110_25ml.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_110_vacs.png" alt="window" style="width: 800px;"/><br>
 Highlighted atoms to delete in order to create defect surfaces on Perovskite (110) surfaces
 </center>
 
-Step 5: Defects 1 ML
+Step 5: Repeat everything above for the (100) surface
 
-Move into the clean/vac/1ML/ directory that you made in Step 4 above. Make four directories exactly the same as in Step 4: Sr, SrO, Ag, and AgO2. Repeat the same steps except instead of removing a single atom/unit, you will remove all of the equivalent groups on the surface. Relax these.
+On the (100) surface, you will run adsorptions and defects similar to the (110) done previously (including repeating the relaxed slab model to create a 2x2 surface!). See images below for examples of each setup. Create and relax trajectories matching those below in the directories corresponding from the organization tree.
 
-Step 6: Repeat everything above for the (111) surface
-
-On the (111) surface, you will repeat all of the same calculations as the (110) done previously (including repeating the relaxed slab model to create a 2x2 surface!). See images below for examples of each setup.
-
-<center><img src="../Images/perov_o_ads_full_111.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_111_oads.png" alt="window" style="width: 800px;"/><br>
 Process for adsorbing O at 1ML coverage on the (111) surface
 </center>
 
-<center><img src="../Images/perov_oh_ads_full_111.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_111_ohads.png" alt="window" style="width: 800px;"/><br>
 Process for adsorbing OH at 1ML coverage on the (110) surface
 </center>
 
-<center><img src="../Images/perov_ads_25_111.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_111_vacs.png" alt="window" style="width: 800px;"/><br>
 Schematic of Perovskite (110) surface with 0.25 ML O and OH Coverages
 </center>
 
-<center><img src="../Images/perovs_111_25ml.png" alt="window" style="width: 800px;"/><br>
-Highlighted atoms to delete in order to create defect surfaces on Perovskite (110) surfaces
-</center>
-
-Don't forget to also run the full 1ML vac calculations.
-
-
-
 ### Organization ###
 
-Organization for the project is very important so that the data is accesbile once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below.
+Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below.
 
 ```bash
 ~/CBE544/FinalProject/perovskites/srago3/110/clean/
@@ -322,16 +309,10 @@ Organization for the project is very important so that the data is accesbile onc
 ~/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
 ~/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
 ```
-This is an outline of all of the DFT calculations you will need to do, how to organize the files, and where to run each calculation. For the rutiole oxide (110) surface it should be something like this:
+Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces.
 
 ```bash
 ~/CBE544/FinalProject/rutiles/moo2/110/clean/
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.25ML/br-m
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.25ML/br-mo
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.25ML/br-mo2
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.25ML/br-o
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.25ML/cus-m
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.25ML/cus-mo
 ~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-m
 ~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo
 ~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo2
@@ -344,7 +325,17 @@ This is an outline of all of the DFT calculations you will need to do, how to or
 ~/CBE544/FinalProject/rutiles/moo2/110/OH-br
 ```
 
-Not everyone will be running on calculations so you only need to have the directories of the calculations you will be running. 
+```bash
+~/CBE544/FinalProject/rutiles/moo2/100/clean/
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/m
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/o
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo2
+~/CBE544/FinalProject/rutiles/moo2/100/oads/1ML/m
+~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m
+~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/o
+~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m_o
+``` 
 
 #### Jobs not reaching force convergence ####
 
@@ -361,133 +352,12 @@ sh ~/CBE544/FinalProject/extend.sh
 
 This will make a new directory, copy in some files and submit a new job to be run from where the previous calculation has left off. Please only use this if you need to  
 
-
-### Task 1: ### 
-
-Once you have accurately completed HW5 you can continue on to the final project. We will use the 104 surface and 001 surface trajectories provided to you in the FinalProject directory (this is only because there are specific starting magnetic strcutrures that we want otherwise the structures that you made could be used) to place a metal dopant on the surface and subsurface (separately, so two total calculations). The locations are shown here as in a top view of the 104 surface. The simplest way to change an atom to the desired dopant is to use ase-gui, click on the atom to change, Edit (or ctrl+Y), and type in the element you want. Be sure to save this new trejactory because ase-gui does not automatically save any changes you make. 
-
-<center><img src="../Images/dopantlocations.png" alt="window" style="width: 800px;"/><br>
-104 Dopant Locations
-</center>
-
-Once you have substitued the metal dopant you can use the relax.py script in ~/CBE544/FinalProject/scripts to relax this system. Copy over the script and submit the job. Record the final energies which can be used to determine if the preferred dopant location is surface or subsurface.
-
-### Task 2: ### 
-Using these models from Task 1 we can now adsorb EC to the three locations (per system) shown below:
-
-<center><img src="../Images/Adsorptionlocations104.png" alt="window" style="width: 800px;"/><br>
-Locations for Adsorption on the 104 surface of LiCoO<sub>2</sub>
-</center>
-
-Refer to the [Adsorption page](../ASE/Adsorption) for instructions on how to add the EC adsorbate. We will use a different script than the relax.py for adsorption DFT calculations. We will use the script called opt-ads.py which you can find in `FinalProject/scripts`. Please be sure to use this script for these calculations or you may expereince converngence issues. 
-
-### Task 3: ### 
-
-Once you have converged the systems with and without EC we will do a [bader charge analysis](http://theory.cm.utexas.edu/henkelman/code/bader/).  Inside the directory where your calculations were run make a new directory called bader (by doing `mkdir bader`). Copy into this directory  fin.traj and vasp-ase.sub. Rename your fin.traj to init.traj (`mv fin.traj init.traj`). Copy from the `FinalProject/scripts` directory the badercharge.py script. It will look like this:
-
-```python
-#!/usr/bin/env python
-from ase import Atoms, Atom
-from ase.calculators.vasp import Vasp
-from ase.io import read,write
-import numpy as np
-
-p=read('init.traj')
-calc = Vasp(prec='accurate',
-            encut=520,
-            xc='PBE',
-            lreal='Auto',
-            kpts=[4,4,1],
-            nsw = 0,
-            ibrion = -1,
-            ispin = 2,
-            amix_mag = 0.800000,
-            bmix = 0.000100,
-            bmix_mag= 0.000100,
-            amix = 0.20000,
-            sigma = 0.05000,
-            ediff = 2.00e-04,
-            ediffg = -2.00e-02,
-            algo ='fast',
-            ismear = -5,
-            nelm = 250,
-            ncore = 16,
-            lasph= True,
-            ldautype = 2,
-            lmaxmix = 4,
-            lorbit = 11,
-            ldau = True,
-            ldauprint = 2,
-            ldau_luj={'Co':{'L':2, 'U':3.32, 'J':0},
-                      'Li':{'L':-1, 'U':0.0, 'J':0.0},
-                      'O':{'L':-1, 'U':0.0, 'J':0.0}
-                      },
-            lvtot = False,
-            lwave = False,
-            lcharg = True,
-	    laechg= True,
-	    gamma=True,
-)
-calc.calculation_required = lambda x, y: True
-p.set_calculator(calc)
-pe=p.get_potential_energy()
-#####
-ana =  Vasp(restart=True)
-pend = ana.get_atoms()
-
-forces=pend.get_forces().ravel()
-max_force=max([abs(x) for x in forces])
-
-pe = pend.get_potential_energy()
-#mag = pend.get_magnetic_moments()
-
-#pend.set_initial_magnetic_moments(mag)
-#print mag
-write('fin.traj',pend)
-```
-This script does a static calculation (nsw=0) of the final trajectory from your previous relaxation and writes the files needed to do a bader charge anaylsis. Use the vasp-ase.sub script to submit the badercharge.py script (`sbatch vasp-ase.sub` with the final line `python badercharge.py`). Once the job has finished you will need an updated bader_get_charge_vasp script. To do this do:
-
-```bash
-cp /home/antcurto/for/CBE544/bader_get_charge_vasp ~/CBE544/FinalProject/scripts
-```
-
-Next you can attach the bader charge to each atom by typing
-
-```bash
-module load ase/3.9.1
-python ~/CBE544/FinalProject/scripts/bader_get_charge_vasp
-```
-This will write a new trajectory file called bader_charge.traj that has attached the bader charge of each atom as a magnetic moment. To see this use ase-gui -> View -> Show Labels -> Magnetic Moments. Analyze how the bader charges differ from each system. It is important to load ase/3.9.1 so that the magnetic moments are readable.
-
-### Task 4: ###
-
-Repeat both Task 1 and Task 2 for the 001 surface. The only difference is instead of surface and subsurface we will use Li-terminated vs CoO termianted. You can use the trajectories in the FinalProject directory to run the substituion calculations but we will be doing the adsorption calculations slightly different than the 104. 
-
-Since the calculation for 001 take a long time you will be provided with two trajectories with EC absorbed to the surface already. From here we will alter or dopant location to see the effect of the dopant location within proximity to the adsorbate. To get the trajectories (which are clean LiCoO<sub>2</sub>) type this:
-
-```bash
-cp /home/antcurto/for/CBE544/001-Cotermwithads.traj ~/CBE544/FinalProject  
-cp /home/antcurto/for/CBE544/001-Litermwithads.traj ~/CBE544/FinalProject
-```
-This will give you the trajectories with EC adsorbed. The location of where to substitute Co with your dopant can be seen below. 
-
-<center><img src="../Images/dopantlocation001Co.png" alt="window" style="width: 800px;"/><br>
-001 Co terminated Dopant Locations
-</center>
-<center><img src="../Images/dopantlocation001Li.png" alt="window" style="width: 800px;"/><br>
-001 Li terminated Dopant Locations
-</center>
-
-
-Run a bader charge analysis on this system as well. See if there are any clear trends between the two systems through things such as dopant location, charge, etc. [Compare your system to the LiCoO<sub>2</sub> and the Al-doped system shown on this page](../CompData). Look for trends between these systems, your own system, and even those of your classmates (if possible)
-
 <a name='deadlines'></a>
 
 ## Deadlines ##
-1. HW5 Due: Wed 10 April (Each student)
-2. Short update (few slides) on completed calcualtions: Wed 17 April during class (1 per group)
-3. Final Presentation: Wed 1 May during class (1 per group)
-4. Final Paper: Wed 8 May by 5 PM (1 per group)
+1. Short update (few slides) on completed calcualtions: Wed 17 April during class (1 per group)
+2. Final Presentation: Wed 1 May during class (1 per group)
+3. Final Paper: Wed 8 May by 5 PM (1 per group)
 
 ## Analysis ##
 
