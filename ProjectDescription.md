@@ -91,7 +91,7 @@ Rutile Oxides: Organization for the project is very important so that the data i
 <a name='calcs'></a>
 ## Calculations ##
 
-To get started we need to get the files needed for the final project. Move into your CBE544 directory and run these commands:
+To get started we need to get the files needed for the final project. Move into your CBE544 directory, download the project files, and open the tar file by running these commands:
 
 ```bash
 cd
