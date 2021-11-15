@@ -49,7 +49,7 @@ tar -zxvf FinalProject.tar.gz
 
 ```
 
-In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see two directories: rutiles and perovskites. Please check [Assignment](ProjectAssignment.md) in order to determine which material you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>. Move into the directory corresponding to your material.
+In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see two directories: rutiles and perovskites. Please check [Assignment](ProjectAssignments.md) in order to determine which material you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>. Move into the directory corresponding to your material.
 
 ### Things to keep in mind ###
 For all of the calculations that you are running here on out, you will need to submit them using stampede.sub to the cluster. Do not run any of these jobs on the login node. 
