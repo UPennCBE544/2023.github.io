@@ -286,7 +286,7 @@ Rutile oxide (110) surface repeated in the y to form a 1x2 slab model and rutile
 Now we want to set up and run relaxations for O and OH adsorptions. It will be useful to define the different adsorption sites for the (110) surface. See the figure below for naming conventions. The surface atoms are cus metal sites and bridging oxygen atoms. 
 
 <center><img src="../Images/rutile_surf_descrpt_110.png" alt="window" style="width: 800px;"/><br>
-Rutile oxide (110) surface repeated in the y to form a 1x2 slab model and rutile oxide (100) surface repeated in the x and y to form a 2x2 slab model.
+Rutile oxide (110) surface with adsorption site labels.
 </center>
 
 Let's start by setting up an adsorption calculation for O on the cus site. In order to add an adsorbate, click on the atom that you want to add the adsorbate directly above. Press Ctrl+A or click Edit -> Add Atom and in the window that comes up type O in the top box. In the box below Position you can enter a number corresponding to the number of Angstroms above the highlighted Atom you want to place the adsorbate. For the first oxygen adsorbate try 2 A like in the image below. Look at the side view and make sure the adsorbed oxygen is in a similar position to the ones in my system. Repeat the same for both cus adsorption sites.
