@@ -321,7 +321,7 @@ Step 4: Defects
 Go to the clean/vac/0.5ML directory. For each defect directory copy in the relaxed, clean surface. Delete atoms corresponding to the defect (as highlighted in the Figure below) and then relax the trajectory.
 
 <center><img src="../Images/rutile_110_vacs.png" alt="window" style="width: 800px;"/><br>
-Highlighted atoms to delete in order to create defect surfaces on Perovskite (110) surfaces
+Highlighted atoms to delete in order to create defect surfaces on Rutile (110) surfaces
 </center>
 
 Step 5: Repeat everything above for the (100) surface
@@ -329,15 +329,15 @@ Step 5: Repeat everything above for the (100) surface
 On the (100) surface, you will run adsorptions and defects similar to the (110) done previously (including repeating the relaxed slab model to create a 2x2 surface!). See images below for examples of each setup. Create and relax trajectories matching those below in the directories corresponding from the organization tree.
 
 <center><img src="../Images/rutile_100_oads.png" alt="window" style="width: 800px;"/><br>
-Process for adsorbing O at 1ML coverage on the (111) surface
+Process for adsorbing O at 1ML coverage on the (100) surface
 </center>
 
 <center><img src="../Images/rutile_100_ohads.png" alt="window" style="width: 800px;"/><br>
-Process for adsorbing OH at 1ML coverage on the (110) surface
+Process for adsorbing OH at 1ML coverage on the (100) surface
 </center>
 
 <center><img src="../Images/rutile_100_vacs.png" alt="window" style="width: 800px;"/><br>
-Schematic of Perovskite (110) surface with 0.25 ML O and OH Coverages
+Schematic of Perovskite (100) surface with 1ML defect coverages
 </center>
 
 #### Jobs not reaching force convergence ####
