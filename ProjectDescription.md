@@ -378,11 +378,11 @@ At a minimum you should accomplish the following:
 
 ### Presentation ##
 
-The Final Presentation should include a summary of all of the calculations you were able to complete. Present the strucutres and adsorption energy trends. Also, take note of any major strucutral changes induced by the adsorbates.
+The Final Presentation should include a summary of all of the calculations you were able to complete. Present the strucutres and adsorption energy trends. Also, take note of any major structural changes induced by the adsorbates.
 
-Discuss any problems you had with running calculations. 
+Discuss any problems you had with running calculations.
 
-Each Group will also be required to ask questions and begin a disucssion about another groups work. Here are those assignments:
+Each Group will also be required to ask questions and begin a discussion about another groups work. Here are those assignments:
 
 Ni group will ask Ti group questions.<br>
 Ti group will ask Mg group questions.<br>
