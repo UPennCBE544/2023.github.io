@@ -278,15 +278,15 @@ Step 5: Repeat everything above for the (100) surface
 
 On the (100) surface, you will run adsorptions and defects similar to the (110) done previously (including repeating the relaxed slab model to create a 2x2 surface!). See images below for examples of each setup. Create and relax trajectories matching those below in the directories corresponding from the organization tree.
 
-<center><img src="../Images/rutile_111_oads.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_100_oads.png" alt="window" style="width: 800px;"/><br>
 Process for adsorbing O at 1ML coverage on the (111) surface
 </center>
 
-<center><img src="../Images/rutile_111_ohads.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_100_ohads.png" alt="window" style="width: 800px;"/><br>
 Process for adsorbing OH at 1ML coverage on the (110) surface
 </center>
 
-<center><img src="../Images/rutile_111_vacs.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_100_vacs.png" alt="window" style="width: 800px;"/><br>
 Schematic of Perovskite (110) surface with 0.25 ML O and OH Coverages
 </center>
 
@@ -339,49 +339,50 @@ Rutile Oxides: Organization for the project is very important so that the data i
 
 #### Jobs not reaching force convergence ####
 
-Some jobs have been running on chestnut and have not reached the force convergence. This means we must extend the job and continue the calculation. I have written a script that will automatically extend the calculation you will just need to copy this by doing :
+Some jobs may run for the allotted time on Stampede2 and not reach the force convergence. To check whether your job has reached convergence you can go into the directory containing the output files and run the command ```$ tail opt.log```. This will display the last few lines of the log file. The last column displays the force calculated at that step. If the final line shows a force value less than 0.03, then it means the calculation has converged, cince we set that as the threshhold in relax.py. 
 
-```bash
-cp /home/antcurto/for/CBE544/extend.sh ~/CBE544/FinalProject/scripts
-```
-If you have a job that ended with convergence you can uses this script by typing:
+If the job has ended (due to failure, timeout, or some other reason) and this force value is not less than 0.03, it means the job needs to be rerun starting from the final structure. In order to do this, you will make a new directory (from inside the current directory) called 'extend'. 
+```$ mkdir extend```
+Then you can copy the files into this directory:
+```$ cp opt.traj relax.py stampede.sub extend/```
+Then move into the directory and rename opt.traj as init.traj:
+```$ mv opt.traj init.traj```
+Now you have everything that you need to start a new calculation from the output of the previous one, and you can submit with:
+```$ sbatch stampede.sub```
 
-```bash
-sh ~/CBE544/FinalProject/extend.sh
-```
+###Jobs not being returned from $SCRATCH###
 
-This will make a new directory, copy in some files and submit a new job to be run from where the previous calculation has left off. Please only use this if you need to  
+Abiding by the rules for running on Stampede2, we have to run the IO intensive jobs from the $SCRATCH partition. This is covered on this website where I introduced you to the submission script. Basically when the job begins, eveything that is needed to run it is copied to the $SCRATCH directory with the name of the jobid, then the job runs, then the files are moved back to the submission directory and the $SCRATCH directory is deleted. Sometimes, the job fails prematurely and the stampede.sub script is unable to complete resulting in files getting stranded in the $SCRATCH directory. If this happens, you will receive an email that the job failed, but when you go to the submission directory you will not see any output files (e.g. opt.traj, calcdir, etc...). The files are simply stranded on the $SCRATCH partition and you can manually move them back into the submission directory. Note the job ID from the file extension on out.### our err.###. You can move the files back to the submission directory with the command:
+```$ mv $SCRATCH/######/* ./```
+where you insert the jobid number in place of the '######' above. You can then proceed with extending the job as outlined above. The wildcard * in the above line of code instructs to move all files and directories in the directory $SCRATCH/######/ to the current directory that you are in.
 
 <a name='deadlines'></a>
 
 ## Deadlines ##
-1. Short update (few slides) on completed calcualtions: Wed 17 April during class (1 per group)
-2. Final Presentation: Wed 1 May during class (1 per group)
-3. Final Paper: Wed 8 May by 5 PM (1 per group)
+1. Short update (few slides) on completed calculations: Tuesday 30 December during class (1 per group)
+2. Final Presentation: Tuesday 7 December during class (1 per group)
+3. Final Paper: Thursday 16 December by 5 PM (1 per group)
 
 ## Analysis ##
 
-Do an detailed analysis of your system trying to identifty trends in adsorption due to dopant location, charge, surface, or anything else. Compare your data to that of plain LiCoO<sub>2</sub> and Al-doped LiCoO<sub>2</sub> which can be found [here](../CompData).
+Do a detailed analysis of your system trying to identify trends in adsorption enery of OHx (x=0,1) species across similar surfaces of the materials in your group. You should at the least be able to generate a plot of average EO* vs average EOH* for the materials.
+
+In addition to adsorption energy trends, you should be looking for trends with respect to changes in surface energy for adsorbing OHx species vs. for removing O and metal species from the surface in the form of defects. You will be tasked with plotting this data and then commenting on the observed behavior with respect to our hypothesis as stated at the top of this page.
 
 ### Requirements ###
 
 At a minimum you should accomplish the following:
 
 1. Complete the [HW5](../ASE/Getting_Started).
-2. Setup a LiCoO<sub>2</sub> surface (104) and calculate adsorption energies for EC adsorption at three sites for two different metal dopant locations (surface and sub-surface).
-3. Do a Bader Charge Analysis on metal doped system and metal doped system w/ EC absorbed (8 total bader charge calculations) and compare to the provided systems without a dopant and with an Al dopant.
-4. Repeat this process on the 001 facet. Instead of doing is for surface and subsurface we will do this for Li-terminated and CoO<sub>2</sub> terminated. 
-5. Analysis
-    1. Does the dopant have a strong preference for surface vs subsurface?
-    2. How does the metal dopant affect adsorption vs plain LiCoO<sub>2</sub>? vs Al-doped? How is the adosrption different for surface vs sub-surface? 
-    3. Do you notice and trends from the bader charge analysis that may contribute to the change in adsorption? Look at different site and different facet terminations.
-6. Report (3~5 pages maximum)
+2. Complete all of the calculations outlined above for your material. This involves a set of adsorption and defect calculations on 2 distinct surface facets.
+3. Analysis
+4. Report (3~5 pages maximum)
 
 ### Presentation ##
 
-The Final Presentation should include a summary of all of the calculations you were able to complete. Present the strucutres (with magnetic moments shown please), adsorption energies, and bader charges. You will present that data and an analysis of this data compared to the provided LiCoO<sub>2</sub> and the Al-doped LiCoO<sub>2</sub> data. Also take note of ay major strucutral changes induced by the dopants. Use the structure and magnetism images shown [here](../MagStruct), the 104-LiCoO2.traj and 001-Literm.traj, and the data [here](../CompData) provided to you for some geometric anaylsis.
+The Final Presentation should include a summary of all of the calculations you were able to complete. Present the strucutres and adsorption energy trends. Also, take note of any major strucutral changes induced by the adsorbates.
 
-Discuss problems you had with convergence, magnetism, or any other problems that you encounctered. 
+Discuss any problems you had with running calculations. 
 
 Each Group will also be required to ask questions and begin a disucssion about another groups work. Here are those assignments:
 
@@ -392,7 +393,7 @@ Mg group will ask Ni group questions.
 <a name='report'></a>
 ### Final Report ###
 
-The final report should be in the form of a 3-5 pages long mini paper including figures and tables. Provide one report for each group. Please be succinct and organize it in the following way:
+The final report should be in the form of a 3-5 page long paper including figures and tables. Provide one report for each group. Please be succinct and organize it in the following way:
 
 * Introduction (brief) - don’t write too much
 * Calculation details
