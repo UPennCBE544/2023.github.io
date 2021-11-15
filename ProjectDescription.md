@@ -328,7 +328,7 @@ Step 5: Repeat everything above for the (100) surface
 
 On the (100) surface, you will run adsorptions and defects similar to the (110) done previously (including repeating the relaxed slab model to create a 2x2 surface!). See images below for examples of each setup. Create and relax trajectories matching those below in the directories corresponding from the organization tree.
 
-<center><img src="../Images/rutile_100_oads.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_100_oads.png" alt="window" style="width: 400px;"/><br>
 Process for adsorbing O at 1ML coverage on the (100) surface
 </center>
 
