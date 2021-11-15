@@ -6,10 +6,11 @@ permalink: /Project/
 
 ## Course Project 
 1. [Introduction](#intro)
-2. [Deadlines](#deadlines)
+2. [Organization](#organization)
 3. [Calculations](#calcs)
-4. [Analysis](#analysis)
-5. [Final Report](#report)
+4. [Deadlines](#deadlines)
+5. [Analysis](#analysis)
+6. [Final Report](#report)
 
 
 For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in two groups. Each group will probe a specific material class and each student will be probing a different material. Each group of students will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/16 at 5:00 PM (hard deadline)</font>.
@@ -37,6 +38,57 @@ One hypothesis in the field posits that there exists an 'activity-stability' con
 
 We aim to determine whether 1) we can correlate a material reactivity descriptor with a material stability descriptor, and 2) whether we can relate the activity-stability descriptors to find a 1-D relationship equivalent to a Sabatier descriptor to determine a material's optimal position on the activity-stability scale.
 
+<a name='organization'></a>
+### Organization ###
+
+Organization is crucial to us being able to sort through the data after the project is finished. Please follow the exact organizational structure outlined below for your material (see [Assignments](ProjectAssignments.md)). Go to the section for your material to see the folder structure. You will need to skim the [Calculations](#calcs) section first so that this organizational folder structure makes sense.
+
+Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below.
+
+```bash
+~/CBE544/FinalProject/perovskites/srago3/110/clean/
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Sr
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/SrO
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/AgO2
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Sr
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/SrO
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/AgO2
+~/CBE544/FinalProject/perovskites/srago3/110/oads/1ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/oads/0.25ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
+~/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
+```
+Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces.
+
+```bash
+~/CBE544/FinalProject/rutiles/moo2/110/clean/
+~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-m
+~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo
+~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo2
+~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-o
+~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-m
+~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-mo
+~/CBE544/FinalProject/rutiles/moo2/110/Oads-cus/0.5ML
+~/CBE544/FinalProject/rutiles/moo2/110/OHads-cus
+~/CBE544/FinalProject/rutiles/moo2/110/OHads-cus-br
+~/CBE544/FinalProject/rutiles/moo2/110/OH-br
+```
+
+```bash
+~/CBE544/FinalProject/rutiles/moo2/100/clean/
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/m
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/o
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo
+~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo2
+~/CBE544/FinalProject/rutiles/moo2/100/oads/1ML/m
+~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m
+~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/o
+~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m_o
+``` 
+
+<a name='calcs'></a>
 ## Calculations ##
 
 To get started we need to get the files needed for the final project. Move into your CBE544 directory and run these commands:
@@ -56,7 +108,7 @@ For all of the calculations that you are running here on out, you will need to s
 
 Each calculation must be carried out in its own directory. All of the files necessary to carry out the calculation must also be in the directory at the time you submit the job or else it will not work. Usually this means the directory should have an ASE trajectory (init.traj), a relaxation script (relax.py), and a submit script (stampede.sub).
 
-It is critical that you organize your directories consistently so that we can find the data later. See the Organization section below for additional guidance. 
+It is critical that you organize your directories consistently so that we can find the data later. See the Organization section above for additional guidance. 
 
 ### Task 1 ###
 
@@ -288,53 +340,6 @@ Process for adsorbing OH at 1ML coverage on the (110) surface
 Schematic of Perovskite (110) surface with 0.25 ML O and OH Coverages
 </center>
 
-### Organization ###
-
-Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below.
-
-```bash
-~/CBE544/FinalProject/perovskites/srago3/110/clean/
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Sr
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/SrO
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/AgO2
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Sr
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/SrO
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/AgO2
-~/CBE544/FinalProject/perovskites/srago3/110/oads/1ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/oads/0.25ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
-```
-Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces.
-
-```bash
-~/CBE544/FinalProject/rutiles/moo2/110/clean/
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-m
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo2
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-o
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-m
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-mo
-~/CBE544/FinalProject/rutiles/moo2/110/Oads-cus/0.5ML
-~/CBE544/FinalProject/rutiles/moo2/110/OHads-cus
-~/CBE544/FinalProject/rutiles/moo2/110/OHads-cus-br
-~/CBE544/FinalProject/rutiles/moo2/110/OH-br
-```
-
-```bash
-~/CBE544/FinalProject/rutiles/moo2/100/clean/
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/m
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/o
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo2
-~/CBE544/FinalProject/rutiles/moo2/100/oads/1ML/m
-~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m
-~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/o
-~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m_o
-``` 
-
 #### Jobs not reaching force convergence ####
 
 Some jobs may run for the allotted time on Stampede2 and not reach the force convergence. To check whether your job has reached convergence you can go into the directory containing the output files and run the command ```$ tail opt.log```. This will display the last few lines of the log file. The last column displays the force calculated at that step. If the final line shows a force value less than 0.03, then it means the calculation has converged, cince we set that as the threshhold in relax.py. 
@@ -348,7 +353,7 @@ Then move into the directory and rename opt.traj as init.traj:
 Now you have everything that you need to start a new calculation from the output of the previous one, and you can submit with:
 ```$ sbatch stampede.sub```
 
-###Jobs not being returned from $SCRATCH###
+### Jobs not being returned from $SCRATCH ###
 
 Abiding by the rules for running on Stampede2, we have to run the IO intensive jobs from the $SCRATCH partition. This is covered on this website where I introduced you to the submission script. Basically when the job begins, eveything that is needed to run it is copied to the $SCRATCH directory with the name of the jobid, then the job runs, then the files are moved back to the submission directory and the $SCRATCH directory is deleted. Sometimes, the job fails prematurely and the stampede.sub script is unable to complete resulting in files getting stranded in the $SCRATCH directory. If this happens, you will receive an email that the job failed, but when you go to the submission directory you will not see any output files (e.g. opt.traj, calcdir, etc...). The files are simply stranded on the $SCRATCH partition and you can manually move them back into the submission directory. Note the job ID from the file extension on out.### our err.###. You can move the files back to the submission directory with the command:
 ```$ mv $SCRATCH/######/* ./```
@@ -360,6 +365,8 @@ where you insert the jobid number in place of the '######' above. You can then p
 1. Short update (few slides) on completed calculations: Tuesday 30 December during class (1 per group)
 2. Final Presentation: Tuesday 7 December during class (1 per group)
 3. Final Paper: Thursday 16 December by 5 PM (1 per group)
+
+<a name='analysis'></a>
 
 ## Analysis ##
 
