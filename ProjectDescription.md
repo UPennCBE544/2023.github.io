@@ -145,7 +145,7 @@ Build the (110) surface by running the surf_build.py script with the command ```
 
 In the 111 directory repeat the same process, but build the (111) surface and make it look exactly like the one below. You should now have an init.traj for both the (110) and the (111) surfaces in their own separate directories.
 
-<center><img src="../Images/perovskites_surfs.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/perovskites_surfs.png" alt="window" style="width: 600px;"/><br>
 Schematic of Perovskite Surfaces
 </center>
 
