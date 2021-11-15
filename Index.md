@@ -15,7 +15,7 @@ We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dt
 * [Problem Description](HW5.pdf)
   
 ### Final Project ### 
-* <font color="red">Due TBD</font>
+* <font color="red">Due 12/16 at 5:00 PM EST</font>
 * [Project Description and Requirements]
 * [Project Assignments]
 
