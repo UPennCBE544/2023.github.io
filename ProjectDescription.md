@@ -8,9 +8,7 @@ permalink: /Project/
 1. [Introduction](#intro)
 2. [Deadlines](#deadlines)
 3. [Calculations](#calcs)
-4. [Analysis](#analysis)<br>
-	4a. [LiCoO<sub>2</sub> and Al-doped Data](../CompData)<br>
-	4b. [LiCoO<sub>2</sub> magnetism and strucutre](../MagStruct)
+4. [Analysis](#analysis)
 5. [Final Report](#report)
 
 
