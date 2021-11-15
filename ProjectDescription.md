@@ -391,9 +391,10 @@ Discuss any problems you had with running calculations.
 
 Each Group will also be required to ask questions and begin a discussion about another groups work. Here are those assignments:
 
-Ni group will ask Ti group questions.<br>
-Ti group will ask Mg group questions.<br>
-Mg group will ask Ni group questions.
+Group 1 will ask Group 4 questions.<br>
+Group 2 will ask Group 3 questions.<br>
+Group 4 will ask Group 2 questions.<br>
+Group 3 will ask Group 1 questions.
 
 <a name='report'></a>
 ### Final Report ###
