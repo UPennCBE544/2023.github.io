@@ -342,7 +342,7 @@ Schematic of Perovskite (110) surface with 0.25 ML O and OH Coverages
 
 #### Jobs not reaching force convergence ####
 
-Some jobs may run for the allotted time on Stampede2 and not reach the force convergence. To check whether your job has reached convergence you can go into the directory containing the output files and run the command ```$ tail opt.log```. This will display the last few lines of the log file. The last column displays the force calculated at that step. If the final line shows a force value less than 0.03, then it means the calculation has converged, cince we set that as the threshhold in relax.py. 
+Some jobs may run for the allotted time on Stampede2 and not reach the force convergence. To check whether your job has reached convergence you can go into the directory containing the output files and run the command ```$ tail opt.log```. This will display the last few lines of the log file. The last column displays the force calculated at that step. If the final line shows a force value less than 0.03, then it means the calculation has converged, since we set that as the threshhold in relax.py. 
 
 If the job has ended (due to failure, timeout, or some other reason) and this force value is not less than 0.03, it means the job needs to be rerun starting from the final structure. In order to do this, you will make a new directory (from inside the current directory) called 'extend'. 
 ```$ mkdir extend```
