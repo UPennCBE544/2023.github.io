@@ -108,7 +108,7 @@ For all of the calculations that you are running here on out, you will need to s
 
 Each calculation must be carried out in its own directory. All of the files necessary to carry out the calculation must also be in the directory at the time you submit the job or else it will not work. Usually this means the directory should have an ASE trajectory (init.traj), a relaxation script (relax.py), and a submit script (stampede.sub).
 
-It is critical that you organize your directories consistently so that we can find the data later. See the Organization section above for additional guidance. 
+It is critical that you organize your directories consistently so that we can find the data later. See the [Organization](#organization) section above for additional guidance. 
 
 ### Task 1 ###
 
@@ -116,7 +116,7 @@ You will build surfaces from the optimized bulks for your assigned materials and
 
 ### Perovskites ###
 
-You should already be in the directory corresponding to your material. In this directory make 2 new directories: 110 and 111. Go ahead and build the full directory tree for your material that matches the relevant one in the Organization section below. Please make it exactly like this tree. !!!Note that the example tree below is for SrAgO3 and you will need to rename things to match your assigned material depending on the transition metal in your system (throughout this tutorial write-up you will need to keep this in mind whenever I mention Ag!!! Move into the 110 directory. Move into the clean directory. Copy the relaxed bulk trajectory (opt.traj) from the bulk/relax directory corresponding to your material into your 110/clean directory. Copy the surf_build.py from the scripts directory into this directory as well. Now you will build a 4 layer (110) slab model using the surf_build.py script. Look at the surf_build.py script. It should look like the text below: 
+You should already be in the directory corresponding to your material. In this directory make 2 new directories: 110 and 111. Go ahead and build the full directory tree for your material that matches the relevant one in the [Organization](#organization) section above. Please make it exactly like this tree. !!!Note that the example tree below is for SrAgO3 and you will need to rename things to match your assigned material depending on the transition metal in your system (throughout this tutorial write-up you will need to keep this in mind whenever I mention Ag!!! Move into the 110 directory. Move into the clean directory. Copy the relaxed bulk trajectory (opt.traj) from the bulk/relax directory corresponding to your material into your 110/clean directory. Copy the surf_build.py from the scripts directory into this directory as well. Now you will build a 4 layer (110) slab model using the surf_build.py script. Look at the surf_build.py script. It should look like the text below: 
 
 ```
 #!/usr/bin/env python
@@ -152,7 +152,7 @@ Schematic of Perovskite Surfaces
 
 ### Rutile Oxides ###
 
-You should already be in the directory corresponding to your material. In this directory make 2 new directories: 110 and 100. Go ahead and build the full directory tree for your material that matches the relevant one in the Organization section below. Please make it exactly like this tree. !!!Note that the example tree below is for MoO2 and you will need to rename things to match your assigned material depending on the transition metal in your system (throughout this tutorial write-up you will need to keep this in mind whenever I mention Mo!!! Move into the newly created 110 directory. Make a directory called clean and move into it. Copy the relaxed bulk trajectory (opt.traj) from the bulk/relax directory corresponding to your material into your 110/clean directory. Copy the surf_build.py from the scripts directory into this directory as well. Now you will build a 4 layer (110) slab model using the surf_build.py script. Look at the surf_build.py script. It should look like the text below: 
+You should already be in the directory corresponding to your material. In this directory make 2 new directories: 110 and 100. Go ahead and build the full directory tree for your material that matches the relevant one in the [Organization](#organization) section above. Please make it exactly like this tree. !!!Note that the example tree below is for MoO2 and you will need to rename things to match your assigned material depending on the transition metal in your system (throughout this tutorial write-up you will need to keep this in mind whenever I mention Mo!!! Move into the newly created 110 directory. Make a directory called clean and move into it. Copy the relaxed bulk trajectory (opt.traj) from the bulk/relax directory corresponding to your material into your 110/clean directory. Copy the surf_build.py from the scripts directory into this directory as well. Now you will build a 4 layer (110) slab model using the surf_build.py script. Look at the surf_build.py script. It should look like the text below: 
 
 ```
 #!/usr/bin/env python
