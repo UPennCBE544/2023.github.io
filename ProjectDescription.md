@@ -43,7 +43,7 @@ We aim to determine whether 1) we can correlate a material reactivity descriptor
 
 Organization is crucial to us being able to sort through the data after the project is finished. Please follow the exact organizational structure outlined below for your material (see [Assignments](ProjectAssignments.md)). Go to the section for your material to see the folder structure. You will need to skim the [Calculations](#calcs) section first so that this organizational folder structure makes sense.
 
-Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below.
+Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below. Note: this structure is written for the SrAgO<sub>3</sub> material. Your folders will need to match your assigned material (lucky someone doesn't have to change anything because they are working with SrAgO<sub>3</sub>).
 
 ```bash
 ~/CBE544/FinalProject/perovskites/srago3/110/clean/
@@ -60,7 +60,7 @@ Perovskites: Organization for the project is very important so that the data is 
 ~/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
 ~/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
 ```
-Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces.
+Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces. Note: this folder structure is written for the MoO<sub>2</sub> material. Your folders will need to match your assigned material (lucky someone doesn't have to change anything because they are working with MoO<sub>2</sub>).
 
 ```bash
 ~/CBE544/FinalProject/rutiles/moo2/110/clean/
