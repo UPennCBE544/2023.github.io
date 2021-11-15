@@ -285,7 +285,7 @@ Rutile oxide (110) surface repeated in the y to form a 1x2 slab model and rutile
 
 Now we want to set up and run relaxations for O and OH adsorptions. It will be useful to define the different adsorption sites for the (110) surface. See the figure below for naming conventions. The surface atoms are cus metal sites and bridging oxygen atoms. 
 
-<center><img src="../Images/rutile_surf_descr_110.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/rutile_surf_descrpt_110.png" alt="window" style="width: 800px;"/><br>
 Rutile oxide (110) surface repeated in the y to form a 1x2 slab model and rutile oxide (100) surface repeated in the x and y to form a 2x2 slab model.
 </center>
 
