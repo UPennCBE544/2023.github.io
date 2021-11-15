@@ -13,7 +13,7 @@ permalink: /Project/
 6. [Final Report](#report)
 
 
-For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in two groups. Each group will probe a specific material class and each student will be probing a different material. Each group of students will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/16 at 5:00 PM (hard deadline)</font>.
+For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in four groups. Each group will probe a set of materials belonging to either perovskites or rutile oxides and each student will be probing a specific material. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/16 at 5:00 PM (hard deadline)</font>.
 
 Please make use of the [Piazza](https://piazza.com/) page for troubleshooting, discussions and for sharing results.
 
@@ -32,9 +32,9 @@ Plan: Use DFT to calculate oxygen adsorption energies and defect formation energ
 
 ### Motivation ###
 
-Numerous theoretical studies are performed each year that predict materials that will succeed at carrying out crucial reactions (oxygen evolution, nitrogen reduction, CO<sub>2</sub> reduction, etc.) with high rates and good selectivity. Often these materials are then studied experimentally only to find out that the materials perform on par with others that have been tried before. One reason for this often disappointing result is that many theoretical studies still do not consider stability when they are predicting material activity. It is not a trivial property to study and especially when reaction conditions involve a solvent it can be incredibly difficult to accurately model the interface and understand the mechanisms behind a material's activity and stability.
+Theoretical studies are frequently performed predicting materials that will succeed at carrying out important reaction chemistries (oxygen evolution, nitrogen reduction, CO<sub>2</sub> reduction, etc.) with high rates and good selectivity. Often these materials are then studied experimentally only to find out that the materials perform on par with others that have been tried before. One reason for this often disappointing result is that many theoretical studies still do not consider stability when they are predicting material activity. It is not a trivial property to study and especially when reaction conditions involve a solvent it can be incredibly difficult to accurately model the interface and understand the mechanisms behind a material's activity and/or stability.
 
-One hypothesis in the field posits that there exists an 'activity-stability' conundrum limiting material performance under reaction conditions. Similar to the Sabatier Volcano in catalysis where an optimal binding strength exists for reactants and products so that they can both adsorb to the surface strongly enough to react but weaklky enough to desorb as products, this conundrum posits that there exists an optimal stability for a material under reaction conditions such that the material is unstable enough to interact with reactants and products to do catalysis, but not so unstable that it's reactive surfaces are short-lived. Likewise if the material is too stable then the surfaces are likely unreactive and reactants are unlikely to interact strongly enough to undergo bond breaking and forming.
+One often-used phrase proposes that there exists an 'activity-stability' conundrum limiting material performance under reaction conditions. Similar to the Sabatier Volcano in catalysis where an optimal binding strength exists for reactants and products so that they can both adsorb to the surface strongly enough to react but weaklky enough to desorb as products, this conundrum posits that there exists an optimal stability for a material under reaction conditions such that the material is unstable enough to interact with reactants and products to do catalysis, but not so unstable that it's reactive surfaces are short-lived. Likewise if the material is too stable then the surfaces are likely unreactive and reactants are unlikely to interact strongly enough to undergo bond breaking and forming.
 
 We aim to determine whether 1) we can correlate a material reactivity descriptor with a material stability descriptor, and 2) whether we can relate the activity-stability descriptors to find a 1-D relationship equivalent to a Sabatier descriptor to determine a material's optimal position on the activity-stability scale.
 
@@ -406,6 +406,6 @@ The final report should be in the form of a 3-5 page long paper including figure
 * Results and discussion including analysis.
 * Conclusion (brief)
 
-You are welcome to share data amongst your peers to discuss broader trends. 
+You are encouraged to share data amongst your peers to discuss broader trends. 
 
 
