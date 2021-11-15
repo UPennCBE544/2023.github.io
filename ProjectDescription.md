@@ -195,6 +195,8 @@ Finally, we can relax these surfaces to get the initial structures that we will 
 
 ### Task 2 ###
 
+IMPORTANT: You cannot begin Task 2 until the relaxations of the surfaces in Task 1 are complete. This is because you will be adsorbing species on the surfaces and comparing the change in energy as a result of the adsorbate-surface interaction. You must start from the relaxed clean surface in order to capture this consistently.
+
 Using the relaxed surfaces you will adsorb O and OH species on several unique sites and coverages. Please skip ahead to the section heading relevant to your assigned material for detailed instructions.
 
 ### Perovskites ###
