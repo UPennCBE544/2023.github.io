@@ -146,7 +146,7 @@ Build the (110) surface by running the surf_build.py script with the command ```
 In the 111 directory repeat the same process, but build the (111) surface and make it look exactly like the one below. You should now have an init.traj for both the (110) and the (111) surfaces in their own separate directories.
 
 <center><img src="../Images/perovskites_surfs.png" alt="window" style="width: 600px;"/><br>
-Schematic of Perovskite Surfaces
+Schematic of Perovskite Surfaces. Both surfaces should have a total of 20 atoms if you built them correctly (4 Sr atoms, 4 B site atoms, 12 oxygen atoms).
 </center>
 
 
@@ -182,7 +182,7 @@ Build the (110) surface by running the surf_build.py script with the command ```
 In the 100/clean directory repeat the same process but build the (100) surface and make it look exactly like the one below. You should now have an init.traj for both the (110) and the (100) surfaces in their own separate directories.
 
 <center><img src="../Images/rutile_surfs.png" alt="window" style="width: 600px;"/><br>
-Schematic of Rutile Oxides Surfaces
+Schematic of Rutile Oxides Surfaces. The (110) surface should have a total of 24 atoms if you built it correctly (8 metal atoms and 16 oxygen atoms). The (100) surface should have a total of 15 atoms if you built it correctly (5 metal atoms and 10 oxygen atoms).
 </center>
 
 
