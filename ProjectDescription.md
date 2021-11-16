@@ -4,6 +4,17 @@ mathjax: true
 permalink: /Project/
 ---
 
+### Permissions modification and directory path ###
+I need everyone to log into Stampede2 when they get a chance and run the following command:
+```
+$ chmod g+x $STOCKYARD
+$ chmod g+x $WORK2
+```
+Then go into your CBE544 directory and run the command:
+```$ pwd```
+Then copy the path that it outputs and send it to me in an email. This is the way that I will be able to access and monitor your results, so that I can give guidance.
+
+
 ## Course Project 
 1. [Introduction](#intro)
 2. [Organization](#organization)
