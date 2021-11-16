@@ -364,9 +364,10 @@ where you insert the jobid number in place of the '######' above. You can then p
 <a name='deadlines'></a>
 
 ## Deadlines ##
-1. Short update (few slides) on completed calculations: Tuesday 30 November during class (1 per individual)
-2. Final Presentation: Tuesday 7 December during class (1 per group)
-3. Final Paper: Tuesday 14 December by 5 PM (1 per group)
+1. Submit all calculations from Tasks 1 and 2 by Wednesday November 24
+2. Short update (few slides) on completed calculations: Tuesday 30 November during class (1 per individual)
+3. Final Presentation: Tuesday 7 December during class (1 per group)
+4. Final Paper: Tuesday 14 December by 5 PM (1 per group)
 
 <a name='analysis'></a>
 
