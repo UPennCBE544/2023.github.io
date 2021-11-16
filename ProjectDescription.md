@@ -364,17 +364,19 @@ where you insert the jobid number in place of the '######' above. You can then p
 <a name='deadlines'></a>
 
 ## Deadlines ##
-1. Short update (few slides) on completed calculations: Tuesday 30 December during class (1 per group)
+1. Short update (few slides) on completed calculations: Tuesday 30 November during class (1 per individual)
 2. Final Presentation: Tuesday 7 December during class (1 per group)
-3. Final Paper: Thursday 16 December by 5 PM (1 per group)
+3. Final Paper: Tuesday 14 December by 5 PM (1 per group)
 
 <a name='analysis'></a>
 
 ## Analysis ##
 
-Do a detailed analysis of your system trying to identify trends in adsorption enery of OHx (x=0,1) species across similar surfaces of the materials in your group. You should at the least be able to generate a plot of average EO* vs average EOH* for the materials.
+Do a detailed analysis of your system trying to identify trends in adsorption energy of OHx (x=0,1) species across similar surfaces of the materials in your group. You should at the least be able to generate a plot of average EO* vs average EOH* for the materials.
 
 In addition to adsorption energy trends, you should be looking for trends with respect to changes in surface energy for adsorbing OHx species vs. for removing O and metal species from the surface in the form of defects. You will be tasked with plotting this data and then commenting on the observed behavior with respect to our hypothesis as stated at the top of this page.
+
+A set of electronic structure calculations will be required once the full set of relaxation calculations has been completed.
 
 ### Requirements ###
 
