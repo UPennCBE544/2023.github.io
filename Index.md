@@ -16,8 +16,8 @@ We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dt
   
 ### Final Project ### 
 * <font color="red">Due 12/14 at 5:00 PM EST</font>
-* [Project Description and Requirements]
-* [Project Assignments]
+* [Project Description and Requirements](ProjectDescription.md)
+* [Project Assignments](ProjectAssignments.md)
 
 
 ## Guides ##
