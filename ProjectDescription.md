@@ -13,7 +13,7 @@ permalink: /Project/
 6. [Final Report](#report)
 
 
-For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in four groups. Each group will probe a set of materials belonging to either perovskites or rutile oxides and each student will be probing a specific material. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/16 at 5:00 PM (hard deadline)</font>.
+For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in four groups. Each group will probe a set of materials belonging to either perovskites or rutile oxides and each student will be probing a specific material. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/14 at 5:00 PM (hard deadline)</font>.
 
 Please make use of the [Piazza](https://piazza.com/) page for troubleshooting, discussions and for sharing results.
 
