@@ -198,7 +198,7 @@ Schematic of Rutile Oxides Surfaces. The (110) surface should have a total of 24
 
 
 ### Everyone ###
-Once you have built both surface facets for you material, constrain the bottom half of the atoms to the bulk lattice positions. To do this select the atoms that you want to constrain, click Tools -> Constraints -> Constrain Selected Atoms. The constrained atoms should now have dashed 'X's on them. These should match the images above. Make sure that you are constraining a stoichiometric number of atoms. For the Rutile Oxides this means you should be constraining an integer multiple of MO2 atoms. For the Perovskites you should be constraining an integer multiple of ABO<sub>3</sub> atoms.
+Once you have built both surface facets for you material, constrain the bottom two layers of the cell to the bulk lattice positions. To do this select the atoms that you want to constrain, click Tools -> Constraints -> Constrain Selected Atoms. The constrained atoms should now have dashed 'X's on them. These should match the images above. Make sure that you are constraining a stoichiometric number of atoms. For the Rutile Oxides this means you should be constraining an integer multiple of MO2 atoms. For the Perovskites you should be constraining an integer multiple of ABO<sub>3</sub> atoms.
 
 Next, we need to make sure we have the appropriate vacuum set up between slabs. We will use 20 Angtroms of vacuum between slabs. To do this, copy the script titled vacuum.py into the directory with your trajectory and look at the script. It reads in a file called 'init.traj', centers it in the unit cell, and adds 10 Angstroms of vacuum on both sides of the slab (axis=2 refers to the z-axis) and then rewrites the file as 'init.traj'.
 
