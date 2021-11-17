@@ -57,46 +57,46 @@ Organization is crucial to us being able to sort through the data after the proj
 Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below. Note: this structure is written for the SrAgO<sub>3</sub> material. Your folders will need to match your assigned material (lucky someone doesn't have to change anything because they are working with SrAgO<sub>3</sub>).
 
 ```bash
-~/CBE544/FinalProject/perovskites/srago3/110/clean/
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Sr
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/SrO
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/AgO2
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Sr
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/SrO
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/AgO2
-~/CBE544/FinalProject/perovskites/srago3/110/oads/1ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/oads/0.25ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
-~/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Sr
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/SrO
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Ag
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/AgO2
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Sr
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/SrO
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Ag
+~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/AgO2
+~/work2/CBE544/FinalProject/perovskites/srago3/110/oads/1ML/Ag
+~/work2/CBE544/FinalProject/perovskites/srago3/110/oads/0.25ML/Ag
+~/work2/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
+~/work2/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
 ```
 Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces. Note: this folder structure is written for the MoO<sub>2</sub> material. Your folders will need to match your assigned material (lucky someone doesn't have to change anything because they are working with MoO<sub>2</sub>).
 
 ```bash
-~/CBE544/FinalProject/rutiles/moo2/110/clean/
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-m
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo2
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-o
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-m
-~/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-mo
-~/CBE544/FinalProject/rutiles/moo2/110/Oads-cus/0.5ML
-~/CBE544/FinalProject/rutiles/moo2/110/OHads-cus
-~/CBE544/FinalProject/rutiles/moo2/110/OHads-cus-br
-~/CBE544/FinalProject/rutiles/moo2/110/OH-br
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-m
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo2
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-o
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-m
+~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-mo
+~/work2/CBE544/FinalProject/rutiles/moo2/110/Oads-cus/0.5ML
+~/work2/CBE544/FinalProject/rutiles/moo2/110/OHads-cus
+~/work2/CBE544/FinalProject/rutiles/moo2/110/OHads-cus-br
+~/work2/CBE544/FinalProject/rutiles/moo2/110/OH-br
 ```
 
 ```bash
-~/CBE544/FinalProject/rutiles/moo2/100/clean/
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/m
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/o
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo
-~/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo2
-~/CBE544/FinalProject/rutiles/moo2/100/oads/1ML/m
-~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m
-~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/o
-~/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m_o
+~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/
+~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/m
+~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/o
+~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo
+~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo2
+~/work2/CBE544/FinalProject/rutiles/moo2/100/oads/1ML/m
+~/work2/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m
+~/work2/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/o
+~/work2/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m_o
 ``` 
 
 <a name='calcs'></a>
