@@ -30,7 +30,7 @@ ASE scripts can be run directly in the terminal (in the login node) or submittin
 
 To start this tutorial and the exercises that follow, log on to Stampede2 and download the following:
 ```bash
-wget https://upenncbe544.github.io/CBE544-2021.github.io/ASE/HW5.tar.gz
+wget https://upenncbe544.github.io/CBE544-2022.github.io/ASE/HW5.tar.gz
 tar -zxvf HW5.tar.gz
 cd HW5
 ```
