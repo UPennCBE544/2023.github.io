@@ -11,14 +11,9 @@ We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dt
 ## Projects ##
 
 ### Homework 5 ###
-* <font color="red"> Due Friday November 11, 2021 </font>
+* <font color="red"> Due Friday November 11, 2022 </font>
 * [Problem Description](HW5.pdf)
   
-### Final Project ### 
-* <font color="red">Due 12/14 at 5:00 PM EST</font>
-* [Project Description and Requirements](ProjectDescription.md)
-* [Project Assignments](ProjectAssignments.md)
-
 
 ## Guides ##
 ### Getting Started ###
