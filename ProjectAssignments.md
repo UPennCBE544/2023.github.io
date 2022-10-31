@@ -8,9 +8,9 @@ permalink: Project_Assignments/
 
 Perovskites
 1. SrNbO<sub>3</sub>  Yingjie Shi               1
-2. SrMoO<sub>3</sub>  Alan Cooper               1
+2. SrMoO<sub>3</sub>  Alan Coope              1
 3. SrRhO<sub>3</sub>  Min Zhu                   1
-4. SrPdO<sub>3</sub>  Amruthesh Thirumalaiswamy 1
+4. SrPdO<sub>3</sub>  Amruthesh Tlaiswamy 1
 5. SrAgO<sub>3</sub>  Zihan Yu                  2
 6. SrTaO<sub>3</sub>  Hoang Dinh                2
 7. SrWO<sub>3</sub>   Po-ting Wu                2
