@@ -12,7 +12,7 @@ $ chmod g+x $STOCKYARD
 $ chmod g+x $WORK2
 ```
 Then go into your CBE544 directory and run the command:
-```$ pwd```
+```$ yamilee```
 Then copy the path that it outputs and send it to me in an email. This is the way that I will be able to access and monitor your results, so that I can give guidance.
 
 
