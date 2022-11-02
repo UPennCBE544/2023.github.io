@@ -12,7 +12,7 @@ ____
 
 ## Getting Started with DFT Calculations ##
 
-In the first exercise, we will be studying perovskite oxides and how to determine their lattice constants, followed by surface relaxation of the (001) surface of the perovskite. For Homework 5, everyone will be studying the same system (001) SrTiO<sub>3</sub>. 
+In the first exercise, we will be studying MXenes, how to determine their lattice constants, and O adsorption on the surface. For Homework 5, everyone will be studying the same system Ti<sub>2</sub>C. 
 
 ## Contents ##
 
@@ -35,38 +35,28 @@ tar -zxvf HW5.tar.gz
 cd HW5
 ```
 
-There are two files that are necessary to run jobs on the Stampede2 cluster. The first is `stampede.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
+There are two files that are necessary to run jobs on the Anvil cluster. The first is `stampede.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
 
 ```bash
+                                                                                                                                                                     
 #!/bin/bash
-#SBATCH -J jobname   #Job name
-#SBATCH -o out.%j #name of stdout output file
-#SBATCH -e err.%j #name of stderr error file
-#SBATCH -p development  #queue type
-#SBATCH -N 1 #no.of nodes
-#SBATCH --ntasks-per-node 64 #no.of mpi tasks
-#SBATCH -t 2:00:00 #run time (hh:mm:ss)
-#SBATCH --mail-user=username@seas.upenn.edu #provide your email for notification
-#SBATCH --mail-type=all #notify when job finishes
-#SBATCH -A TG-EVE210010 #Allocation (don't change this)
+#SBATCH -J vc-relax
+#SBATCH -N 1
+#SBATCH --tasks-per-node=128
+#SBATCH -t 1:00:00
+#SBATCH -o output
+#SBATCH -e error
+#SBATCH --mail-user=miloue98@gmail.com
+#SBATCH --mail-type=ALL
+#SBATCH -A EVE210010
 
-# Define and create a unique scratch directory for this job
-submit_dir=${SLURM_SUBMIT_DIR}
-SLURM_SUBMIT_DIR=${SCRATCH}/${SLURM_JOBID}
-SCRATCH_DIRECTORY=${SCRATCH}/${SLURM_JOBID}
-mkdir -p ${SCRATCH_DIRECTORY}
-cd ${SCRATCH_DIRECTORY}
+cd $SLURM_SUBMIT_DIR
 
-# You can copy everything you need to the scratch directory
-# ${SLURM_SUBMIT_DIR} points to the path where this script was submitted from
-cp ${submit_dir}/sto-bulk.traj ${SCRATCH_DIRECTORY}
-cp ${submit_dir}/lattice.py ${SCRATCH_DIRECTORY}
+module load openmpi
 
-python lattice.py   #Python script to run
+python converging_scf.py
 
-cp -r ${SCRATCH_DIRECTORY}/* ${submit_dir}
-cd ${submit_dir}
-rm -rf ${SCRATCH_DIRECTORY}
+mpirun -np 120  /home/x-yamilee/q-e-qe-7.1/bin/pw.x -i scf.in > scf.out
 ```
 
 Stampede requires us to run jobs on the $SCRATCH partition to reduce heavy I/O on the $WORK partition. Therefore the second block of code sets up environment variables for the submission directory and the $SCRATCH directory.
