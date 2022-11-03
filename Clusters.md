@@ -49,7 +49,7 @@ ____
 
 For the [**Stampede2**](https://www.tacc.utexas.edu/systems/stampede2) cluster, make sure to read through the User Guide [here](https://portal.tacc.utexas.edu/user-guides/stampede2).
 
-login with your Stampede2 username (same as the TACC username, check your account [here](https://portal.tacc.utexas.edu/))and password (you will also be asked for Mulit-factor Authorization).
+login with your Anvil username (same as the TACC username, check your account [here](https://portal.tacc.utexas.edu/))and password (you will also be asked for Mulit-factor Authorization).
 
 Follow the instructions below for your system:
 
@@ -59,7 +59,7 @@ Open "Applications-> Utilities -> Terminal" or "Command+Space" to search Termina
 
 In a terminal type:
 ```bash
-ssh -X username@stampede2.tacc.utexas.edu
+ssh -i sshkey my-x-anvil-username anvil.rcac.purdue.edu
 ```
 
 ### Windows 
@@ -67,7 +67,7 @@ Launch Xming. You will always need to have this open in order to forward graphic
 
 Start PuTTY, and:
 
-* “Session” → “Host Name” `stampede2.tacc.utexas.edu` for **Stampede2**
+* “Session” → “Host Name” `anvil.rcac.purdue.edu` for **Anvil**
 * “Connection” → “SSH” → “X11” check “Enable X11 forwarding”
 * Back in “Session”, you can **save these settings for next time**.
 
