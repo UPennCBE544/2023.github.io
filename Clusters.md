@@ -89,23 +89,15 @@ ____
 For the **first login** only, run the following command:
 
 ```bash
-cp /home1/06157/csl1191/vojgroup/bash_script/bashrc_copy ~/.bashrc 
+cp /home/x-yamilee/CBE544/bash_copy  ~/.bashrc 
 source ~/.bashrc
 ```
 
-This will enable you to run specific software on the Stampede2 cluster, including the ASE interface to Quantum ESPRESSO.
-
-There are two file partitions, the `home` and the `work2` partition. Go ahead and make a symbolic link to the `work2` partition using:
-
-```bash
-ln -s $WORK2 work2
-```
 
 **Change the permission of files:**
 
 ```bash
 cd
-cd work2
 mkdir CBE544
 chmod g+X $WORK2
 chgrp -R G-824120 CBE544
