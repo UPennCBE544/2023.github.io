@@ -13,7 +13,7 @@ ____
 
 ## Logging Into the Computing Clusters
 
-Once your account on Stampede2 has been activated, follow the instructions and tests to make sure everything is set up properly and functional.
+Once your account on Anvil has been activated, follow the instructions and tests to make sure everything is set up properly and functional.
 
 ## Contents
 1. [Installation](#installation)
@@ -78,7 +78,7 @@ You can start PuTTY several times, if you need several terminal windows; only on
 
 In a terminal:
 ```bash
-ssh -X username@stampede2.tacc.utexas.edu
+ssh -i sshkey my-x-anvil-username anvil.rcac.purdue.edu
 ```
 ____
 
@@ -99,8 +99,8 @@ source ~/.bashrc
 ```bash
 cd
 mkdir CBE544
-chmod g+X $WORK2
-chgrp -R G-824120 CBE544
+chmod g+X CBE544
+chgrp -R x-eve210010 CBE544
 chmod g+s CBE544
 chmod g+rX CBE544
 ```
