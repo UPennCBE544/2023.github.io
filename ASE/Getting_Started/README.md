@@ -59,8 +59,6 @@ python converging_scf.py
 mpirun -np 120  /home/x-yamilee/q-e-qe-7.1/bin/pw.x -i scf.in > scf.out # 
 ```
 
-
-
 The line ```python converging_scf.py``` picks the script you want to run. Therefore, you need to change the name of the file depending on which script you are running. We will be using this script later in this section for performing calculations to compute the lattice constant of bulk Ti<sub>2</sub>C.
 
 
@@ -79,8 +77,7 @@ An existing trajectory can be read in:
 
 ```python
 mxene=io.read('init.traj') #read slab
-mxene.set_pbc([True,True,True])     #set periodic boundaries in all directions to True
-kx, ky, kz =1, 1, 1
+
 ```
 
 Then, the Quantum ESPRESSO calculator is set up. All parameters related to the electronic structure calculation are included here. The following example shows typical parameters that we use in the group for calculations involving oxides.
