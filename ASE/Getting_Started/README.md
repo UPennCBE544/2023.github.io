@@ -152,23 +152,38 @@ From the plot, and your understanding of concepts in DFT, suggest your pick for 
 <a name='optimization'></a>
 
 #### Optimization ####
-Finally, you will be performing a geometry optimization on the (001) BO2-terminated surface of SrTiO<sub>3</sub>. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 2x2x1 surface of SrTiO<sub>3</sub>. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following lines (in addition to the script to run) in the `qe.sub` file:
+Finally, you will be performing a geometry optimization on Ti<sub>2</sub>C. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 2x2x1 surface of Ti<sub>2</sub>C. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `qe.sub` file:
 
 ```bash
-#SBATCH -p normal #queue type
-#SBATCH -N 1 #no.of nodes
-#SBATCH -t 48:00:00 #run time (hh:mm:ss)
+#SBATCH --mail-user=miloue98@gmail.com
 ```
-Take a look at the `opt.log` file after submitting the job, you should see something like this:
+Take a look at the `scf.out` file after submitting the job. If you press `Esc`, the capital `G`, you should see:
 ```bash
-BFGSLineSearch:   0[  0]  12:27:27   -60932.887293       2.0460
-BFGSLineSearch:   1[  2]  14:16:48   -60933.316386       0.8612
-BFGSLineSearch:   2[  3]  14:59:04   -60933.508996       0.5930
-BFGSLineSearch:   3[  4]  15:32:44   -60933.583239       0.5081
-BFGSLineSearch:   4[  5]  16:07:11   -60933.612633       0.2711
-BFGSLineSearch:   5[  7]  17:02:23   -60933.626425       0.1151
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
 ```
-The optimization step is printed in the first column, the wall clock time in the second, total energy (in eV) in the third, and the forces (in eV/Å) in the fourth and final column. Report the converged energy once the job finishes. Note that the forces should have converged to a value less than the cut-off specified in the `relax.py` script. 
+You can take a better look at the convergence criteria by doing `Esc` + `/converged`. You should see something that looks like this:
+```bash
+Total force =     0.000725     Total SCF correction =     0.000086
+     SCF correction compared to forces is large: reduce conv_thr to get better values
+     Energy error            =      8.8E-05 Ry
+     Gradient error          =      5.3E-04 Ry/Bohr
+
+     bfgs converged in  11 scf cycles and  10 bfgs steps
+     (criteria: energy <  1.0E+00 Ry, force <  1.9E-03 Ry/Bohr)
+
+     End of BFGS Geometry Optimization
+
+     Final energy             =    -246.9201988489 Ry
+```
+
+This gives us the final energy in Rydbergs. A Ry is 13.605684 eV. If you want the energy in eV directly you can get it using ASE (python):
+```python
+from ase.io import Trajectory
+final_traj = Trajectory('scf.out', mode = 'r')
+print(final_traj[-1].get_total_energy())
+```
 
 **HW 5:** Report the converged energy of the optimized structure. 
 
