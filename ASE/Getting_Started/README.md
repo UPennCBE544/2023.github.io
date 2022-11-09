@@ -188,7 +188,7 @@ $$
 \Delta E_\mathrm{ads} = E_\mathrm{surface +ads}  - E_\mathrm{surface} - E_\mathrm{ads}
 $$
 
-To determine the most favorable site, you will adosrb O onto each of the 4 high symmetry sites shown below and relax the structure. This will give the different total energies, that you can use to calculate adsorption energies. From there, you will be able to determine what is the most favorable site and whether or not Ti<sub>2</sub>C should be oxidized. 
+To determine the most favorable site, you will adosrb O onto each of the 4 high symmetry sites and relax the structure. This will give the different total energies, that you can use to calculate adsorption energies. From there, you will be able to determine what is the most favorable site and whether or not Ti<sub>2</sub>C should be oxidized. 
 Relax structrues using instructions in the **Optimization** section.
 
 **HW 5:** Report the converged energy of the optimized structure. 
