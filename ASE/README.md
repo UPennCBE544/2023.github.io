@@ -8,7 +8,6 @@ published: true
 # ASE Tutorials
 1. [Introduction to ASE](../ASE/)
 2. [Getting Started with DFT Calculations](Getting_Started/)
-3. [Adsorption](Adsorption/)
 
 ____
 
