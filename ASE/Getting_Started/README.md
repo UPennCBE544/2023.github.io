@@ -140,7 +140,7 @@ The output plot (`xyz.png`) should show the fitted energies as a function of the
 <a name='convergence-with-k-points'></a>
 
 #### Convergence with k-Points ####
-Next, we will determine how well-converged the total energy is with respect to the number of k-points in each direction. First, take a look at the `resize.py` script which resizes the lattice to the DFT lattice constant computed in the previous exercise. Run this script directly in the login node to obtain the starting structure for the k-point calculations. Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the `qe.sub` file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
+Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the `qe.sub` file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
 
 From the plot, and your understanding of concepts in DFT, suggest your pick for the k-points and the rationale behind your choice.
 
@@ -149,7 +149,7 @@ From the plot, and your understanding of concepts in DFT, suggest your pick for 
 <a name='optimization'></a>
 
 #### Optimization ####
-Finally, you will be performing a geometry optimization on Ti<sub>2</sub>C. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 2x2x1 surface of Ti<sub>2</sub>C. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `qe.sub` file:
+You will then be performing a geometry optimization on Ti<sub>2</sub>C. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 2x2x1 surface of Ti<sub>2</sub>C. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `qe.sub` file:
 
 ```bash
 #SBATCH --mail-user=miloue98@gmail.com
@@ -175,12 +175,14 @@ Total force =     0.000725     Total SCF correction =     0.000086
      Final energy             =    -246.9201988489 Ry
 ```
 
-This gives us the final energy in Rydbergs. A Ry is 13.605684 eV. If you want the energy in eV directly you can get it using ASE (python):
+This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can get it using ASE (python):
 ```python
-from ase.io import Trajectory
-final_traj = Trajectory('scf.out', mode = 'r')
+from ase.io import read
+final_traj = read('scf.out')
 print(final_traj[-1].get_total_energy())
 ```
+#### Adsorption ####
+Finally, you will be calculating the adsorption energy of O on the Ti<sub>2</sub>C surface. You will be able to determine what is the most favorable site and whether or not Ti<sub>2</sub>C should be oxidized. To do so, you should follow the instructions in the **Optimization** section to get the 
 
 **HW 5:** Report the converged energy of the optimized structure. 
 
