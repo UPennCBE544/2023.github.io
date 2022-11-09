@@ -30,9 +30,9 @@ ASE scripts can be run directly in the terminal (in the login node) or submittin
 
 To start this tutorial and the exercises that follow, log on to Stampede2 and download the following:
 ```bash
-wget https://upenncbe544.github.io/CBE544-2022.github.io/ASE/HW5.tar.gz
-tar -zxvf HW5.tar.gz
-cd HW5
+wget https://upenncbe544.github.io/CBE544-2022.github.io/ASE/HW5_Compressed.tar.gz
+tar -zxvf HW5_Compressed.tar.gz
+cd HW5_Compressed
 ```
 
 There are two files that are necessary to run jobs on the Anvil cluster. The first is `stampede.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
