@@ -109,11 +109,6 @@ calc = espresso(pw=700,             #plane-wave cutoff
 
 
 
-To submit any job on Anvil, use:
-
-```bash
-sbatch qe.sub 
-```
 
 <a name='lattice-constant-determination'></a>
 
