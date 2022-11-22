@@ -7,11 +7,8 @@ permalink: /Project/
 
 
 1. [Introduction](#intro)
-2. [Calculations](#calcs)
-3. [Edge Study Protocol](#protocol)
-4. [Deadlines](#deadlines)
-5. [Analysis](#analysis)
-6. [Final Report](#report)
+2. [Edge Study Protocol](#protocol)
+3. [Calculations](#calcs)
 
 
 For the Final Project, you will be studying the nature of MXene edges. The students will work in 2 groups. Each group will probe a set of MXenes whose M belongs to a specific row in the periodic table. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. T
