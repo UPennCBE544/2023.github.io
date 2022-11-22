@@ -98,7 +98,7 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
 - Edges are cuts made to the basal plane (relaxed). We will start by first relaxing the basal plane. Wherever you see ##M## replace it with your metal
     
     ```bash
-    cp /home/x-yamilee/CBE544/Final_Project/Scripts ~/CBE544/Final_Project/
+    cp -R /home/x-yamilee/CBE544/Final_Project/Scripts ~/CBE544/Final_Project/
     ```
 - Change the email in *qe.sub*
     ```bash
