@@ -39,7 +39,7 @@ Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edg
 - This may seem trivial since it is just one knob in our MXene diagram. However we know that in most material chemistry changes with sites. For example in MoS2 (2D material - catalyst for hydrodesulfurization) the active sites are on the edges not the basal planes. Meaning, the chemistry in this case varies greatly from basal plane to edge.
 - Therefore we will be studying MXene edges to understand their chemistry and activity & down the line understand how that chemistry changes with respect to the basal plane
 
-- Edge Study Protocol - Picking which edges to study
+Edge Study Protocol - Picking which edges to study
     - Edges can be identified using their Miller Indexes (h, k , l)
     - One rule of thumb in modeling a system is to start with a simple model and add complexities later
     - Therefore we will be starting with the first sets of low Miller Indexes where          *-2 ≤ h, k, l ≤ 2*
