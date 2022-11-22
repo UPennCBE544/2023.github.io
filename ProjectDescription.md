@@ -5,16 +5,6 @@ permalink: /Project/
 ---
 ## Course Project ##
 
-## Permissions modification and directory path ##
-I need everyone to log into Stampede2 when they get a chance and run the following command:
-```
-$ chmod g+x $STOCKYARD
-$ chmod g+x $WORK2
-```
-Then go into your CBE544 directory and run the command:
-```$ yamilee```
-Then copy the path that it outputs and send it to me in an email. This is the way that I will be able to access and monitor your results, so that I can give guidance.
-
 
 1. [Introduction](#intro)
 2. [Organization](#organization)
@@ -24,80 +14,36 @@ Then copy the path that it outputs and send it to me in an email. This is the wa
 6. [Final Report](#report)
 
 
-For the Final Project, you will be studying the relationship between a material's reactivity and its stability. The students will work in four groups. Each group will probe a set of materials belonging to either perovskites or rutile oxides and each student will be probing a specific material. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. The due date for the final written report is <font color="red">12/14 at 5:00 PM (hard deadline)</font>.
+For the Final Project, you will be studying the nature of MXene edges. The students will work in 2 groups. Each group will probe a set of MXenes whose M belongs to a specific row in the periodic table. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. T
 
-Please make use of the [Piazza](https://piazza.com/) page for troubleshooting, discussions and for sharing results.
 
 Turn in your final report by emailing a PDF file to:
 
 ```
-alevoj@seas.upenn.edu, csl1191@seas.upenn.edu
+alevoj@seas.upenn.edu, yamilee@seas.upenn.edu
 ```
 <a name='intro'></a>
 
 ## Introduction ##
 
-Goal: Determine whether a material's reactivity and stability are linked by testing for correlations between easily calculated descriptors.
+Goal: Determine electronic properties of MXene edges.
 
-Plan: Use DFT to calculate oxygen adsorption energies and defect formation energies on surfaces of perovskite oxides and rutile oxides.
+Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edges(oxidation) and size effect of nanoparticles.
 
 ### Motivation ###
 
-Theoretical studies are frequently performed predicting materials that will succeed at carrying out important reaction chemistries (oxygen evolution, nitrogen reduction, CO<sub>2</sub> reduction, etc.) with high rates and good selectivity. Often these materials are then studied experimentally only to find out that the materials perform on par with others that have been tried before. One reason for this often disappointing result is that many theoretical studies still do not consider stability when they are predicting material activity. It is not a trivial property to study and especially when reaction conditions involve a solvent it can be incredibly difficult to accurately model the interface and understand the mechanisms behind a material's activity and/or stability.
-
-One often-used phrase proposes that there exists an 'activity-stability' conundrum limiting material performance under reaction conditions. Similar to the Sabatier Volcano in catalysis where an optimal binding strength exists for reactants and products so that they can both adsorb to the surface strongly enough to react but weaklky enough to desorb as products, this conundrum posits that there exists an optimal stability for a material under reaction conditions such that the material is unstable enough to interact with reactants and products to do catalysis, but not so unstable that it's reactive surfaces are short-lived. Likewise if the material is too stable then the surfaces are likely unreactive and reactants are unlikely to interact strongly enough to undergo bond breaking and forming.
-
-We aim to determine whether 1) we can correlate a material reactivity descriptor with a material stability descriptor, and 2) whether we can relate the activity-stability descriptors to find a 1-D relationship equivalent to a Sabatier descriptor to determine a material's optimal position on the activity-stability scale.
+- In designing a new catalyst , you want to know as much as possible about a material
+- MXenes make for good catalyst candidates because they are highly tunable
+- Imagine we have a machine, a MXene modifier with 7 knobs. You can turn the knobs on any of these cranks and modify the chemistry
+- (Image - 7 knobs with termination. metal, layering, surface or edge, stress, strain, C or N) - In the futur, what knob is the weakest in terms of controlling chemistry
+- A lot of work has been done on MXene basal planes
+- However not much is know about the edges
+- This may seem trivial since it is just one knob in our MXene diagram. However we know that in most material chemistry changes with sites. For example in MoS2 (2D material - catalyst for hydrodesulfurization) the active sites are on the edges not the basal planes. Meaning, the chemistry in this case varies greatly from basal plane to edge.
+- Therefore we will be studying MXene edges to understand their chemistry and activity & down the line understand how that chemistry changes with respect to the basal plane
 
 <a name='organization'></a>
 ### Organization ###
 
-Organization is crucial to us being able to sort through the data after the project is finished. Please follow the exact organizational structure outlined below for your material (see [Assignments](ProjectAssignments.md)). Go to the section for your material to see the folder structure. You will need to skim the [Calculations](#calcs) section first so that this organizational folder structure makes sense.
-
-Perovskites: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Perovskite 110 surface. The same structure will apply for the (111) surface with 110 replaced by 111 instead in the paths below. Note: this structure is written for the SrAgO<sub>3</sub> material. Your folders will need to match your assigned material (lucky someone doesn't have to change anything because they are working with SrAgO<sub>3</sub>).
-
-```bash
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Sr
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/SrO
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/Ag
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/1ML/AgO2
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Sr
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/SrO
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/Ag
-~/work2/CBE544/FinalProject/perovskites/srago3/110/clean/vac/0.25ML/AgO2
-~/work2/CBE544/FinalProject/perovskites/srago3/110/oads/1ML/Ag
-~/work2/CBE544/FinalProject/perovskites/srago3/110/oads/0.25ML/Ag
-~/work2/CBE544/FinalProject/perovskites/srago3/110/ohads/1ML/Ag
-~/work2/CBE544/FinalProject/perovskites/srago3/110/ohads/0.25ML/Ag
-```
-Rutile Oxides: Organization for the project is very important so that the data is accessible once the class is over. We will structure it to be like this for the Rutile (110) and (100) surfaces. Note: this folder structure is written for the MoO<sub>2</sub> material. Your folders will need to match your assigned material (lucky someone doesn't have to change anything because they are working with MoO<sub>2</sub>).
-
-```bash
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-m
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-mo2
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/br-o
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-m
-~/work2/CBE544/FinalProject/rutiles/moo2/110/clean/vac/0.5ML/cus-mo
-~/work2/CBE544/FinalProject/rutiles/moo2/110/Oads-cus/0.5ML
-~/work2/CBE544/FinalProject/rutiles/moo2/110/OHads-cus
-~/work2/CBE544/FinalProject/rutiles/moo2/110/OHads-cus-br
-~/work2/CBE544/FinalProject/rutiles/moo2/110/OH-br
-```
-
-```bash
-~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/
-~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/m
-~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/o
-~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo
-~/work2/CBE544/FinalProject/rutiles/moo2/100/clean/vac/1ML/mo2
-~/work2/CBE544/FinalProject/rutiles/moo2/100/oads/1ML/m
-~/work2/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m
-~/work2/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/o
-~/work2/CBE544/FinalProject/rutiles/moo2/100/ohads/1ML/m_o
-``` 
 
 <a name='calcs'></a>
 ## Calculations ##
