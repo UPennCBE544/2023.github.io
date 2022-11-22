@@ -108,15 +108,15 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
     
 - After changing the email in *qe.sub*, submit the job
 
-```bash
-sbatch qe.sub
-```
+   ```bash
+   sbatch qe.sub
+   ```
 
 - Repeat this step for *O-term* starting with:
 
-```bash
-cp /home/x-yamilee/CBE544/Final_Project/Trajectories/M/M2CO2 /init.traj
-```
+   ```bash
+   cp /home/x-yamilee/CBE544/Final_Project/Trajectories/M/M2CO2 /init.traj
+   ```
 
 - Then following the exact steps you did for *bare*
 
