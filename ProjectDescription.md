@@ -52,10 +52,7 @@ Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edg
     - After we account for cuts that are not unique such as (220), (330), (-1-10) that can all be reduced to (110).
     - We are left with (010), (110), (-210), (2-10), (1-20), (-120), (120), (210)
     - Because of the six fold symmetry of MXenes this list can be simplified to the unique MXenes (010), (110), (1-20), (120)
-    - Every edge corresponds to an angle 0° *≤ ϴ ≤ 60° given by:*
-    
-                     *$ϴ =cos^{-1}√{ {(3(h+k)^2}/4((h+k)^2-hk))}$*
-    
+    - Every edge corresponds to an angle 0° *≤ ϴ ≤ 60°
     - (010) is the Zigzag edge with an angle *ϴ = 30°*
     - (110) and (1-20) are the Armchair edges with angles *ϴ = 0° and 60°* respectively
     - (120) edge has an angle *ϴ = 10.89°*
@@ -105,7 +102,7 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
     ```
 - Change the email in *qe.sub*
     ```bash
-    cp /home/x-yamilee/CBE544/Final_Project/Trajectories/MXenes/M2C ./init.traj
+    cp /home/x-yamilee/CBE544/Final_Project/Final_Proj_Structures/M2C ./init.traj
     cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py ./
     cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub ./
     ```
@@ -120,7 +117,7 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
 
    ```bash
    cd ../O-term
-   cp /home/x-yamilee/CBE544/Final_Project/Trajectories/M/M2CO2 /init.traj
+   cp /home/x-yamilee/CBE544/Final_Project/Final_Proj_Structures/M2CO2 ./init.traj
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py ./
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub ./
    sbatch qe.sub
