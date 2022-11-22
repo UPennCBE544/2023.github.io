@@ -102,12 +102,15 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
     
     ```bash
     cp /home/x-yamilee/CBE544/Final_Project/Scripts ~/CBE544/Final_Project/
+    ```
+- Change the email in *qe.sub*
+    ```bash
     cp /home/x-yamilee/CBE544/Final_Project/Trajectories/MXenes/M2C ./init.traj
     cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py ./
     cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub ./
     ```
     
-- After changing the email in *qe.sub*, submit the job
+-  submit the job
 
    ```bash
    sbatch qe.sub
@@ -120,6 +123,8 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
    cp /home/x-yamilee/CBE544/Final_Project/Trajectories/M/M2CO2 /init.traj
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py ./
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub ./
+   sbatch qe.sub
+   
    ```
 
 - Then following the exact steps you did for *bare*
