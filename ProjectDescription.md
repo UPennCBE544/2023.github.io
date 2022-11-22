@@ -85,24 +85,23 @@ Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edg
             
 - Running Calculations
 
-```bash
-cd
-cd CBE544
-mkdir Final_Project
-cd Final_Project
-mkdir MXenes
-cd MXenes
-mkdir M2C
-cd M2C
-mkdir bare
-mkdir O-term
-cd bare
+   ```bash
+   cd
+   cd CBE544
+   mkdir Final_Project
+   cd Final_Project
+   mkdir MXenes
+   cd MXenes
+   mkdir M2C
+   cd M2C
+   mkdir bare
+   mkdir O-term
+   cd bare
 
-```
+   ```
+Please check [Assignment](ProjectAssignments.md) in order to determine which material you will be working with. 
 
-In the FinalProject directory you should see a directory called scripts, which contains the scripts you will need for this project. You will also see two directories: rutiles and perovskites. Please check [Assignment](ProjectAssignments.md) in order to determine which material you will be working with. The bulks for all of these materials have already been optimized using the calculator settings that we determined from HW 5 for the perovskite SrTiO<sub>3</sub>. Move into the directory corresponding to your material.
-
-- Edges are cuts made to the basal plane (relaxed). We will start by first relaxing the basal plane. Wherever you see M replace it with your metal
+- Edges are cuts made to the basal plane (relaxed). We will start by first relaxing the basal plane. Wherever you see ##M## replace it with your metal
     
     ```bash
     cp /home/x-yamilee/CBE544/Final_Project/Scripts ~/CBE544/Final_Project/
