@@ -7,11 +7,10 @@ permalink: /Project/
 
 
 1. [Introduction](#intro)
-2. [Organization](#organization)
-3. [Calculations](#calcs)
-4. [Deadlines](#deadlines)
-5. [Analysis](#analysis)
-6. [Final Report](#report)
+2. [Calculations](#calcs)
+3. [Deadlines](#deadlines)
+4. [Analysis](#analysis)
+5. [Final Report](#report)
 
 
 For the Final Project, you will be studying the nature of MXene edges. The students will work in 2 groups. Each group will probe a set of MXenes whose M belongs to a specific row in the periodic table. Each group will present their results in class that will be critiqued by the other groups. Finally, each group  will jointly write a final report on the combined data. T
@@ -35,16 +34,33 @@ Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edg
 - In designing a new catalyst , you want to know as much as possible about a material
 - MXenes make for good catalyst candidates because they are highly tunable
 - Imagine we have a machine, a MXene modifier with 7 knobs. You can turn the knobs on any of these cranks and modify the chemistry
-- (Image - 7 knobs with termination. metal, layering, surface or edge, stress, strain, C or N) - In the futur, what knob is the weakest in terms of controlling chemistry
 - A lot of work has been done on MXene basal planes
 - However not much is know about the edges
 - This may seem trivial since it is just one knob in our MXene diagram. However we know that in most material chemistry changes with sites. For example in MoS2 (2D material - catalyst for hydrodesulfurization) the active sites are on the edges not the basal planes. Meaning, the chemistry in this case varies greatly from basal plane to edge.
 - Therefore we will be studying MXene edges to understand their chemistry and activity & down the line understand how that chemistry changes with respect to the basal plane
 
-<a name='organization'></a>
-### Organization ###
-
-
+- Edge Study Protocol - Picking which edges to study
+    - Edges can be identified using their Miller Indexes (h, k , l)
+    - One rule of thumb in modeling a system is to start with a simple model and add complexities later
+    - Therefore we will be starting with the first sets of low Miller Indexes where          *-2 ≤ h, k, l ≤ 2*
+        - To further simplify our cuts we will be setting l = 0. Because MXenes are 2D systems, to a first approximation, cuts in the z direction should not affect the edge cut. Which means 010 ≈ 011 ≈ 012 …
+            
+            **Note: MXenes are not completely 2D like graphene is so you may find small differences between the aforementioned edges. However since we will studying MXenes of at most 3 atoms, this is an appropriate approximation.**
+            
+        - This leaves us with possibility 25 edges where *-2 ≤ h, k ≤ 2 & l = 0*
+        - The (0, 0, 0) edge does not exists - it’s just the bulk. We are now at 24 edges
+        - After we account for cuts that are not unique such as (220), (330), (-1-10) that can all be reduced to (110).
+        - We are left with (010), (110), (-210), (2-10), (1-20), (-120), (120), (210)
+        - Because of the six fold symmetry of MXenes this list can be simplified to the unique MXenes (010), (110), (1-20), (120)
+        - Every edge corresponds to an angle 0° *≤ ϴ ≤ 60° given by:*
+        
+                         *$ϴ =cos^{-1}√{ {(3(h+k)^2}/4((h+k)^2-hk))}$*
+        
+        - (010) is the Zigzag edge with an angle *ϴ = 30°*
+        - (110) and (1-20) are the Armchair edges with angles *ϴ = 0° and 60°* respectively
+        - (120) edge has an angle *ϴ = 10.89°*
+        - The maximum angle size comes from the MXene’s 6-fold symmetry
+        - In an effort to keep the model as simple as possible, we will only model the high symmetry edges (010), (110), (1-20)
 <a name='calcs'></a>
 ## Calculations ##
 
