@@ -68,6 +68,24 @@ Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edg
 <a name='calcs'></a>
 ## Calculations ##
 
+
+- Studying Edges - Models
+    - Set model to **Edges**, **C**, **M2C**
+    - Set stress & strain to 0 - May remove these from figure entirely
+    - We are left with 2 knobs in our machine
+    - To account for the metal knob, each student will be assigned a metal
+    - There are a number of terminations and termination combinations we can look at however we will only be considering 2 terminations: no termination & O termination. This choice is motivated through experiment
+        - From Ti2C synthesis we know to a first approximation the basal planes can be terminated by O (Termination is synthesis dependent). Oxygen will therefore be one of our terminations
+        - To get an idea of hour basal plane termination affects edge chemistry, it is import to look at how edges behave with respect to bare basal plane. Our second termination will be no termination
+    - From there each student has 6 models
+        - bare
+            - (010)
+            - (110)
+            - (1-20)
+        - O-term
+            - 010)
+            - (110)
+            - (1-20)
 To get started we need to get the files needed for the final project. Move into your CBE544 directory, download the project files, and open the tar file by running these commands:
 
 ```bash
