@@ -99,9 +99,13 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
     
     ```bash
     cp -R /home/x-yamilee/CBE544/Final_Project/Scripts ~/CBE544/Final_Project/
+    cd /home/x-yourusername/CBE544/Final_Project/Scripts/
+    vi qe.sub
     ```
 - Change the email in *qe.sub*
     ```bash
+    cd 
+    cd CBE544/Final_Project/MXenes/M2C/bare
     cp /home/x-yamilee/CBE544/Final_Project/Final_Proj_Structures/M2C ./init.traj
     cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py ./
     cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub ./
