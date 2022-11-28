@@ -130,6 +130,24 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
 
 - Then following the exact steps you did for *bare*
 
+###Directory Correction###
+   ```bash
+   cd /home/x-yamilee/CBE544/Final_Project/MXenes/M2C
+   mkdir Bulk
+   mv bare Bulk
+   mv O-term Bulk
+   ```
+- Edge Calulations
+   ```bash
+   cp /home/x-yamilee/CBE544/Final_Project/Scripts/edges_submission1.py /home/x-yourusername/CBE544/Final_Project/Scripts/edges_submission1.py
+   vi edges_submission1.py
+   ```
+Inside edges_submission1.py, change the #M# & #username# variables to your assigned metal and username respectively. Then run edges_submission1.py.
+   ```bash
+   python edges_submission1.py
+   ```
+If the file runs with no error. Go back into edges_submission1.py and remove the '#' in front of line 40 and run edges_submission1.py again.
+
 ### Things to keep in mind ###
 For all of the calculations that you are running here on out, you will need to submit them using qe.sub to the cluster. Do not run any of these jobs on the login node. 
 
