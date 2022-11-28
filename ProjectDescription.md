@@ -130,7 +130,7 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
 
 - Then following the exact steps you did for *bare*
 
-###Directory Correction###
+### Directory Correction ###
    ```bash
    cd /home/x-yamilee/CBE544/Final_Project/MXenes/M2C
    mkdir Bulk
@@ -148,7 +148,7 @@ Inside edges_submission1.py, change the #M# & #username# variables to your assig
    ```
 If the file runs with no error. Go back into edges_submission1.py and remove the '#' in front of line 40 and run edges_submission1.py again.
 
-### Things to keep in mind ###
+## Things to keep in mind ##
 For all of the calculations that you are running here on out, you will need to submit them using qe.sub to the cluster. Do not run any of these jobs on the login node. 
 
 Each calculation must be carried out in its own directory. All of the files necessary to carry out the calculation must also be in the directory at the time you submit the job or else it will not work. Usually this means the directory should have an ASE trajectory (init.traj), a relaxation script (converging_scf.py), and a submit script (qe.sub).
