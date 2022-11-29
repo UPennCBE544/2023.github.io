@@ -95,7 +95,7 @@ Plan: Use DFT to calculate edges energies, oxygen adsorption energies on the edg
    ```
 Please check [Assignment](ProjectAssignments.md) in order to determine which material you will be working with. 
 
-- Edges are cuts made to the basal plane (relaxed). We will start by first relaxing the basal plane. Wherever you see ##M## replace it with your metal
+- Edges are cuts made to the basal plane (relaxed). We will start by first relaxing the basal plane. Wherever you see ## M ## replace it with your metal
     
     ```bash
     cp -R /home/x-yamilee/CBE544/Final_Project/Scripts ~/CBE544/Final_Project/
