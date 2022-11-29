@@ -139,7 +139,7 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
    ```
 - Edge Calculations
    ```bash
-   cp /home/x-yamilee/CBE544/Final_Project/Scripts/edges_submission1.py /home/x-yourusername/CBE544/Final_Project/Scripts/edges_submission1.py
+   cp /home/x-yamilee/CBE544/Scripts/edges_submission1.py /home/x-yourusername/CBE544/Final_Project/Scripts/edges_submission1.py
    vi edges_submission1.py
    ```
 Inside edges_submission1.py, change the #M# & #username# variables to your assigned metal and username respectively. Then run edges_submission1.py.
