@@ -166,11 +166,10 @@ Since the nanoparticles are large. We will be modeling static bare and O termina
    cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
    ```
 Before submitting the job, make sure mode in converging_scf.py is set to 'scf' and the k points are set to 1 1 1. Once you do, submit the job
-   ```
-   bash
+   ```bash
    sbatch qe.sub
    ```
-## Note ##
+### Note ###
 The instructions in the powerpoint are for a bare NP with 4 C long edges. To test for size effects, we will repeat all instructions for bare NP with 5 & 6 C long edges. To test for termination effects, we will repeat all the calculations usins the O terminated structures.
 
 ## Things to keep in mind ##
