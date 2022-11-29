@@ -148,6 +148,7 @@ Inside edges_submission1.py, change the #M# & #username# variables to your assig
    ```
 If the file runs with no error. Go back into edges_submission1.py and remove the '#' in front of line 40 and run edges_submission1.py again.
 - Modeling Nanoparticles
+
 Since the nanoparticles are large. We will be modeling static bare and O terminated nanoparticles. To do so, we first need to build the input structure for the nanoparticle.
 ```bash
    cd
