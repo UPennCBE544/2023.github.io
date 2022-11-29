@@ -137,7 +137,7 @@ Please check [Assignment](ProjectAssignments.md) in order to determine which mat
    mv bare Bulk
    mv O-term Bulk
    ```
-- Edge Calulations
+- Edge Calculations
    ```bash
    cp /home/x-yamilee/CBE544/Final_Project/Scripts/edges_submission1.py /home/x-yourusername/CBE544/Final_Project/Scripts/edges_submission1.py
    vi edges_submission1.py
@@ -147,13 +147,32 @@ Inside edges_submission1.py, change the #M# & #username# variables to your assig
    python edges_submission1.py
    ```
 If the file runs with no error. Go back into edges_submission1.py and remove the '#' in front of line 40 and run edges_submission1.py again.
-
+- Modeling Nanoparticles
+Since the nanoparticles are large. We will be modeling static bare and O terminated nanoparticles. To do so, we first need to build the input structure for the nanoparticle.
+```bash
+   cd
+   cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/
+   mkdir NP_bare
+   mkdir NP_O-term
+   cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/Bulk/bare
+   ase gui scf.out
+   ```
+ Follow the instructions in the powerpoint to cut the nanoparticle from the basal plane. Save the structure as init.traj in NP_bare/
+ Copy the necessary files from the script and submit a static calculation for the nanoparticle.
+ ```bash
+   cd
+   cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
+   cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
+   cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
+   sbatch qe.sub
+   ```
 ## Things to keep in mind ##
 For all of the calculations that you are running here on out, you will need to submit them using qe.sub to the cluster. Do not run any of these jobs on the login node. 
 
 Each calculation must be carried out in its own directory. All of the files necessary to carry out the calculation must also be in the directory at the time you submit the job or else it will not work. Usually this means the directory should have an ASE trajectory (init.traj), a relaxation script (converging_scf.py), and a submit script (qe.sub).
 
 It is critical that you organize your directories consistently so that we can find the data later. 
+
 
 
 
