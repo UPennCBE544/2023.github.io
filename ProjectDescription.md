@@ -152,20 +152,27 @@ Since the nanoparticles are large. We will be modeling static bare and O termina
 ```bash
    cd
    cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/
-   mkdir NP_bare
-   mkdir NP_O-term
+   mkdir NP_bare_4
+   mkdir NP_O-term_4
    cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/Bulk/bare
    ase gui scf.out
    ```
- Follow the instructions in the powerpoint to cut the nanoparticle from the basal plane. Save the structure as init.traj in NP_bare/
- Copy the necessary files from the script and submit a static calculation for the nanoparticle.
+ Follow the instructions in the powerpoint to cut the nanoparticle from the basal plane. Save the structure as init.traj in NP_bare_4/ 
+ Copy the necessary files from the script and submit a static calculation for the nanoparticle. (Note: 4 at the end of NP_bare_4/ refers to the nanoparticle edge length)
  ```bash
    cd
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
    cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
+   ```
+Before submitting the job, make sure mode in converging_scf.py is set to 'scf' and the k points are set to 1 1 1. Once you do, submit the job
+   ```
+   bash
    sbatch qe.sub
    ```
+## Note ##
+The instructions in the powerpoint are for a bare NP with 4 C long edges. To test for size effects, we will repeat all instructions for bare NP with 5 & 6 C long edges. To test for termination effects, we will repeat all the calculations usins the O terminated structures.
+
 ## Things to keep in mind ##
 For all of the calculations that you are running here on out, you will need to submit them using qe.sub to the cluster. Do not run any of these jobs on the login node. 
 
