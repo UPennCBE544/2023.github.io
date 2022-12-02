@@ -163,8 +163,8 @@ Since the nanoparticles are large. We will be modeling static bare and O termina
  ```bash
    cd
    cp /home/x-yourusername/CBE544/Final_Project/Scripts/converging_scf.py /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
-   cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
-   cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare
+   cp /home/x-yourusername/CBE544/Final_Project/Scripts/qe.sub /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare_4
+   cd /home/x-yourusername/CBE544/Final_Project/MXenes/M2C/NP_bare_4
    ```
 Before submitting the job, make sure mode in converging_scf.py is set to 'scf' and the k points are set to 1 1 1. Once you do, submit the job
    ```bash
