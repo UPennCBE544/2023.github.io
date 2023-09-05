@@ -50,7 +50,7 @@ As mentioned above, you can use the graphical user interface to view atomic stru
 Log on to Stampede, download an example and take a look (the other files will all be used in the remainder of these examples):
 
 ```bash
-wget https://upenncbe544.github.io/CBE544-2022.github.io/ASE/archive.tar.gz
+wget https://upenncbe544.github.io/CBE544-2023.github.io/ASE/archive.tar.gz
 tar -zxvf archive.tar.gz 
 cd Archive
 ase-gui Ti2C.traj
