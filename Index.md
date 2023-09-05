@@ -4,7 +4,7 @@ mathjax: false
 permalink: /
 ---
 
-This website contains information about the CBE544 final course project, the homework problem set 5, as well as some tutorials to help you along the way.
+This website contains information about the CBE5440 final course project, the homework problem set 5, as well as some tutorials to help you along the way.
 
 We will be using the [Atomic Simulation Environment (ASE)](https://wiki.fysik.dtu.dk/ase/) with the [ASE interface for the Quantum ESPRESSO calculator](http://github.com/vossjo/ase-espresso) and [Quantum Espresso](https://www.quantum-espresso.org/). Computing resources will be provided by [Purdue University's Anvil](https://www.rcac.purdue.edu/compute/anvil). The tutorials cover the basic usage of the UNIX shell, scripting in Python, and performing calculations using ASE. As part of the requirements for the final project, you will need to have passed HW5 before even starting the final project and you will have to complete the exercises by their respective deadlines.
 
