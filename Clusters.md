@@ -49,7 +49,7 @@ ____
 
 For the [**Anvil**](https://www.tacc.utexas.edu/systems/stampede2) cluster, make sure to read through the login instructions [here](https://www.rcac.purdue.edu/knowledge/anvil/access/login/sshkeys).
 
-login with your Anvil username (same as the ACCESS username, check your account [here](https://portal.tacc.utexas.edu/))and password (you will also be asked for Mulit-factor Authorization).
+Login with your Anvil username (same as the ACCESS username, check your account [here](https://portal.tacc.utexas.edu/)) and password (you will also be asked for Mulit-factor Authorization).
 
 Follow the instructions below for your system:
 
@@ -89,7 +89,7 @@ ____
 For the **first login** only, run the following command:
 
 ```bash
-cp /home/x-yamilee/CBE544/bash_copy  ~/.bashrc 
+cp /home/x-syj1022/.bashrc  ~/.bashrc 
 source ~/.bashrc
 ```
 
