@@ -185,10 +185,10 @@ final_traj = read('pw.out')
 print(final_traj[-1].get_total_energy())
 ```
 #### Adsorption ####
-Finally, you will be calculating the adsorption energy of CO2 on the MgO (100) surface. Adsorption energy is given by:
+Finally, you will be calculating the adsorption energy of CO<sub>2</sub> on the MgO (100) surface. Adsorption energy is given by:
 
 $$
-\Delta E_\mathrm{ads} = E_\mathrm{MgO+CO_{2}}  - E_\mathrm{MgO} - E_\mathrm{CO_{2}
+\Delta E_\mathrm{ads} = E_\mathrm{MgO+CO_{2}}  - E_\mathrm{MgO} - E_\mathrm{CO_{2}}
 $$
 
 To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to Edit -> Add atoms. Alternatively, you can use control+A. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on Add and the new atom should appear.
