@@ -194,7 +194,7 @@ $$
 \Delta E_\mathrm{ads} = E_\mathrm{MgO+CO_{2}}  - E_\mathrm{MgO} - E_\mathrm{CO_{2}}
 $$
 
-You may use -1090.607 eV for E_\mathrm{CO_{2}}.
+You may use -1090.607 eV for E<sub>CO<sub>2<\sub><\sub>.
 
 To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to ``Edit -> Add atoms``. Alternatively, you can use ``control+A``. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on ``Add`` and the new atom should appear.
 
