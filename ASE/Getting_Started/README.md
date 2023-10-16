@@ -38,25 +38,30 @@ cd HW5
 There are two files that are necessary to run jobs on the Anvil cluster. The first is `anvil.sub`; this is the file that tells the scheduler how much time the job is allowed, how many processors it requires, and other pertinent information. First, notice the comments in the beginning. These include information such as how much time to allocate, the number of nodes required, what the names of the output and error files are, what the name of the job should be, and what your email is. 
 
 ```bash
-                                                                                                                                                                     
 #!/bin/bash
-#SBATCH -J jobname #Job name
-#SBATCH -N 1 #number of nodes used
-#SBATCH --tasks-per-node=128 #number of tasks/node
-#SBATCH -t 1:00:00 #Maximum job length
-#SBATCH -o output #node Output file
-#SBATCH -e error #node error file
-#SBATCH --mail-user=your email #
-#SBATCH --mail-type=ALL
-#SBATCH -A EVE210010 #Allocation name, do not change
+
+#SBATCH -J jobname   #Job name
+#SBATCH -o out.%j #name of stdout output file
+#SBATCH -e err.%j #name of stderr error file
+#SBATCH -p wholenode  #queue type
+#SBATCH -N 1 #no.of nodes
+#SBATCH --ntasks-per-node 128 #no.of mpi tasks
+#SBATCH -t 96:00:00 #maximum run time (hh:mm:ss)
+#SBATCH --mail-user=abc@gmail.com #provide your email for notification
+#SBATCH --mail-type=all #notify when job finishes
+#SBATCH -A dmr180108  #Allocation (don't change this)
+
 
 cd $SLURM_SUBMIT_DIR #Move to supply directory
 
-module load openmpi #load openmpi, to prepare
+mkdir -p $SCRATCH/$SLURM_JOBID
+cp pw.in $SCRATCH/$SLURM_JOBID
 
-python converging_scf.py
+cd $SCRATCH/$SLURM_JOBID
 
-mpirun -np 120  /home/x-yamilee/q-e-qe-7.1/bin/pw.x -i scf.in > scf.out # 
+mpirun /home/x-syj1022/bin/qe-7.2/bin/pw.x -nd 4   <pw.in> pw.out
+
+cp pw.out $SLURM_SUBMIT_DIR 
 ```
 
 The line ```python converging_scf.py``` picks the script you want to run. Therefore, you need to change the name of the file depending on which script you are running. We will be using this script later in this section for performing calculations to compute the lattice constant of bulk Ti<sub>2</sub>C.
@@ -66,44 +71,47 @@ Let's look at how a typical ASE script for geometry optimization is written. Ope
 
 ```python
 from ase import io
+from ase import Atoms
 from espresso import espresso
 from ase.optimize import BFGS
-
 ```
 
-`from ase import io` imports the input/output commands for trajectory files, `from espresso import espresso` imports the Quantum Espresso calculator for the ASE interface.
+`from ase import io` imports the input/output commands for trajectory files, `from ase import Atoms` imports the Atoms object, useful editing and manipulating the system, `from espresso import espresso` imports the Quantum Espresso calculator for the ASE interface, and `from ase.optimize import BFGS` imports the BFGS algorithm to perform geometry optimization.
 
 An existing trajectory can be read in:
 
 ```python
-mxene=io.read('init.traj') #read slab
-
+slab =  io.read('init.traj')   #read slab
+slab.set_pbc([True,True,True])   #set periodic boundaries in all directions to true
 ```
 
 Then, the Quantum ESPRESSO calculator is set up. All parameters related to the electronic structure calculation are included here. The following example shows typical parameters that we use in the group for calculations involving oxides.
 
 ```python
-calc = espresso(pw=700,             #plane-wave cutoff
-                dw=7000,                    #density cutoff
-                xc='PBE',          #exchange-correlation functional
-                kpts=(kx,ky,kz),       #k-point sampling;
-                nbands=-20,             #20 extra bands besides the bands needed to hold valence electrons
+calc = espresso(pw=500,             #plane-wave cutoff
+                dw=5000,                    #density cutoff
+                xc='BEEF-vdw',          #exchange-correlation functional
+                kpts=(4,4,1),	    #k-point sampling;
+                nbands=-30,             #30 extra bands besides the bands needed to hold
                 sigma=0.1,
+                opt_algorithm = 'bfgs',
+                fmax = 0.03,
+                nstep=200,
                 nosym=True,
-                convergence= {'energy':1e-6,
+                convergence= {'energy':1e-5,
                     'mixing':0.1,
                     'nmix':10,
                     'mix':4,
-                    'maxsteps':500,
+                    'maxsteps':2000,
                     'diag':'david'
-                    },  #convergence parameters for SCF
+                    },  #convergence parameters
                  dipole={'status':True}, #dipole correction to account for periodicity in z
-                 spinpol=False,
                  output = {'avoidio':False,
                     'removewf':True,
                     'wf_collect':False},
-                 onlycreatepwinp = 'scf.in',
-                 parflags='-npool 2 -nd 25',
+                 spinpol=False,
+                 parflags='-npool 1',
+                 onlycreatepwinp='pw.in',
                  outdir='calcdir')   #output directory for Quantum Espresso files
 ```
 
@@ -116,13 +124,13 @@ calc = espresso(pw=700,             #plane-wave cutoff
 
 Find the `lattice.py` script in the `lattice` folder. This script calculates the different energies of the system as a function of the lattice constant. Before you run this job, make sure you read the comments within to understand what it does.
 
-Remember to add your email in the `qe.sub` file to receive notifications on the job! Submit the script by running:
+Remember to add your email in the `anvil.sub` file to receive notifications on the job! Submit the script by running:
 
 ```bash
-sbatch qe.sub
+sbatch anvil.sub
 ``` 
 
-The output trajectory `scf.out` contains information on the energy of the system with respect to the given lattice constant. To obtain the lattice constant that minimizes the energy, you will be writing a simple Python script to perform an Equation of State fit of the obtained energies as a function of the lattice constant. 
+The output trajectory `pw.out` contains information on the energy of the system with respect to the given lattice constant. To obtain the lattice constant that minimizes the energy, you will be writing a simple Python script to perform an Equation of State fit of the obtained energies as a function of the lattice constant. 
 
 To proceed with writing this script, you will be modifying the example script provided here: [ASE-Equation of State](https://wiki.fysik.dtu.dk/ase/tutorials/eos/eos.html). Note that the sample script reads 5 configurations from the trajectory, but we have more configurations than that in our calculations. This script can be run on the login node directly. To execute the script you have written, use the command: 
 ```bash
@@ -135,7 +143,7 @@ The output plot (`xyz.png`) should show the fitted energies as a function of the
 <a name='convergence-with-k-points'></a>
 
 #### Convergence with k-Points ####
-Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the `qe.sub` file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
+Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the `anvil.sub` file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
 
 From the plot, and your understanding of concepts in DFT, suggest your pick for the k-points and the rationale behind your choice.
 
@@ -144,12 +152,12 @@ From the plot, and your understanding of concepts in DFT, suggest your pick for 
 <a name='optimization'></a>
 
 #### Optimization ####
-You will then be performing a geometry optimization on Ti<sub>2</sub>C. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 2x2x1 surface of Ti<sub>2</sub>C. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `qe.sub` file:
+You will then be performing a geometry optimization on MgO. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 4x4x4 surface of MgO (100). You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `anvil.sub` file:
 
 ```bash
-#SBATCH --mail-user=miloue98@gmail.com
+#SBATCH --mail-user=abc@gmail.com #provide your email for notification
 ```
-Take a look at the `scf.out` file after submitting the job. If you press `Esc`, the capital `G`, you should see:
+Take a look at the `pw.out` file after submitting the job. If you press `Esc`, the capital `G`, you should see:
 ```bash
 =------------------------------------------------------------------------------=
    JOB DONE.
@@ -173,18 +181,17 @@ Total force =     0.000725     Total SCF correction =     0.000086
 This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can get it using ASE (python):
 ```python
 from ase.io import read
-final_traj = read('scf.out')
+final_traj = read('pw.out')
 print(final_traj[-1].get_total_energy())
 ```
 #### Adsorption ####
-Finally, you will be calculating the adsorption energy of O on the Ti<sub>2</sub>C surface. Adsorption energy is given by:
+Finally, you will be calculating the adsorption energy of CO2 on the MgO (100) surface. Adsorption energy is given by:
 
 $$
-\Delta E_\mathrm{ads} = E_\mathrm{surface +ads}  - E_\mathrm{surface} - E_\mathrm{ads}
+\Delta E_\mathrm{ads} = E_\mathrm{MgO+CO_{2}}  - E_\mathrm{MgO} - E_\mathrm{CO_{2}
 $$
 
-To determine the most favorable site, you will adosrb O onto each of the 4 high symmetry sites and relax the structure. This will give the different total energies, that you can use to calculate adsorption energies. From there, you will be able to determine what is the most favorable site and whether or not Ti<sub>2</sub>C should be oxidized. 
-Relax structures using instructions in the **Optimization** section.
+To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to Edit -> Add atoms. Alternatively, you can use control+A. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on Add and the new atom should appear.
 
 **HW 5:** Report the converged energy of the optimized structure. 
 
