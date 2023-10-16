@@ -64,10 +64,7 @@ mpirun /home/x-syj1022/bin/qe-7.2/bin/pw.x -nd 4   <pw.in> pw.out
 cp pw.out $SLURM_SUBMIT_DIR 
 ```
 
-The line ```python converging_scf.py``` picks the script you want to run. Therefore, you need to change the name of the file depending on which script you are running. We will be using this script later in this section for performing calculations to compute the lattice constant of bulk Ti<sub>2</sub>C.
-
-
-Let's look at how a typical ASE script for geometry optimization is written. Open the `converging_scf.py` script, which will be used in a later section to perform create the input for a simple Ti<sub>2</sub>C relaxation. We import all the relevant ASE modules in for this calculation
+Let's look at how a typical ASE script for geometry optimization is written. The code below shows an example of a `relax.py` script, which will be used in a later section to perform create the input for a simple MgO relaxation. We import all the relevant ASE modules in for this calculation.
 
 ```python
 from ase import io
@@ -152,7 +149,7 @@ From the plot, and your understanding of concepts in DFT, suggest your pick for 
 <a name='optimization'></a>
 
 #### Optimization ####
-You will then be performing a geometry optimization on MgO. To proceed with this exercise, first take a look at the starting structure `init.traj` in the `relax` folder by using the GUI. You should see a 4x4x4 surface of MgO (100). You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `anvil.sub` file:
+You will then be performing a geometry optimization on MgO. To proceed with this exercise, first take a look at the starting structure `mgo-100.traj` in the `relax` folder by using the GUI. You should see a 4x4x4 surface of MgO (100), with its bottom two layers fixed. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `anvil.sub` file:
 
 ```bash
 #SBATCH --mail-user=abc@gmail.com #provide your email for notification
@@ -178,20 +175,28 @@ Total force =     0.000725     Total SCF correction =     0.000086
      Final energy             =    -246.9201988489 Ry
 ```
 
-This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can get it using ASE (python):
+This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can first run the command:
+
+```python
+python pwlog.py ./pw.out rlx.traj
+```
+Next, in the python editor, enter the codes below:
+
 ```python
 from ase.io import read
-final_traj = read('pw.out')
-print(final_traj[-1].get_total_energy())
+a = read('rlx.traj')
+print(a.get_total_energy())
 ```
 #### Adsorption ####
-Finally, you will be calculating the adsorption energy of CO<sub>2</sub> on the MgO (100) surface. Adsorption energy is given by:
+Finally, you will be calculating the adsorption energy of CO<sub>2</sub> on the MgO (100) surface. Adsorption energy calculation is given by:
 
 $$
 \Delta E_\mathrm{ads} = E_\mathrm{MgO+CO_{2}}  - E_\mathrm{MgO} - E_\mathrm{CO_{2}}
 $$
 
-To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to Edit -> Add atoms. Alternatively, you can use control+A. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on Add and the new atom should appear.
+You may use -1090.607 eV for E_\mathrm{CO_{2}}.
+
+To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to ``Edit -> Add atoms``. Alternatively, you can use ``control+A``. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on ``Add`` and the new atom should appear.
 
 **HW 5:** Report the converged energy of the optimized structure. 
 
