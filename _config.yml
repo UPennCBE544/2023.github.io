@@ -1,8 +1,8 @@
 # Site settings
 title: CBE5440 2023
 subtitle: Test
-url: "https://CBE544-2022.github.io"
-baseurl: "/CBE544-2022.github.io"
+url: "https://CBE544-2023.github.io"
+baseurl: "/CBE544-2023.github.io"
 
 # Build settings
 permalink: pretty
