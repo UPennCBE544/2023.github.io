@@ -146,7 +146,7 @@ The output plot (`xyz.png`) should show the fitted energies as a function of the
 <a name='convergence-with-k-points'></a>
 
 #### Convergence with k-Points ####
-Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember to change the name of the script to execute, in the `anvil.sub` file. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
+Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember now you run with `kptconv.py` not `lattice.py`. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
 
 From the plot, and your understanding of concepts in DFT, suggest your pick for the k-points and the rationale behind your choice.
 
@@ -219,6 +219,18 @@ cp dos.out $SLURM_SUBMIT_DIR
 cp dos.dos $SLURM_SUBMIT_DIR
 ```
 
+Note, in addition to `pw.in` as the input into `anvil.sub`, we now also need `dos.in`. This is already provided and should look like this:
+
+```bash
+&dos
+   prefix='calc',
+   outdir='.'
+   Emin=-80.0
+   Emax=20.0
+   fildos='dos.dos'
+/
+```
+
 Upon completion, the `dos.dos` file saves the data you need for the plot. You are then responsible for writing a script to generate the plot.
 
 Finally, you will be calculating the adsorption energy of CO<sub>2</sub> on the MgO (100) surface. Adsorption energy calculation is given by:
@@ -229,7 +241,7 @@ $$
 
 You may use -1090.607 eV for E<sub>CO<sub>2</sub></sub>.
 
-To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to ``Edit -> Add atoms``. Alternatively, you can use ``control``+``A``. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on ``Add`` and the new atom should appear.
+To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to `Edit' -> 'Add atoms`. Alternatively, you can use `control`+`A`. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on `Add` and the new atom should appear.
 
 **HW 5:** Report the converged energy of the optimized structure. 
 
