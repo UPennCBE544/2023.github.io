@@ -121,7 +121,13 @@ calc = espresso(pw=500,             #plane-wave cutoff
 
 Find the `lattice.py` script in the `lattice` folder. This script calculates the different energies of the system as a function of the lattice constant. Before you run this job, make sure you read the comments within to understand what it does.
 
-Remember to add your email in the `anvil.sub` file to receive notifications on the job! Submit the script by running:
+You should check the `traj` file (in this case it is `mgo-bulk.traj`) to make sure you have the correct starting structure that you work with. Also, make sure the `lattice.py` is reading the correct input file. Next, execute `lattice.py` by:
+
+```bash
+python lattice.py
+```
+
+This should generate a `pw.in` file and this is the input into the submission script `anvil.sub`. Remember to add your email in the `anvil.sub` file to receive notifications on the job! Submit the script by running:
 
 ```bash
 sbatch anvil.sub
@@ -154,13 +160,13 @@ You will then be performing a geometry optimization on MgO. To proceed with this
 ```bash
 #SBATCH --mail-user=abc@gmail.com #provide your email for notification
 ```
-Take a look at the `pw.out` file after submitting the job. If you press `Esc`, the capital `G`, you should see:
+Take a look at the `pw.out` file after submitting the job. If you press `Control` + `-`, followed by `Control` + `V`, you should see:
 ```bash
 =------------------------------------------------------------------------------=
    JOB DONE.
 =------------------------------------------------------------------------------=
 ```
-You can take a better look at the convergence criteria by doing `Esc` + `/converged`. You should see something that looks like this:
+You can take a better look at the convergence criteria by doing `Control` + `W` and search for `Final energy`. You should see something that looks like this:
 ```bash
 Total force =     0.000725     Total SCF correction =     0.000086
      SCF correction compared to forces is large: reduce conv_thr to get better values
@@ -178,16 +184,43 @@ Total force =     0.000725     Total SCF correction =     0.000086
 This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can first run the command:
 
 ```python
-python pwlog.py ./pw.out rlx.traj
+python pwlog.py ./pw.out opt.traj
 ```
 Next, in the python editor, enter the codes below:
 
 ```python
 from ase.io import read
-a = read('rlx.traj')
+a = read('opt.traj')
 print(a.get_total_energy())
 ```
 #### Adsorption ####
+In this part, you will be asked to plot the density of states (DOS) of the given structure. To do this, you simply just need to add a few lines in your `anvil.sub`:
+
+```bash
+/home/x-syj1022/apps/qe-7.2/bin/dos.x -in dos.in > dos.out  #DOS calculations
+```
+You also need to make sure that all the needed files are transferred to `$SCRATCH` and back once the job is done. Therefore, your `anvil.sub` now should look like this:
+
+```bash
+cd $SLURM_SUBMIT_DIR #Move to supply directory
+
+mkdir -p $SCRATCH/$SLURM_JOBID
+cp pw.in $SCRATCH/$SLURM_JOBID
+cp dos.in $SCRATCH/$SLURM_JOBID
+
+cd $SCRATCH/$SLURM_JOBID
+
+mpirun /home/x-syj1022/apps/qe-7.2/bin/pw.x -nd 4   <pw.in> pw.out
+
+/home/x-syj1022/apps/qe-7.2/bin/dos.x -in dos.in > dos.out  #DOS calculations
+
+cp pw.out $SLURM_SUBMIT_DIR
+cp dos.out $SLURM_SUBMIT_DIR
+cp dos.dos $SLURM_SUBMIT_DIR
+```
+
+Upon completion, the `dos.dos` file saves the data you need for the plot. You are then responsible for writing a script to generate the plot.
+
 Finally, you will be calculating the adsorption energy of CO<sub>2</sub> on the MgO (100) surface. Adsorption energy calculation is given by:
 
 $$
@@ -196,7 +229,7 @@ $$
 
 You may use -1090.607 eV for E<sub>CO<sub>2</sub></sub>.
 
-To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to ``Edit -> Add atoms``. Alternatively, you can use ``control+A``. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on ``Add`` and the new atom should appear.
+To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to ``Edit -> Add atoms``. Alternatively, you can use ``control``+``A``. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on ``Add`` and the new atom should appear.
 
 **HW 5:** Report the converged energy of the optimized structure. 
 
