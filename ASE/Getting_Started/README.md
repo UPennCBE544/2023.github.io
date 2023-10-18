@@ -146,7 +146,7 @@ The output plot (`xyz.png`) should show the fitted energies as a function of the
 <a name='convergence-with-k-points'></a>
 
 #### Convergence with k-Points ####
-Next,you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember now you run with `kptconv.py` not `lattice.py`. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
+Next, you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember now you run with `kptconv.py` not `lattice.py`. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
 
 From the plot, and your understanding of concepts in DFT, suggest your pick for the k-points and the rationale behind your choice.
 
