@@ -185,7 +185,7 @@ Notice that by running the command above returns energy in eV unit!! I recommend
 <a name='convergence-with-k-points'></a>
 
 #### Convergence with k-Points ####
-Next, you will be running the `kptconv.py` script in the `k-points` folder. Look through the script to understand what its doing. Run this script by submitting a job to an external node as discussed previously. Remember now you run with `kptconv.py` not `lattice.py`. Upon completion, the script outputs a convergence plot and prints the total energies as a function of the k-points used in the calculation.
+Next, you will be running the `kptconv.py` script in the `k-points` folder. You will study the effect of k-point on the convergence by sampling k-points from 2 to 8. I have created the folders labeled with the k-point. Look through the script inside these folders to understand what it is doing. Run the script in each by submitting a job to an external node as discussed previously. Once you have all the calculations done, make a plot for total energy as a function of k-points.
 
 From the plot, and your understanding of concepts in DFT, suggest your pick for the k-points and the rationale behind your choice.
 
