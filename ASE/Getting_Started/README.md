@@ -193,8 +193,8 @@ From the plot, and your understanding of concepts in DFT, suggest your pick for 
 
 <a name='optimization'></a>
 
-#### Optimization ####
-You will then be performing a geometry optimization on MgO. To proceed with this exercise, first take a look at the starting structure `mgo-100.traj` in the `relax` folder by using the GUI. You should see a 4x4x4 surface of MgO (100), with its bottom two layers fixed. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `anvil.sub` file:
+#### Relaxation ####
+You will then be performing a geometry relaxation on MgO. To proceed with this exercise, first take a look at the starting structure `mgo-100.traj` in the `relax` folder (do not use co2_ads_relax) by using the GUI. You should see a 4x4x4 surface of MgO (100), with its bottom two layers fixed. You will be using this script for running the surface optimization calculations. Before submitting the job, please modify the following line (in addition to the script to run) in the `anvil.sub` file:
 
 ```bash
 #SBATCH --mail-user=abc@gmail.com #provide your email for notification
@@ -209,7 +209,7 @@ print(a.get_potential_energy())
 ```
 
 #### Adsorption ####
-In this part, you will be asked to plot the density of states (DOS) of the given structure. To do this, you simply just need to add a few lines in your `anvil.sub`:
+In this part, you will be asked to plot the density of states (DOS) of the given structure. To do this, you simply just need to add a few lines in your `anvil.sub` in the `co2_ads_relax` folder:
 
 ```bash
 /home/x-syj1022/apps/qe-7.2/bin/dos.x -in dos.in > dos.out  #DOS calculations
