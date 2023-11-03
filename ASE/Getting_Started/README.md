@@ -112,9 +112,6 @@ calc = espresso(pw=500,             #plane-wave cutoff
                  outdir='calcdir')   #output directory for Quantum Espresso files
 ```
 
-
-
-
 <a name='lattice-constant-determination'></a>
 
 #### Lattice Constant Determination ####
@@ -181,9 +178,9 @@ a = read('pw.out')
 print(a.get_potential_energy())
 ```
 
-Notice that by running the command above returns energy in eV unit!!
+Notice that by running the command above returns energy in eV unit!! I recommend you to save the command above into a script, e.g., energy.py, as you will need to run this command multiple times throughout this homework.
 
-**HW 5:** Show your Python script, Plot the energy as a function of lattice constant, and Report the lattice constant corresponding to the minimized energy.
+**HW 5:** Plot the energy as a function of lattice constant, and report the lattice constant corresponding to the minimized energy.
 
 <a name='convergence-with-k-points'></a>
 
@@ -202,39 +199,15 @@ You will then be performing a geometry optimization on MgO. To proceed with this
 ```bash
 #SBATCH --mail-user=abc@gmail.com #provide your email for notification
 ```
-Take a look at the `pw.out` file after submitting the job. If you press `Control` + `-`, followed by `Control` + `V`, you should see:
-```bash
-=------------------------------------------------------------------------------=
-   JOB DONE.
-=------------------------------------------------------------------------------=
-```
-You can take a better look at the convergence criteria by doing `Control` + `W` and search for `Final energy`. You should see something that looks like this:
-```bash
-Total force =     0.000725     Total SCF correction =     0.000086
-     SCF correction compared to forces is large: reduce conv_thr to get better values
-     Energy error            =      8.8E-05 Ry
-     Gradient error          =      5.3E-04 Ry/Bohr
 
-     bfgs converged in  11 scf cycles and  10 bfgs steps
-     (criteria: energy <  1.0E+00 Ry, force <  1.9E-03 Ry/Bohr)
-
-     End of BFGS Geometry Optimization
-
-     Final energy             =    -246.9201988489 Ry
-```
-
-This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can first run the command:
-
-```python
-python pwlog.py ./pw.out opt.traj
-```
-Next, in the python editor, enter the codes below:
+Same as before, once the job has done, you can find the total energy by running:
 
 ```python
 from ase.io import read
-a = read('opt.traj')
-print(a.get_total_energy())
+a = read('pw.out')
+print(a.get_potential_energy())
 ```
+
 #### Adsorption ####
 In this part, you will be asked to plot the density of states (DOS) of the given structure. To do this, you simply just need to add a few lines in your `anvil.sub`:
 
@@ -273,7 +246,7 @@ Note, in addition to `pw.in` as the input into `anvil.sub`, we now also need `do
 /
 ```
 
-Upon completion, the `dos.dos` file saves the data you need for the plot. You are then responsible for writing a script to generate the plot.
+Upon completion, the `dos.dos` file saves the data you need for the plot. You are then responsible for converting the data into a plot. You may write a script or use other tools, such as MATLAB and EXCEL to generate the plot.
 
 Finally, you will be calculating the adsorption energy of CO<sub>2</sub> on the MgO (100) surface. Adsorption energy calculation is given by:
 
@@ -285,7 +258,7 @@ You may use -1090.607 eV for E<sub>CO<sub>2</sub></sub>.
 
 To adsorb an atom onto an oxygen, click on the oxygen you want to adsorb onto (for the example of MgO the surface is symmetric, therefore all the oxygens are equivalent). Then go to `Edit` -> `Add atoms`. Alternatively, you can use `control` + `A`. Type in the symbol of element (e.g., C, O) and then select the relative coordinates. Finally, click on `Add` and the new atom should appear.
 
-**HW 5:** Report the converged energy of the optimized structure. 
+**HW 5:** Report the converged energy of the optimized structure, and plot the density of states (DOS). 
 
 **You must succesfully complete this task before proceeding to the Final Project**
 
