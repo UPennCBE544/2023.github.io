@@ -49,7 +49,7 @@ There are two files that are necessary to run jobs on the Anvil cluster. The fir
 #SBATCH -t 96:00:00 #maximum run time (hh:mm:ss)
 #SBATCH --mail-user=abc@gmail.com #provide your email for notification
 #SBATCH --mail-type=all #notify when job finishes
-#SBATCH -A dmr180108  #Allocation (don't change this)
+#SBATCH -A eve210010  #Allocation (don't change this)
 
 
 cd $SLURM_SUBMIT_DIR #Move to supply directory
@@ -127,21 +127,63 @@ You should check the `traj` file (in this case it is `mgo-bulk.traj`) to make su
 python lattice.py
 ```
 
-This should generate a `pw.in` file and this is the input into the submission script `anvil.sub`. Remember to add your email in the `anvil.sub` file to receive notifications on the job! Submit the script by running:
+This should generate ten folders: pw0, pw1, ..., pw9, with each folder containing a `pw.in` file and this is the input into the submission script `anvil.sub`. Each `pw` folder contains a structure with different lattice constant. Your job is to run all the calculations and find the lattice constant corresponding to the lowest total energy. You need to submit and run all ten calculations, but don't worry, I have included a shortcut for you. Remember to change the email address in the `lattice.py` file to receive notifications on the job!. The `lattice.py` automatically creates `anvil.sub` scripts and moves them to the `pw` folders. Therefore, the email address you enter in `lattice.py` gets copied into each `anvil.sub` script. You may go to each `pw` folder and run the following command to submit each job:
 
 ```bash
 sbatch anvil.sub
-``` 
-
-The output trajectory `pw.out` contains information on the energy of the system with respect to the given lattice constant. To obtain the lattice constant that minimizes the energy, you will be writing a simple Python script to perform an Equation of State fit of the obtained energies as a function of the lattice constant. 
-
-To proceed with writing this script, you will be modifying the example script provided here: [ASE-Equation of State](https://wiki.fysik.dtu.dk/ase/tutorials/eos/eos.html). Note that the sample script reads 5 configurations from the trajectory, but we have more configurations than that in our calculations. This script can be run on the login node directly. To execute the script you have written, use the command: 
-```bash
-python xyz.py
 ```
-The output plot (`xyz.png`) should show the fitted energies as a function of the lattice volumes, with the volume corresponding to the minimum and the bulk modulus displayed on the top. Use this, and the fact that we have a cubic lattice to determine the DFT lattice constant.
 
-**HW 5:** Show your Python script, Plot the Equation of State fit, and report the DFT lattice constant.
+Alternatively, the `submit_all.py` script can automatically submit all the `anvil.sub` scripts inside the `pw` folders. You may run the code below:
+
+```python
+python submit_all.py
+```
+
+The lattice constant (in angstrom) can be found in `pw.in` under `CELL_PARAMETERS` in each `pw` folder. For example:
+
+```bash
+CELL_PARAMETERS
+    4.043659800000000d0     0.000000000000000d0     0.000000000000000d0
+    0.000000000000000d0     4.043659800000000d0     0.000000000000000d0
+    0.000000000000000d0     0.000000000000000d0     4.043659800000000d0
+```
+
+Once the job is completed (it should only take a few seconds for this part of homework), you should see the following lines if you type `tail pw.out`:
+
+```bash
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+```
+
+The output trajectory `pw.out` contains information on the energy of the system with respect to the given lattice constant. To find the total energy, one strategy is to take a look at the `pw.out`. You can take a better look at the convergence criteria by doing `Control` + `W` and search for `Final energy`. You should see something that looks like this:
+```bash
+Total force =     0.000725     Total SCF correction =     0.000086
+     SCF correction compared to forces is large: reduce conv_thr to get better values
+     Energy error            =      8.8E-05 Ry
+     Gradient error          =      5.3E-04 Ry/Bohr
+
+     bfgs converged in  11 scf cycles and  10 bfgs steps
+     (criteria: energy <  1.0E+00 Ry, force <  1.9E-03 Ry/Bohr)
+
+     End of BFGS Geometry Optimization
+
+     Final energy             =    -246.9201988489 Ry
+```
+
+This gives us the final energy in Rydbergs. 1 Ry = 13.605684 eV. If you want the energy in eV directly you can first run the command:
+
+Another strategy is to run the python code as follows:
+
+```python
+from ase.io import read
+a = read('pw.out')
+print(a.get_potential_energy())
+```
+
+Notice that by running the command above returns energy in eV unit!!
+
+**HW 5:** Show your Python script, Plot the energy as a function of lattice constant, and Report the lattice constant corresponding to the minimized energy.
 
 <a name='convergence-with-k-points'></a>
 
