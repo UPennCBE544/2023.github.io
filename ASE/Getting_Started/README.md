@@ -30,8 +30,8 @@ ASE scripts can be run directly in the terminal (in the login node) or submittin
 
 To start this tutorial and the exercises that follow, log on to Anvil and download the following:
 ```bash
-wget https://upenncbe544.github.io/CBE544-2023.github.io/ASE/HW5_2023.tar.gz
-tar -zxvf HW5_2023.tar.gz
+wget https://upenncbe544.github.io/CBE544-2023.github.io/ASE/HW5_mod.tar.gz
+tar -zxvf HW5_mod.tar.gz
 cd HW5
 ```
 
