@@ -7,7 +7,7 @@ permalink: /Project/
 
 
 1. [Introduction](#intro)
-2. [Surface Facet (Cleavage Plane)](#facet)
+2. [Alkaline Oxide](#MO)
 3. [Calculations](#calcs)
 
 
@@ -37,12 +37,24 @@ Plan: Use DFT to calculate CO<sub>2</sub> adsorption energies for each adsorptio
 - Therefore, we will be studying the chemistry of carbon mineralization and down the line understanding how that chemistry changes with respect to the many factors, such as cation, facet, presence of water, Si coordination, pH conditon, etc.
 <a name='protocol'></a>
 
-## Surface Facet (Cleavage Plane) ##
+## Alkaline Oxide ##
 
-Both MgO and CaO are simple compounds with a cubic crystal. Cleavage is the tendency of a crystalline material to break along definite planes, creating smooth surfaces. In general, we compare the cleavage energy to determine whether a certain facet is stable. The calculation of the cleavage energy is given as follows:
+This is part one of the final project. In this part, you will be studying your assigned MgO (or CaO) surface with appropriate facet and termination.
+
+### Surface Facet (Cleavage Plane) ###
+
+Both MgO and CaO are simple compounds with a cubic crystal. A surface facet is created by performing cleavage on a bulk material. The resulting faceted surface is denoted by the Miller indices, such as (100), (010), (211), etc. In general, we compare the cleavage energy density to determine whether a certain facet is stable relative to another. The calculation of the cleavage energy density is given as follows:
 
 $$
 \epsilon_{cleave}(i,j) = -\frac{1}{2A}(E_{slab}^{i}+E_{slab}^{j}-2E_{bulk})
 $$
 
-where $\epsilon_{cleave}(i,j)$
+where $\epsilon_{cleave}(i,j)$ is the cleavage energy density and i, j are the indices for two complementary facet terminations (you will know this better later). $A$ is the surface area of a unit cell.
+
+
+**Task 1: Create a surface off of bulk **
+
+```
+
+```
+
