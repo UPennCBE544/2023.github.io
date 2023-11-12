@@ -39,8 +39,10 @@ Plan: Use DFT to calculate CO<sub>2</sub> adsorption energies for each adsorptio
 
 ## Surface Facet (Cleavage Plane) ##
 
-Both MgO and CaO are simple compounds with a cubic crystal. Cleavage is the tendency of a crystalline material to break along definite planes, creating smooth surfaces. In general, we compare the cleavage energy to determine whether a certain facet is stable. 
+Both MgO and CaO are simple compounds with a cubic crystal. Cleavage is the tendency of a crystalline material to break along definite planes, creating smooth surfaces. In general, we compare the cleavage energy to determine whether a certain facet is stable. The calculation of the cleavage energy is given as follows:
 
 $$
 \epsilon_{cleave}(i,j) = -\frac{1}{2A}(E_{slab}^{i}+E_{slab}^{j}-2E_{bulk})
 $$
+
+where \epsilon_{cleave}(i,j)
