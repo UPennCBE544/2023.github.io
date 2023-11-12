@@ -54,7 +54,11 @@ where $\epsilon_{cleave}(i,j)$ is the cleavage energy density and i, j are the i
 
 **Task 1: Create a surface off of bulk**
 
-```
+First, run the commands below to obtain the optimized bulk MgO and CaO structure and the script to create surfaces. Now that you are already familiar with Linux, you need to organize your workspace. Please feel free to create directories to make your life easier! Note you only need to run one line out of the first two lines below, depending on your assignment.
 
 ```
-
+cp /home/x-syj1022/minerals/MgO/opt.traj ./
+cp /home/x-syj1022/minerals/CaO/opt.traj ./
+cp /home/x-syj1022/scripts/surface.py ./ 
+```
+Make sure you understand what the script does
