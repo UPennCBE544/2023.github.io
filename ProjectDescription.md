@@ -8,7 +8,7 @@ permalink: /Project/
 
 1. [Introduction](#intro)
 2. [Alkaline Oxide](#MO)
-3. [Calculations](#calcs)
+3. [silicate](#silicate)
 
 
 For the Final Project, you will perform a comprehensive study on CO<sub>2</sub> adsorption on mineral surfaces and its transformation due to interaction with these surfaces. The students will be assigned to two groups. One group will study magnesium-based oxides and silicates, while the other group will study calcium-based oxides and silicates. Each group will present their results in class that will be critiqued by the other groups. Finally, each group will jointly write a final report on the combined data.
@@ -35,11 +35,12 @@ Plan: Use DFT to calculate CO<sub>2</sub> adsorption energies for each adsorptio
 - Mg and Ca containing (alumino)silicates naturally exist in mine waste tailings. The use of these tailings is considered an alternative avenue for mineralization because they are an inherently cost-effective feedstock that could generate revenue in addition to captuing CO<sub>2</sub>. The presence of Si adds complexity to the study due to the different Si coordination numbers.
 - When CO<sub>2</sub> is hydrated, it can undergo protonation/deprotonation through interaction with water to form charged intermediates depending on the solution pH. These species typically are HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup>. This motivates us to study how these species interaction with mineral surfaces is differed from molecular CO<sub>2</sub>.
 - Therefore, we will be studying the chemistry of carbon mineralization and down the line understanding how that chemistry changes with respect to the many factors, such as cation, facet, presence of water, Si coordination, pH conditon, etc.
-<a name='protocol'></a>
+- 
+<a name='MO'></a>
 
 ## Alkaline Oxide ##
 
-This is part one of the final project. In this part, you will be studying your assigned MgO (or CaO) surface with appropriate facet and termination.
+This is part one of the final project. In this part, you will be studying your assigned MgO (or CaO) surface with appropriate facet and termination, including whether it is moisturized.
 
 ### Surface Facet (Cleavage Plane) ###
 
@@ -81,7 +82,7 @@ After you have run ``python surface.py`` and check it through ``ase gui init.tra
 
 If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens.
 
-Now remember we need a 2x2x2 slab model, but our current model is 1x1x2. To repeat the cell in both x and y directions, go to `View` then `Repeat` and set to the correct values. Next, hit `Set unit cell`. Double check if your cell is actually doubled in both directions. Finally, select the entire two bottom layers (this should be half of your entire cell), and go to `Tools` -> `Constraints` -> `Fix`. You should see "cross" symbols on the atoms you selected. This means we are fixing the bottom two layers to their original positions and only allow the top two layers to relax.
+Now remember we need a 2x2x2 slab model, but our current model is 1x1x2. To repeat the cell in both x and y directions, go to `View` then `Repeat` and set to the correct values. Next, hit the `Set unit cell` button. Double check if your cell is actually doubled in both directions. Finally, select the entire two bottom layers (this should be half of your entire cell), and go to `Tools` -> `Constraints` -> `Fix`. You should see a "cross" symbol on every atom you selected. This means we are contraining the bottom two layers to their bulk lattice coordinates and only allowing the top two layers to relax.
 
 Always remember to save your `.traj` file!
 
@@ -90,11 +91,11 @@ Once you finish setting up the surface, please check with me. You need my permis
 
 **Task 2: Add moisture components to your surface**
 
-Please skip this task if you are not assigned with an moisturized surface.
+You do not need to work on this part if you are not assigned with an moisturized surface. HOWEVER, everyone needs to read and understand the instructions below, as everyone will work with moisturized surface in part 2 of the final project.
 
 `Add stability phase diagram here`
 
-As we can imagine, when water interacts with the surfaces, it might break down into hydrogen and hydroxide. These particles may or may not favor retaining on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams. The black dashed line falls on the saturation chemical potential of water. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces and add these particles to your structure.
+As we can imagine, when water interacts with the surfaces, it might also adsorb with its molecular form or dissociative adsorb in which case it breaks down into hydrogen and hydroxide. These particles play very important roles in boosting carbonation proccesses. But first thing first, we need to investigate if they favor retaining on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams. The black dashed line falls on the saturation chemical potential of water. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces and add these particles to your structure.
 
 To simplify your work, I have provided you with an automation script `auto_ads.py`. You may use the alias `ads` as a shortcut to run this script. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens.
 
@@ -115,3 +116,13 @@ Once you have gone through all the calculations on different adsorption sites an
 **Task 6: Report DOS, final bond angles, bond lengths, and any abnormal phenomena**
 
 Plot DOS as what you have done in HW5. You can visually check to get the bond angles and bond lengths from `rlx.traj`. You may want to report any abnormal phenomena over the course of relaxation. These can include but not limited to bond break within CO<sub>2</sub>, bond reformation, and severe surface reconstruction.
+
+
+<a name='silicate'></a>
+
+## Silicate ##
+
+This is part two of the final project. In this part, you will be studying your assigned silicate (forsterite, enstatite, larnite, wollastonite) surface with appropriate facet and termination, including whether it is moisturized.
+
+Although MgO and CaO are chemically the simpliest minerals for carbonation, you have already seen the thorough investigation of surface CO<sub>2</sub> adsorption is rather demanding. As we delve into more complex and asymmetric surfaces, the calculations that need to be done are skyrocketing. For example, the image below shows the carbonation sites to be considered on larnite (100) surface for a complete analysis. For each larnite unit cell, there are four unique calciums and six oxygens exposed, whereas there are only one unqiue calcium and one oxygen in CaO. To fully cover every single site as what we have done for MgO and CaO, it requires 20 times as much as our previous work! Of course, the computational resources don't allow us to do this. Instead, we are going to start with focusing on the oxygen sites only. Also, we are only going to consider the molecular CO<sub>2</sub>.
+
