@@ -65,7 +65,7 @@ cp /home/x-syj1022/scripts/surface.py ./
 Make sure you understand what the script does. You need to modify the line below based on the specific facet you are assigned to. Please check what your assignment is carefully. Here ``(1, 0, 0)`` is the target facet and ``2`` means you are making a four-layer slab. 
 
 ```
-s1 = surface(bulk, (1, 0, 0), 2) #specify surface off of bulkei
+s1 = surface(bulk, (1, 0, 0), 2) #specify surface off of bulk
 ```
 
 Note our goal is to create a 2x2x2 slab model. If you are working with (111) facet, please change this to:
@@ -78,7 +78,7 @@ You might be wondering why we specify the number of layers as ``3`` not ``2`` he
 
 After you have run ``python surface.py`` and check it through ``ase gui init.traj``. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
 
-<center><img src="Images/raw_surface.png" alt="window" style="width: 700px;"/><br>
+<center><img src="Images/raw_surface.png" alt="window" style="width: 800px;"/><br>
 
 If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens.
 
