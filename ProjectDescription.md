@@ -45,4 +45,4 @@ $$
 \epsilon_{cleave}(i,j) = -\frac{1}{2A}(E_{slab}^{i}+E_{slab}^{j}-2E_{bulk})
 $$
 
-where &epsilon<sub>cleave</sub>(i,j)
+where $\epsilon_{cleave}(i,j)$
