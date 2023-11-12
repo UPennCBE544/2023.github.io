@@ -77,7 +77,7 @@ You might be wondering why we specify the number of layers as ``3`` not ``2`` he
 
 After you have run ``python surface.py`` and check it through ``ase gui init.traj``. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
 
-<center><img src="Images/raw_surface.png" alt="window" style="width: 400px;"/><br>
+<center><img src="Images/raw_surface.png" alt="window" style="width: 700px;"/><br>
 
 If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens.
 
@@ -86,3 +86,32 @@ Now remember we need a 2x2x2 slab model, but our current model is 1x1x2. To repe
 Always remember to save your `.traj` file!
 
 Once you finish setting up the surface, please check with me. You need my permission to move on from here.
+
+
+**Task 2: Add moisture components to your surface**
+
+Please skip this task if you are not assigned with an moisturized surface.
+
+`Add stability phase diagram here`
+
+As we can imagine, when water interacts with the surfaces, it might break down into hydrogen and hydroxide. These particles may or may not favor retaining on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams. The black dashed line falls on the saturation chemical potential of water. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces and add these particles to your structure.
+
+To simplify your work, I have provided you with an automation script `auto_ads.py`. You may use the alias `ads` as a shortcut to run this script. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens.
+
+**Task 3: CO<sub>2</sub> adsorption**
+
+As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. To comprehensively walk through the many different possibilites, please follow the diagrams I made as shown below. The original paper can be found here.
+
+Recall you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface in HW5. Now, to reduce human error, I have prepared automation scripts for you. For adsorption on metal sites and oxygen sites, please use `CO2_M_ads.py`. For adsorption on M-O bond, please use `CO2_MO_ads.py`. For adsorption on the four-fold center, please use `CO2_center_ads.py`. Note, these scripts are only for adding molecular CO<sub>2</sub>. However, all of you will be working with HCO<sub>3</sub><sup>-</sup> or CO<sub>3</sub><sup>2-</sup>. Please copy these scripts to your directory and make changes in accordance. Note this is the hardest part of the final project and needs a lot of geometry math work. Please feel free to ask for my help on this part.
+
+**Task 4: SCF calculations**
+
+The calculated adsorption energy comes from both the surface relaxation and CO<sub>2</sub> adsorption energy costs. However, our interest is the adsorption energy, thus we need to eliminate the effect of surface relaxation. To do this, you want to remove the CO<sub>2</sub> from the converged structure and perform an SCF calculation. For each of the completed relaxation calculation, you can run `python pwlog.py` to get a `rlx.traj`. Make a directory and store the `rlx.traj`. Go to the directory and type `scf` that calls the alias to automatically perform the atom deletion and job submission.
+
+**Task 5: Density of States (DOS) calculations**
+
+Once you have gone through all the calculations on different adsorption sites and obtained the adsorption energies. Find the one with the lowest energy and run the DOS calculation on it. 
+
+**Task 6: Report DOS, final bond angles, bond lengths, and any abnormal phenomena**
+
+Plot DOS as what you have done in HW5. You can visually check to get the bond angles and bond lengths from `rlx.traj`. You may want to report any abnormal phenomena over the course of relaxation. These can include but not limited to bond break within CO<sub>2</sub>, bond reformation, and severe surface reconstruction.
