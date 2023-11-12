@@ -49,7 +49,7 @@ $$
 \epsilon_{cleave}(i,j) = -\frac{1}{2A}(E_{slab}^{i}+E_{slab}^{j}-2E_{bulk})
 $$
 
-where $\epsilon_{cleave}(i,j)$ is the cleavage energy density and i, j are the indices for two complementary facet terminations (you will know this better later). $A$ is the surface area of a unit cell.
+where $\epsilon_{cleave}(i,j)$ is the cleavage energy density and i, j are the indices for two complementary facet terminations (you will know this better later). $A$ is the surface area of a unit cell. Please DO NOT run jobs to calculate the cleavage energy density yourself, as we have only limited computational resources.
 
 
 **Task 1: Create a surface off of bulk**
@@ -61,4 +61,19 @@ cp /home/x-syj1022/minerals/MgO/opt.traj ./
 cp /home/x-syj1022/minerals/CaO/opt.traj ./
 cp /home/x-syj1022/scripts/surface.py ./ 
 ```
-Make sure you understand what the script does
+Make sure you understand what the script does. You need to modify the line below based on the specific facet you are assigned to. Please check what your assignment is carefully. Here ``(1, 0, 0)`` is the target facet and ``4`` means you are making a four-layer slab. 
+
+```
+s1 = surface(bulk, (1, 0, 0), 4) #specify surface off of bulk
+```
+
+Note our goal is to create a 2x2x4 slab model. If you are working with (111) facet, please change this to:
+
+```
+s1 = surface(bulk, (1, 1, 1), 5) #specify surface off of bulk
+```
+
+You might be wondering why we specify the number of layers as ``5`` here, but you will know why soon.
+
+
+
