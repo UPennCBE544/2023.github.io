@@ -62,7 +62,7 @@ cp /home/x-syj1022/minerals/MgO/opt.traj ./
 cp /home/x-syj1022/minerals/CaO/opt.traj ./
 cp /home/x-syj1022/scripts/surface.py ./ 
 ```
-Make sure you understand what the script does. You need to modify the line below based on the specific facet you are assigned to. Please check what your assignment is carefully. Here ``(1, 0, 0)`` is the target facet and ``2`` means you are making a four-layer slab. 
+Make sure you understand what the script does. You need to modify the line below based on the specific facet you are assigned to. Please check what your assignment is carefully. Here ``(1, 0, 0)`` is the target facet and ``2`` means you are making a four-layer slab (double the unit cell in z-direction). 
 
 ```
 s1 = surface(bulk, (1, 0, 0), 2) #specify surface off of bulk
@@ -74,9 +74,13 @@ Note our goal is to create a 2x2x2 slab model. If you are working with (111) fac
 s1 = surface(bulk, (1, 1, 1), 3) #specify surface off of bulk
 ```
 
-You might be wondering why we specify the number of layers as ``3`` not ``2`` here, but you will know why soon.
+You might be wondering why we specify the number of layers as ``3`` not ``2`` here, but you will know why soon. Then please make sure you add vacuum space in z-direction. This is done by the code:
 
-After you have run ``python surface.py`` and check it through ``ase gui init.traj``. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
+```
+s1.center(vacuum=11, axis=2) #speficy vacuum dimension and axis
+```
+
+After you have run ``python surface.py`` and check it through ``ase gui init.traj``, you should be able to see structures exactly as shown below. Note this is a side view - press `X` to view from the side. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
 
 <center><img src="Images/raw_surface.png" alt="window" style="width: 800px;"/><br>
 
