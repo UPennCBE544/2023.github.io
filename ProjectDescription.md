@@ -75,7 +75,7 @@ s1 = surface(bulk, (1, 1, 1), 3) #specify surface off of bulk
 
 You might be wondering why we specify the number of layers as ``3`` not ``2`` here, but you will know why soon.
 
-After you have run ``python surface.py`` and check it through ``ase gui init.traj``, you should be able to see these:
+After you have run ``python surface.py`` and check it through ``ase gui init.traj``. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
 
 <left><img src="Images/100-surface.png" alt="window" style="width: 400px;"/><br>
 <right><img src="Images/111-surface.png" alt="window" style="width: 400px;"/><br>
