@@ -52,7 +52,7 @@ $$
 where $\epsilon_{cleave}(i,j)$ is the cleavage energy density and i, j are the indices for two complementary facet terminations (you will know this better later). $A$ is the surface area of a unit cell.
 
 
-**Task 1: Create a surface off of bulk **
+**Task 1: Create a surface off of bulk**
 
 ```
 
