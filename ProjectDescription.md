@@ -7,7 +7,7 @@ permalink: /Project/
 
 
 1. [Introduction](#intro)
-2. [Edge Study Protocol](#protocol)
+2. [Surface Facet (Cleavage Plane)](#facet)
 3. [Calculations](#calcs)
 
 
@@ -45,4 +45,4 @@ $$
 \epsilon_{cleave}(i,j) = -\frac{1}{2A}(E_{slab}^{i}+E_{slab}^{j}-2E_{bulk})
 $$
 
-where \epsilon_{cleave}(i,j)
+where &epsilon<sub>cleave</sub>(i,j)
