@@ -97,9 +97,6 @@ Once you finish setting up the surface, please check with me. You need my permis
 
 You do not need to work on this part if you are not assigned with an moisturized surface. HOWEVER, everyone needs to read and understand the instructions below, as everyone will work with moisturized surface in part 2 of the final project.
 
-<center><img src="Images/MgO.png" alt="window" style="width: 1000px;"/><br>
-<center><img src="Images/CaO.png" alt="window" style="width: 1000px;"/><br>
-
 As we can imagine, when water interacts with the surfaces, it might directly adsorb with its molecular form or dissociatively adsorb in which case it breaks down into hydrogen, oxygen, and hydroxide. These particles play very important roles in altering carbonation performance. But to start with, we need to investigate if each individual (pairing) of them favors adsorption on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams as shown below. Note for our current analysis, we only investigate the surfaces decorated with the dissociated particles (you might have molecular water directly adsorbed but this is quite computationally expensive to run). Here, you are only responsible for being able to intrepret from the diagrams. If you are interested in how to derive the equations leading to the diagrams, we can discuss later. In these diagrams, the black dashed line falls on the chemical potential of saturated water. This means water reaches an equilibrium between liquid and gaseous phases at this chemical potential. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces when saturated water is present and add these particles to your structure.
 
 <center><img src="Images/MgO.png" alt="window" style="width: 1000px;"/><br>
@@ -107,11 +104,21 @@ As we can imagine, when water interacts with the surfaces, it might directly ads
   
 Recall from HW5 on how to add atoms on top of another. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens. If you need to add `H and OH`, please makes sure these particles are right next to each other.
 
-**Task 3: CO<sub>2</sub> adsorption**
+**Task 3: CO<sub>2</sub> adsorption and transformation**
 
-As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. To comprehensively walk through the many different possibilites, please follow the diagrams I made as shown below. The original paper can be found here (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
+As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. To comprehensively walk through the many different possibilites, I have summarized the adsorption sites and initial configurations you need to investigate. The original paper for proposing this analysis method can be found here (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
-Recall you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface in HW5. Now, to reduce human error, I have prepared automation scripts for you. For adsorption on metal sites and oxygen sites, please use `CO2_M_ads.py`. For adsorption on M-O bond, please use `CO2_MO_ads.py`. For adsorption on the four-fold center, please use `CO2_center_ads.py`. Note, these scripts are only for adding molecular CO<sub>2</sub>. However, all of you will be working with HCO<sub>3</sub><sup>-</sup> or CO<sub>3</sub><sup>2-</sup>. Please copy these scripts to your directory and make changes in accordance. Note this is the hardest part of the final project and needs a lot of geometry math work. Please feel free to ask for my help on this part.
+<center><img src="Images/position.png" alt="window" style="width: 1000px;"/><br>
+  
+Recall you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface in HW5. Now, for convenience and for human error reduction, I have prepared automation scripts for you. For adsorption on metal sites and oxygen sites, please use `CO2_M_ads.py`. For adsorption on M-O bond, please use `CO2_MO_ads.py`. For adsorption on the four-fold center, please use `CO2_center_ads.py`. Note, these scripts are only for adding molecular CO<sub>2</sub>. However, all of you will be working with HCO<sub>3</sub><sup>-</sup> or CO<sub>3</sub><sup>2-</sup>. Please copy these scripts to your directory and make changes in accordance, using the commands shown below. Note this is the hardest part of the final project and needs a lot of geometry math work. Please feel free to ask for my help on this part. 
+
+```
+cp /home/x-syj1022/scripts/CO2_M_ads.py
+cp /home/x-syj1022/scripts/CO2_MO_ads.py
+cp /home/x-syj1022/scripts/CO2_center.ads.py
+```
+
+Once each calculation is finished, you can visualize the final relaxed structure by running `python pwlog2traj_const.py ./pw.out rlx.traj`. This script can also be found in my `scripts` folder. You may also directly use the alias `pwl`. What this script does is it converts the position information stored in `pw.out` into a graphically visualizable form. From there you can obtain useful information such as CO<sub>2</sub> bond lengths, bond angles, and if there are any abnormal events. These events include bond breakage within CO<sub>2</sub>, bond reformation, and severe surface reconstruction. In some cases, your structure may be refolded due to the periodic boundary conditions. If this happens to you, you can repeat your cell in `y` dimension once.
 
 **Task 4: SCF calculations**
 
@@ -123,7 +130,7 @@ Once you have gone through all the calculations on different adsorption sites an
 
 **Task 6: Report DOS, final bond angles, bond lengths, and any abnormal phenomena**
 
-Plot DOS as what you have done in HW5. You can visually check to get the bond angles and bond lengths from `rlx.traj`. You may want to report any abnormal phenomena over the course of relaxation. These can include but not limited to bond break within CO<sub>2</sub>, bond reformation, and severe surface reconstruction.
+Plot DOS as what you have done in HW5. You can visually check to get the bond angles and bond lengths from `rlx.traj`. You may want to report any abnormal phenomena over the course of relaxation. These can .
 
 
 <a name='silicate'></a>
