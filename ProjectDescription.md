@@ -97,7 +97,8 @@ Once you finish setting up the surface, please check with me. You need my permis
 
 You do not need to work on this part if you are not assigned with an moisturized surface. HOWEVER, everyone needs to read and understand the instructions below, as everyone will work with moisturized surface in part 2 of the final project.
 
-`Add stability phase diagram here`
+<center><img src="Images/MgO.png" alt="window" style="width: 400px;"/><br>
+<center><img src="Images/CaO.png" alt="window" style="width: 400px;"/><br>
 
 As we can imagine, when water interacts with the surfaces, it might also adsorb with its molecular form or dissociative adsorb in which case it breaks down into hydrogen and hydroxide. These particles play very important roles in boosting carbonation proccesses. But first thing first, we need to investigate if they favor retaining on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams. Here, you are only responsible for being able to intrepret from the diagrams. If you are interested in how to derive the equations leading to the diagrams, we can discuss later. In these diagrams, the black dashed line falls on the saturation chemical potential of water. This means water reaches an equilibrium between liquid and gaseous phase at this chemical potential. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces and add these particles to your structure.
 
