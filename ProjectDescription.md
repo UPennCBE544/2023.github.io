@@ -106,7 +106,7 @@ Recall from HW5 on how to add atoms on top of another. Note by our convention, w
 
 **Task 3: CO<sub>2</sub> adsorption and transformation**
 
-As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this sampling method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
+As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
 <center><img src="Images/position.png" alt="window" style="width: 1000px;"/><br>
   
