@@ -211,10 +211,10 @@ cp dos.out $SLURM_SUBMIT_DIR
 cp dos.dos $SLURM_SUBMIT_DIR
 ```
 
-Plot DOS using the script I provide. This can be found by running:
+Plot DOS using the script I provide for you. This can be found by running:
 
 ```
-cp /home/x-syj1022/scripts/plot.py ./
+cp /home/x-syj1022/scripts/dos_plot.py ./
 ```
 
 
