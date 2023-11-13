@@ -106,11 +106,11 @@ Recall from HW5 on how to add atoms on top of another. Note by our convention, w
 
 **Task 3: CO<sub>2</sub> adsorption and transformation**
 
-As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. To comprehensively walk through the many different possibilites, I have summarized the adsorption sites and initial configurations you need to investigate. The original paper for proposing this analysis method can be found here (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
+As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this sampling method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
 <center><img src="Images/position.png" alt="window" style="width: 1000px;"/><br>
   
-Recall you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface in HW5. Now, for convenience and for human error reduction, I have prepared automation scripts for you. For adsorption on metal sites and oxygen sites, please use `CO2_M_ads.py`. For adsorption on M-O bond, please use `CO2_MO_ads.py`. For adsorption on the four-fold center, please use `CO2_center_ads.py`. Note, these scripts are only for adding molecular CO<sub>2</sub>. However, all of you will be working with HCO<sub>3</sub><sup>-</sup> or CO<sub>3</sub><sup>2-</sup>. Please copy these scripts to your directory and make changes in accordance, using the commands shown below. Note this is the hardest part of the final project and needs a lot of geometry math work. Please feel free to ask for my help on this part. 
+Recall that you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface in HW5. Now, for convenience and for human error reduction, I have prepared automation scripts for you. For adsorption on metal sites and oxygen sites, please use `CO2_M_ads.py`. For adsorption on M-O bond, please use `CO2_MO_ads.py`. For adsorption on the four-fold center, please use `CO2_center_ads.py`. Note, these scripts are only for adding molecular CO<sub>2</sub>. However, all of you will be working with HCO<sub>3</sub><sup>-</sup> or CO<sub>3</sub><sup>2-</sup>. Please copy these scripts to your directory and make changes in accordance, using the commands shown below. Note this is the hardest part of the final project and needs a lot of geometry math work. Please feel free to ask for my help on this part. 
 
 ```
 cp /home/x-syj1022/scripts/CO2_M_ads.py
@@ -118,19 +118,96 @@ cp /home/x-syj1022/scripts/CO2_MO_ads.py
 cp /home/x-syj1022/scripts/CO2_center.ads.py
 ```
 
-Once each calculation is finished, you can visualize the final relaxed structure by running `python pwlog2traj_const.py ./pw.out rlx.traj`. This script can also be found in my `scripts` folder. You may also directly use the alias `pwl`. What this script does is it converts the position information stored in `pw.out` into a graphically visualizable form. From there you can obtain useful information such as CO<sub>2</sub> bond lengths, bond angles, and if there are any abnormal events. These events include bond breakage within CO<sub>2</sub>, bond reformation, and severe surface reconstruction. In some cases, your structure may be refolded due to the periodic boundary conditions. If this happens to you, you can repeat your cell in `y` dimension once.
+Once each calculation is done, you can visualize the final relaxed structure by running `python pwlog2traj_const.py ./pw.out rlx.traj`. This script can also be found in my `scripts` folder. You may also directly use the alias `pwl`. What this script does is it converts the position information stored in `pw.out` into a graphically visualizable form. From there you can obtain useful information such as CO<sub>2</sub> bond lengths, bond angles, and if there are any abnormal events. These events include bond breakage within CO<sub>2</sub>, bond reformation, and severe surface reconstruction. In some cases, your structure may be refolded due to the periodic boundary conditions. If this happens to you, you can repeat your cell in `y` dimension once.
 
-**Task 4: SCF calculations**
+**Task 4: Self-consistent Field (SCF) calculations**
 
-The calculated adsorption energy comes from both the surface relaxation and CO<sub>2</sub> adsorption energy costs. However, our interest is the adsorption energy, thus we need to eliminate the effect of surface relaxation. To do this, you want to remove the CO<sub>2</sub> from the converged structure and perform an SCF calculation. For each of the completed relaxation calculation, you can run `python pwlog.py` to get a `rlx.traj`. Make a directory and store the `rlx.traj`. Go to the directory and type `scf` that calls the alias to automatically perform the atom deletion and job submission.
+Referring back to the formula for adsorption energy calculation:
+
+$$
+\Delta E_\mathrm{ads} = E_\mathrm{slab+CO_{2}}  - E_\mathrm{slab} - E_\mathrm{CO_{2}}
+$$
+
+The calculated adsorption energy is a result of both CO<sub>2</sub> interaction with a surface AND surface relaxation. But we are only interested in the contribution from CO<sub>2</sub> interaction with the surface. To eliminate the interference of surface relaxation, we need to use the energy for the relaxed surface (but without the adsorbed CO<sub>2</sub>) for $E_\mathrm{slab}$ (in HW5 you were not asked to do so because the surface was barely relaxed, thus the relaxation effect was negligible). To proceed, you first translate `pw.out` into `rlx.traj` as previously discussed. Then you want to remove the CO<sub>2</sub> from the relaxed structure and perform an SCF calculation. An SCF calculation computes the total energy of the given structure without performing geometric optimization. Make a directory and store the `rlx.traj` under the new directory. Go to the directory and type `scf` that calls the alias to automatically perform the atom deletion and job submission. **You need to do this step for each completed relax calculations!**
 
 **Task 5: Density of States (DOS) calculations**
 
-Once you have gone through all the calculations on different adsorption sites and obtained the adsorption energies. Find the one with the lowest energy and run the DOS calculation on it. 
+Once you have gone through all the calculations discussed above. Determine the starting conditions that resulted in the lowest adsorption energy. We want to plot the DOS of lowest energy case. To run the DOS calculation, you first need to run an SCF calculation. Please write a script as follows to read `rlx.traj` and specify an SCF calculation. 
 
-**Task 6: Report DOS, final bond angles, bond lengths, and any abnormal phenomena**
+```
+from ase import io
+from ase import Atoms
+from espresso import espresso
+from ase.optimize import QuasiNewton
+from ase.constraints import FixAtoms
+import sys
+import pickle
 
-Plot DOS as what you have done in HW5. You can visually check to get the bond angles and bond lengths from `rlx.traj`. You may want to report any abnormal phenomena over the course of relaxation. These can .
+slab =  io.read('rlx.traj')
+slab.set_pbc([True,True,True])
+
+
+calc = espresso(mode='scf',         #perform an scf calculation
+                pw=500,             #plane-wave cutoff
+                dw=5000,            #density cutoff
+                xc='BEEF-vdw',      #exchange-correlation functional
+                kpts=(4,4,1),       #k-point sampling;
+                nbands=-30,         #20 extra bands besides the bands needed to hold
+                sigma=0.1,
+                opt_algorithm = 'bfgs',
+                fmax = 0.03,
+                nstep=500,
+                nosym=True,
+                #pot_extrapolation='second_order',
+                #tempw=300,  #FOR MD
+                convergence= {'energy':1e-5,
+                    'mixing':0.1,
+                    'nmix':10,
+                    'mix':4,
+                    'maxsteps':2000,
+                    'diag':'david'
+                    },  #convergence parameters
+                 dipole={'status':True}, #dipole correction to account for periodicity in z
+                 output = {'avoidio':False,
+                    'removewf':True,
+                    'wf_collect':False},
+                 #U={'Ti':2.0},
+                 #U_projection_type='atomic',
+                 spinpol=False,
+                 parflags='-npool 1',
+                 onlycreatepwinp='pw.in',
+                 outdir='calcdir')   #output directory for Quantum Espresso files
+
+
+slab.set_calculator(calc)
+calc.initialize(slab)
+```
+
+Next, add the following lines in your submission script and submit the job. Note we have done this before in HW5, but now you need to make modifications to your `anvil.sub` yourself!
+
+```
+cd $SLURM_SUBMIT_DIR #Move to supply directory
+
+mkdir -p $SCRATCH/$SLURM_JOBID
+cp pw.in $SCRATCH/$SLURM_JOBID
+cp dos.in $SCRATCH/$SLURM_JOBID
+
+cd $SCRATCH/$SLURM_JOBID
+
+mpirun /home/x-syj1022/apps/qe-7.2/bin/pw.x -nd 4   <pw.in> pw.out
+
+/home/x-syj1022/apps/qe-7.2/bin/dos.x -in dos.in > dos.out  #DOS calculations
+
+cp pw.out $SLURM_SUBMIT_DIR
+cp dos.out $SLURM_SUBMIT_DIR
+cp dos.dos $SLURM_SUBMIT_DIR
+```
+
+Plot DOS using the script I provide. This can be found by running:
+
+```
+cp /home/x-syj1022/scripts/plot.py ./
+```
 
 
 <a name='silicate'></a>
