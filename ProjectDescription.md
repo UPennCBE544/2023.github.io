@@ -140,7 +140,7 @@ The calculated adsorption energy is a result of both CO<sub>2</sub> interaction 
 
 **Task 5: Density of States (DOS) calculations**
 
-Once you have gone through all the calculations discussed above. Determine the starting conditions that resulted in the lowest adsorption energy. We want to plot the DOS of lowest energy case. To run the DOS calculation, you first need to run an SCF calculation. Please write a script as follows to read `rlx.traj` and specify an SCF calculation. 
+Once you have gone through all the calculations discussed above. Determine the starting conditions that resulted in the lowest adsorption energy. We want to plot the DOS of the lowest energy case. To run the DOS calculation, you first need to run an SCF calculation. Please write a script as follows to read `rlx.traj` and specify an SCF calculation. 
 
 ```
 from ase import io
