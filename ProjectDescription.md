@@ -120,6 +120,10 @@ cp /home/x-syj1022/scripts/CO2_center.ads.py
 
 Once each calculation is done, you can visualize the final relaxed structure by running `python pwlog2traj_const.py ./pw.out rlx.traj`. This script can also be found in my `scripts` folder. You may also directly use the alias `pwl`. What this script does is it converts the position information stored in `pw.out` into a graphically visualizable form. From there you can obtain useful information such as CO<sub>2</sub> bond lengths, bond angles, and if there are any abnormal events. These events include bond breakage within CO<sub>2</sub>, bond reformation, and severe surface reconstruction. In some cases, your structure may be refolded due to the periodic boundary conditions. If this happens to you, you can repeat your cell in `y` dimension once.
 
+As a recommendation, you may want to create a table for each of HCO<sub>3</sub><sup></sup>* and CO<sub>3</sub><sup>2</sup>* like the example shown below. Be careful that the total number of calculations vary slightly for different facet terminations.
+
+<center><img src="Images/table.png" alt="window" style="width: 800px;"/><br>
+
 **Task 4: Self-consistent Field (SCF) calculations**
 
 Referring back to the formula for adsorption energy calculation:
