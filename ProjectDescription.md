@@ -104,24 +104,33 @@ As we can imagine, when water interacts with the surfaces, it might directly ads
   
 Recall from HW5 on how to add atoms on top of another. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens. If you need to add `H and OH`, please makes sure these particles are right next to each other.
 
-**Task 3: CO<sub>2</sub> adsorption and transformation**
+**Task 3: HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption and thier chemical transformation**
 
 As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
 <center><img src="Images/position.png" alt="window" style="width: 1000px;"/><br>
   
-Recall that you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface in HW5. Now, for convenience and for human error reduction, I have prepared automation scripts for you. For adsorption on metal sites and oxygen sites, please use `CO2_M_ads.py`. For adsorption on M-O bond, please use `CO2_MO_ads.py`. For adsorption on the four-fold center, please use `CO2_center_ads.py`. Note, these scripts are only for adding molecular CO<sub>2</sub>. However, all of you will be working with HCO<sub>3</sub><sup>-</sup> or CO<sub>3</sub><sup>2-</sup>. Please copy these scripts to your directory and make changes in accordance, using the commands shown below. Note this is the hardest part of the final project and needs a lot of geometry work. Please feel free to ask for my help on this part. Also, please be aware that DFT cannot directly deal with charged species. Instead, we add the HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> as neutrally charged species, i.e. HCO<sub>3</sub>* and CO<sub>3</sub>*. DFT calculations can automatically correct the total charges. This can be confirmed by Bader Charge Analysis, but we will not dig into doing this for the final project.
+Recall in HW5 that you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface and ran the calculations. Although you are not asked to do so, you may have access to my automation scripts for adding CO<sub>2</sub> on different sites with different initial configurations, in accordance to the diagram shown above. `CO2_M_ads.py` can automatically add CO<sub>2</sub> on `M_site` and `O_site`, `CO2_MO_ads.py` can automatically add CO<sub>2</sub> on the `M-O` bond, and `CO2_center_ads.py` as automatically add CO<sub>2</sub> on the center (four-fold center on (100) and three-fold center on (111)). I recommend you to download and understand these scripts. You are also welcome to play around with using the scripts to add CO<sub>2</sub> on your assigned surfaces, for familiarization purposes. But remember DO NOT submit jobs for CO<sub>2</sub>.
 
 ```
-cp /home/x-syj1022/scripts/CO2_M_ads.py
-cp /home/x-syj1022/scripts/CO2_MO_ads.py
-cp /home/x-syj1022/scripts/CO2_center.ads.py
+cp /home/x-syj1022/scripts/CO2_M_ads.py ./
+cp /home/x-syj1022/scripts/CO2_MO_ads.py ./
+cp /home/x-syj1022/scripts/CO2_center.ads.py ./
 ```
-
 As a background, the CO<sub>2</sub> speciation in water is greatly affected by solution pH, as shown in the plot below:
 
 <center><img src="Images/speciation.png" alt="window" style="width: 500px;"/><br>
   
+Now in the final project, you will extend to study HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption. Please be aware that DFT cannot directly deal with charged species. Instead, we add the HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> as neutrally charged species, i.e. HCO<sub>3</sub>* and CO<sub>3</sub>*. DFT calculations can automatically correct the total charges. This can be verified by Bader Charge Analysis, but we will not dig into doing this for the final project. I recommend you to start with CO<sub>3</sub>*, since I have scripts to automatically CO<sub>3</sub>* on various sites. Please copy these scripts to your directory and make changes correspondingly. Note this is the hardest part of the final project and needs a lot of geometry work. Please feel free to ask for my help on this part. 
+
+```
+cp /home/x-syj1022/scripts/CO3_M_ads.py ./
+cp /home/x-syj1022/scripts/CO3_MO_ads.py ./
+cp /home/x-syj1022/scripts/CO3_center.ads.py ./
+```
+
+Once you have finished all CO<sub>3</sub>* calculations, please write your own scripts to add HCO<sub>3</sub>*. This should only require a tiny adjustment on the CO<sub>3</sub>* scripts.
+
 Once each calculation is done, you can visualize the final relaxed structure by running `python pwlog2traj_const.py ./pw.out rlx.traj`. This script can also be found in my `scripts` folder. You may also directly use the alias `pwl`. What this script does is it converts the position information stored in `pw.out` into a graphically visualizable form. From there you can obtain useful information such as CO<sub>2</sub> bond lengths, bond angles, and if there are any abnormal events. These events include bond breakage within CO<sub>2</sub>, bond reformation, and severe surface reconstruction. In some cases, your structure may be refolded due to the periodic boundary conditions. If this happens to you, you can repeat your cell in `y` dimension once.
 
 As a recommendation, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>* like the example shown below. Be careful that the total number of calculations vary slightly for different facet terminations.
