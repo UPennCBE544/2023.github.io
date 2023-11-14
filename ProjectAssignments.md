@@ -24,7 +24,7 @@ permalink: Project_Assignments/
 5. Aayush Bendre:     111-O-moisture
 
 ### Part 2 ###
-**Group 1**
+**Group 1: Mg-containing silicate**
 
 1. Igor Guranovic:    forsterite (010)
 2. Simeng Zhang:      forsterite (100-polar)
@@ -32,7 +32,7 @@ permalink: Project_Assignments/
 4. Joey Vitale:       enstatite (001)
 5. Sang Uk Han:       enstatite (100)
 
-**Group 2**
+**Group 2: Ca-containing silicate**
 
 1. Stuti Dureja:      larnite (010)
 2. Leo Junjian Li:    larnite (100)
