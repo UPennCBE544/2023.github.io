@@ -118,7 +118,7 @@ Recall in HW5 that you have manually added a CO<sub>2</sub> molecule on the MgO 
 ```python
 cp /home/x-syj1022/scripts/CO2_M_ads.py ./
 cp /home/x-syj1022/scripts/CO2_MO_ads.py ./
-cp /home/x-syj1022/scripts/CO2_center.ads.py ./
+cp /home/x-syj1022/scripts/CO2_center_ads.py ./
 ```
 As a background, the CO<sub>2</sub> speciation in water is greatly affected by solution pH, as shown in the plot below:
 
@@ -241,7 +241,7 @@ cp dos.dos $SLURM_SUBMIT_DIR
 Plot DOS using the script I provide for you. This can be found by running:
 
 ```python
-cp /home/x-syj1022/scripts/dos_plot.py ./
+cp /home/x-syj1022/scripts/dosplot.py ./
 ```
 
 
