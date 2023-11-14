@@ -141,7 +141,7 @@ Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<su
 
 To make the automation scripts work, I suggest you organize your directories in such a structure:
 
-<center><img src="Images/structure.png" alt="window" style="width: 800px;"/><br>
+<center><img src="Images/structure.png" alt="window" style="width: 300px;"/><br>
 
 Upon completing CO<sub>3</sub>*, please write your own scripts to add HCO<sub>3</sub>*. This should only require a tiny adjustment on the CO<sub>3</sub>* scripts. If you feel lost, I herein present a showcase for HCO<sub>3</sub>* adsorption on MgO (111)-Mg at all 12 sites:
 
