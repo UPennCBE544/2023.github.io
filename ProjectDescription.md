@@ -77,7 +77,7 @@ s1 = surface(bulk, (1, 1, 1), 5) #specify surface off of bulk
 You might be wondering why we specify the number of layers as ``5`` here, but you will know why soon. Then please make sure you add vacuum space in z-direction. This is done by the code:
 
 ```
-s1.center(vacuum=11, axis=2) #speficy vacuum dimension and axis
+s1.center(vacuum=11, axis=2) #specify vacuum dimension and axis
 ```
 
 After you have run ``python surface.py`` and check it through ``ase gui init.traj``, you should be able to see structures exactly as shown below. Note this is a side view - press `X` to view from the side. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
