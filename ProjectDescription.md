@@ -121,7 +121,7 @@ As a background, the CO<sub>2</sub> speciation in water is greatly affected by s
 
 <center><img src="Images/speciation.png" alt="window" style="width: 500px;"/><br>
   
-Now in the final project, you will extend to study HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption. Please be aware that DFT cannot directly deal with charged species. Instead, we add the HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> as neutrally charged species, i.e. HCO<sub>3</sub>* and CO<sub>3</sub>*. DFT calculations can automatically correct the total charges. This can be verified by Bader Charge Analysis, but we will not dig into doing this for the final project. I recommend you to start with CO<sub>3</sub>*, since I have scripts to automatically CO<sub>3</sub>* on various sites. Please copy these scripts to your directory and make changes correspondingly. Note this is the hardest part of the final project and needs a lot of geometry work. Please feel free to ask for my help on this part. 
+Now in the final project, you will extend to study HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption. Please be aware that DFT cannot directly deal with charged species. Instead, we add the HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> as neutrally charged species, i.e. HCO<sub>3</sub>`*` and CO<sub>3</sub>`*`. DFT calculations can automatically correct the total charges. This can be verified by Bader Charge Analysis, but we will not dig into doing this for the final project. I recommend you to start with CO<sub>3</sub>`*`, since I have scripts to automatically CO<sub>3</sub>`*` on various sites. Please copy these scripts to your directory and make changes correspondingly. Note this is the hardest part of the final project and needs a lot of geometry work. Please feel free to ask for my help on this part. 
 
 ```
 cp /home/x-syj1022/scripts/CO3_M_ads.py ./
@@ -135,7 +135,7 @@ Below shows an example of a summary of CO<sub>2</sub> adsorption calculations:
 
 <center><img src="Images/example1.png" alt="window" style="width: 800px;"/><br>
   
-Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>* like the example shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>* (trigonal planar). I would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
+Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>`*` like the example shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>`*` (trigonal planar). I would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
 
 <center><img src="Images/table.png" alt="window" style="width: 800px;"/><br>
 
@@ -143,7 +143,7 @@ To make the automation scripts work, I suggest you organize your directories in 
 
 <center><img src="Images/structure.png" alt="window" style="width: 300px;"/><br>
 
-Upon completing CO<sub>3</sub>*, please write your own scripts to add HCO<sub>3</sub>*. This should only require a tiny adjustment on the CO<sub>3</sub>* scripts. If you feel lost, I herein present a showcase for HCO<sub>3</sub>* adsorption on MgO (111)-Mg at all 12 sites:
+Upon completing CO<sub>3</sub>*, please write your own scripts to add HCO<sub>3</sub>`*`. This should only require a tiny adjustment on the CO<sub>3</sub>`*` scripts. If you feel lost, I herein present a showcase for HCO<sub>3</sub>`*` adsorption on MgO (111)-Mg at all 12 sites:
 
 <center><img src="Images/showcase.png" alt="window" style="width: 800px;"/><br>
 
