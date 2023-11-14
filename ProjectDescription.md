@@ -129,8 +129,6 @@ cp /home/x-syj1022/scripts/CO3_MO_ads.py ./
 cp /home/x-syj1022/scripts/CO3_center.ads.py ./
 ```
 
-Once you have finished all CO<sub>3</sub>* calculations, please write your own scripts to add HCO<sub>3</sub>*. This should only require a tiny adjustment on the CO<sub>3</sub>* scripts.
-
 Once each calculation is done, you can visualize the final relaxed structure by running `python pwlog2traj_const.py ./pw.out rlx.traj`. This script can also be found in my `scripts` folder. You may also directly use the alias `pwl`. What this script does is it converts the position information stored in `pw.out` into a graphically visualizable form. From there you can obtain useful information such as CO<sub>2</sub> bond lengths, bond angles, and if there are any abnormal events. These events include bond breakage within CO<sub>2</sub>, bond reformation, and severe surface reconstruction. In some cases, your structure may be refolded due to the periodic boundary conditions. If this happens to you, you can repeat your cell in `y` dimension once.
 
 Below shows an example of a summary of CO<sub>2</sub> adsorption calculations:
@@ -140,6 +138,14 @@ Below shows an example of a summary of CO<sub>2</sub> adsorption calculations:
 Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>* like the example shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>* (trigonal planar). I would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
 
 <center><img src="Images/table.png" alt="window" style="width: 800px;"/><br>
+
+To make the automation scripts work, I suggest you organize your directories in such a structure:
+
+<center><img src="Images/structure.png" alt="window" style="width: 800px;"/><br>
+
+Upon completing CO<sub>3</sub>*, please write your own scripts to add HCO<sub>3</sub>*. This should only require a tiny adjustment on the CO<sub>3</sub>* scripts. If you feel lost, I herein present a showcase for HCO<sub>3</sub>* adsorption on MgO (111)-Mg at all 12 sites:
+
+<center><img src="Images/showcase.png" alt="window" style="width: 800px;"/><br>
 
 **Task 4: Self-consistent Field (SCF) calculations**
 
@@ -234,6 +240,8 @@ cp /home/x-syj1022/scripts/dos_plot.py ./
 <a name='silicate'></a>
 
 ## Silicate ##
+
+Please DO NOT proceed until I permit you so. We need to budget our computational resources before we make a decison on the complexity of this part.
 
 This is part two of the final project. In this part, you will be studying your assigned silicate (forsterite, enstatite, larnite, wollastonite) surface with appropriate facet and termination, including whether it is moisturized.
 
