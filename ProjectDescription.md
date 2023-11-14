@@ -83,6 +83,7 @@ s1.center(vacuum=11, axis=2) #speficy vacuum dimension and axis
 After you have run ``python surface.py`` and check it through ``ase gui init.traj``, you should be able to see structures exactly as shown below. Note this is a side view - press `X` to view from the side. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
 
 <center><img src="../Images/raw_surface.png" alt="window" style="width: 800px;"/><br>
+</center>
 
 If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens.
 
@@ -100,8 +101,9 @@ You do not need to work on this part if you are not assigned with an moisturized
 As we can imagine, when water interacts with the surfaces, it might directly adsorb with its molecular form or dissociatively adsorb in which case it breaks down into hydrogen, oxygen, and hydroxide. These particles play very important roles in altering carbonation performance. But to start with, we need to investigate if each individual (pairing) of them favors adsorption on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams as shown below. Note for our current analysis, we only investigate the surfaces decorated with the dissociated particles (you might have molecular water directly adsorbed but this is quite computationally expensive to run). Here, you are only responsible for being able to intrepret from the diagrams. If you are interested in how to derive the equations leading to the diagrams, we can discuss later. In these diagrams, the black dashed line falls on the chemical potential of saturated water. This means water reaches an equilibrium between liquid and gaseous phases at this chemical potential. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces when saturated water is present and add these particles to your structure.
 
 <center><img src="../Images/MgO.png" alt="window" style="width: 700px;"/><br>
-<center><img src="../Images/CaO.png" alt="window" style="width: 700px;"/><br>
-  
+<img src="../Images/CaO.png" alt="window" style="width: 700px;"/><br>
+</center>
+
 Recall from HW5 on how to add atoms on top of another. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens. If you need to add `H and OH`, please makes sure these particles are right next to each other.
 
 **Task 3: HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption and thier chemical transformation**
@@ -109,7 +111,8 @@ Recall from HW5 on how to add atoms on top of another. Note by our convention, w
 As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
 <center><img src="../Images/position.png" alt="window" style="width: 700px;"/><br>
-  
+</center>
+
 Recall in HW5 that you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface and ran the calculations. Although you are not asked to do so, you may have access to my automation scripts for adding CO<sub>2</sub> on different sites with different initial configurations, in accordance to the diagram shown above. `CO2_M_ads.py` can automatically add CO<sub>2</sub> on `M_site` and `O_site`, `CO2_MO_ads.py` can automatically add CO<sub>2</sub> on the `M-O` bond, and `CO2_center_ads.py` as automatically add CO<sub>2</sub> on the center (four-fold center on (100) and three-fold center on (111)). I recommend you to download and understand these scripts. You are also welcome to play around with using the scripts to add CO<sub>2</sub> on your assigned surfaces, for familiarization purposes. But remember DO NOT submit jobs for CO<sub>2</sub>.
 
 ```python
@@ -120,7 +123,8 @@ cp /home/x-syj1022/scripts/CO2_center.ads.py ./
 As a background, the CO<sub>2</sub> speciation in water is greatly affected by solution pH, as shown in the plot below:
 
 <center><img src="../Images/speciation.png" alt="window" style="width: 500px;"/><br>
-  
+</center>
+
 Now in the final project, you will extend to study HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption. Please be aware that DFT cannot directly deal with charged species. Instead, we add the HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> as neutrally charged species, i.e. HCO<sub>3</sub>`*` and CO<sub>3</sub>`*`. DFT calculations can automatically correct the total charges. This can be verified by Bader Charge Analysis, but we will not dig into doing this for the final project. I recommend you to start with CO<sub>3</sub>`*`, since I have scripts to automatically CO<sub>3</sub>`*` on various sites. Please copy these scripts to your directory and make changes correspondingly. Note this is the hardest part of the final project and needs a lot of geometry work. Please feel free to ask for my help on this part. 
 
 ```python
@@ -134,18 +138,22 @@ Once each calculation is done, you can visualize the final relaxed structure by 
 Below shows an example of a summary of CO<sub>2</sub> adsorption calculations:
 
 <center><img src="../Images/example1.png" alt="window" style="width: 800px;"/><br>
-  
+</center>
+
 Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>`*` like the example shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>`*` (trigonal planar). I would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
 
 <center><img src="../Images/table.png" alt="window" style="width: 800px;"/><br>
+</center>
 
 To make the automation scripts work, I suggest you organize your directories in such a structure:
 
 <center><img src="../Images/structure.png" alt="window" style="width: 300px;"/><br>
+</center>
 
 Upon completing CO<sub>3</sub>*, please write your own scripts to add HCO<sub>3</sub>`*`. This should only require a tiny adjustment on the CO<sub>3</sub>`*` scripts. If you feel lost, I herein present a showcase for HCO<sub>3</sub>`*` adsorption on MgO (111)-Mg at all 12 sites:
 
 <center><img src="../Images/showcase.png" alt="window" style="width: 800px;"/><br>
+</center>
 
 **Task 4: Self-consistent Field (SCF) calculations**
 
