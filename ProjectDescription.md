@@ -82,7 +82,7 @@ s1.center(vacuum=11, axis=2) #speficy vacuum dimension and axis
 
 After you have run ``python surface.py`` and check it through ``ase gui init.traj``, you should be able to see structures exactly as shown below. Note this is a side view - press `X` to view from the side. If you work with (100) facet, please compare with the bottom left image, and if you work with (111) facet, please compare with the bottom right image.
 
-<center><img src="../Images/raw_surface.png" alt="window" style="width: 1100px;"/><br>
+<center><img src="../Images/raw_surface.png" alt="window" style="width: 800px;"/><br>
 
 If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens.
 
@@ -99,8 +99,8 @@ You do not need to work on this part if you are not assigned with an moisturized
 
 As we can imagine, when water interacts with the surfaces, it might directly adsorb with its molecular form or dissociatively adsorb in which case it breaks down into hydrogen, oxygen, and hydroxide. These particles play very important roles in altering carbonation performance. But to start with, we need to investigate if each individual (pairing) of them favors adsorption on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams as shown below. Note for our current analysis, we only investigate the surfaces decorated with the dissociated particles (you might have molecular water directly adsorbed but this is quite computationally expensive to run). Here, you are only responsible for being able to intrepret from the diagrams. If you are interested in how to derive the equations leading to the diagrams, we can discuss later. In these diagrams, the black dashed line falls on the chemical potential of saturated water. This means water reaches an equilibrium between liquid and gaseous phases at this chemical potential. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces when saturated water is present and add these particles to your structure.
 
-<center><img src="../Images/MgO.png" alt="window" style="width: 1000px;"/><br>
-<center><img src="../Images/CaO.png" alt="window" style="width: 1000px;"/><br>
+<center><img src="../Images/MgO.png" alt="window" style="width: 700px;"/><br>
+<center><img src="../Images/CaO.png" alt="window" style="width: 700px;"/><br>
   
 Recall from HW5 on how to add atoms on top of another. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens. If you need to add `H and OH`, please makes sure these particles are right next to each other.
 
