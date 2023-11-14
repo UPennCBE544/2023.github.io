@@ -50,7 +50,7 @@ $$
 \epsilon_{cleave}(i,j) = -\frac{1}{2A}(E_{slab}^{i}+E_{slab}^{j}-2E_{bulk})
 $$
 
-where `$\epsilon_{cleave}(i,j)$` is the cleavage energy density and i, j are the indices for two complementary facet terminations (you will know this better later). `$A$` is the surface area of a unit cell. Please DO NOT run jobs to calculate the cleavage energy density yourself, as we have only limited computational resources.
+where $$\epsilon_{cleave}(i,j)$$ is the cleavage energy density and i, j are the indices for two complementary facet terminations (you will know this better later). $$A$$ is the surface area of a unit cell. Please DO NOT run jobs to calculate the cleavage energy density yourself, as we have only limited computational resources.
 
 
 **Task 1: Create a surface off of bulk**
