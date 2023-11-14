@@ -57,20 +57,20 @@ where $\epsilon_{cleave}(i,j)$ is the cleavage energy density and i, j are the i
 
 First, run the commands below to obtain the optimized bulk MgO and CaO structure and the script to create surfaces. Now that you are already familiar with Linux, you need to organize your workspace. Please feel free to create directories to make your life easier! Note you only need to run one line out of the first two lines below, depending on your assignment.
 
-```
+```python
 cp /home/x-syj1022/minerals/MgO/opt.traj ./
 cp /home/x-syj1022/minerals/CaO/opt.traj ./
 cp /home/x-syj1022/scripts/surface.py ./ 
 ```
 Make sure you understand what the script does. You need to modify the line below based on the specific facet you are assigned to. Please check what your assignment is carefully. Here ``(1, 0, 0)`` is the target facet and ``2`` means you are making a four-layer slab (double the unit cell in z-direction). 
 
-```
+```python
 s1 = surface(bulk, (1, 0, 0), 2) #specify surface off of bulk
 ```
 
 Note our goal is to create a 2x2x2 slab model. If you are working with (111) facet, please change this to:
 
-```
+```python
 s1 = surface(bulk, (1, 1, 1), 3) #specify surface off of bulk
 ```
 
@@ -108,11 +108,11 @@ Recall from HW5 on how to add atoms on top of another. Note by our convention, w
 
 As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
-<center><img src="../Images/position.png" alt="window" style="width: 1000px;"/><br>
+<center><img src="../Images/position.png" alt="window" style="width: 700px;"/><br>
   
 Recall in HW5 that you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface and ran the calculations. Although you are not asked to do so, you may have access to my automation scripts for adding CO<sub>2</sub> on different sites with different initial configurations, in accordance to the diagram shown above. `CO2_M_ads.py` can automatically add CO<sub>2</sub> on `M_site` and `O_site`, `CO2_MO_ads.py` can automatically add CO<sub>2</sub> on the `M-O` bond, and `CO2_center_ads.py` as automatically add CO<sub>2</sub> on the center (four-fold center on (100) and three-fold center on (111)). I recommend you to download and understand these scripts. You are also welcome to play around with using the scripts to add CO<sub>2</sub> on your assigned surfaces, for familiarization purposes. But remember DO NOT submit jobs for CO<sub>2</sub>.
 
-```
+```python
 cp /home/x-syj1022/scripts/CO2_M_ads.py ./
 cp /home/x-syj1022/scripts/CO2_MO_ads.py ./
 cp /home/x-syj1022/scripts/CO2_center.ads.py ./
@@ -123,7 +123,7 @@ As a background, the CO<sub>2</sub> speciation in water is greatly affected by s
   
 Now in the final project, you will extend to study HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> adsorption. Please be aware that DFT cannot directly deal with charged species. Instead, we add the HCO<sub>3</sub><sup>-</sup> and CO<sub>3</sub><sup>2-</sup> as neutrally charged species, i.e. HCO<sub>3</sub>`*` and CO<sub>3</sub>`*`. DFT calculations can automatically correct the total charges. This can be verified by Bader Charge Analysis, but we will not dig into doing this for the final project. I recommend you to start with CO<sub>3</sub>`*`, since I have scripts to automatically CO<sub>3</sub>`*` on various sites. Please copy these scripts to your directory and make changes correspondingly. Note this is the hardest part of the final project and needs a lot of geometry work. Please feel free to ask for my help on this part. 
 
-```
+```python
 cp /home/x-syj1022/scripts/CO3_M_ads.py ./
 cp /home/x-syj1022/scripts/CO3_MO_ads.py ./
 cp /home/x-syj1022/scripts/CO3_center.ads.py ./
@@ -161,7 +161,7 @@ The calculated adsorption energy is a result of both CO<sub>2</sub> interaction 
 
 Once you have gone through all the calculations discussed above. Determine the starting conditions that resulted in the lowest adsorption energy. We want to plot the DOS of the lowest energy case. To run the DOS calculation, you first need to run an SCF calculation. Please write a script as follows to read `rlx.traj` and specify an SCF calculation. 
 
-```
+```python
 from ase import io
 from ase import Atoms
 from espresso import espresso
@@ -212,7 +212,7 @@ calc.initialize(slab)
 
 Next, add the following lines in your submission script and submit the job. Note we have done this before in HW5, but now you need to make modifications to your `anvil.sub` yourself!
 
-```
+```bash
 cd $SLURM_SUBMIT_DIR #Move to supply directory
 
 mkdir -p $SCRATCH/$SLURM_JOBID
@@ -232,7 +232,7 @@ cp dos.dos $SLURM_SUBMIT_DIR
 
 Plot DOS using the script I provide for you. This can be found by running:
 
-```
+```python
 cp /home/x-syj1022/scripts/dos_plot.py ./
 ```
 
