@@ -71,10 +71,10 @@ s1 = surface(bulk, (1, 0, 0), 2) #specify surface off of bulk
 Note our goal is to create a 2x2x2 slab model. If you are working with (111) facet, please change this to:
 
 ```python
-s1 = surface(bulk, (1, 1, 1), 3) #specify surface off of bulk
+s1 = surface(bulk, (1, 1, 1), 5) #specify surface off of bulk
 ```
 
-You might be wondering why we specify the number of layers as ``3`` not ``2`` here, but you will know why soon. Then please make sure you add vacuum space in z-direction. This is done by the code:
+You might be wondering why we specify the number of layers as ``5`` here, but you will know why soon. Then please make sure you add vacuum space in z-direction. This is done by the code:
 
 ```
 s1.center(vacuum=11, axis=2) #speficy vacuum dimension and axis
@@ -85,9 +85,11 @@ After you have run ``python surface.py`` and check it through ``ase gui init.tra
 <center><img src="../Images/raw_surface.png" alt="window" style="width: 800px;"/><br>
 </center>
 
-If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens.
+If you work with (100) facet, you may ignore this step, because (100) facet is perfectly symmetric from top to bottom. If you work with (111) facet, you will see you are actually assigned with either (111)-M or (111)-O. This denotes the termination - your surface can either end with metals or oxygens. You need to do one step further to make sure you have the correct facet termination. Recall I previously asked you to add one additional layer. Now this makes it easier for you to trim the structure. You might need some intuition on how to do this, but if you feel lost, follow these instructions: If you work with (111)-M, please remove the entire top layer of oxygens and the entire bottom layer of metals. If you work with (111)-O, please remove the entire bottom layer of metals and the entire bottom layer of oxygens. Once you finish, check the total number of atoms. There must be eight metals and eight oxygens for (100) facets, and there must be sixteen metals and sixteen oxygens for (111) facets.
 
-Now remember we need a 2x2x2 slab model, but our current model is 1x1x2. To repeat the cell in both x and y directions, go to `View` then `Repeat` and set to the correct values. Next, hit the `Set unit cell` button. Double check if your cell is actually doubled in both directions. Finally, select the entire two bottom layers (this should be half of your entire cell), and go to `Tools` -> `Constraints` -> `Fix`. You should see a "cross" symbol on every atom you selected. This means we are contraining the bottom two layers to their bulk lattice coordinates and only allowing the top two layers to relax.
+Now remember we need a 2x2x2 slab model, but our current (100) model is 1x1x2. **If you work with (111), you DO NOT need to do this.** To repeat the cell in both x and y directions, go to `View` then `Repeat` and set to the correct values. Next, hit the `Set unit cell` button. Double check if your cell is actually doubled in both directions. 
+
+Finally, select the bottom layers (two layers for (100) and four layers for (111)). This should be half of your entire cell. And then go to `Tools` -> `Constraints` -> `Fix`. You should see a "cross" symbol on every atom you selected. This means we are contraining the bottom two layers to their bulk lattice coordinates and only allowing the top two layers to relax.
 
 Always remember to save your `.traj` file!
 
