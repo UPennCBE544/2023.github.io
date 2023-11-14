@@ -100,8 +100,8 @@ You do not need to work on this part if you are not assigned with an moisturized
 
 As we can imagine, when water interacts with the surfaces, it might directly adsorb with its molecular form or dissociatively adsorb in which case it breaks down into hydrogen, oxygen, and hydroxide. These particles play very important roles in altering carbonation performance. But to start with, we need to investigate if each individual (pairing) of them favors adsorption on the mineral surfaces. To find out, Colin and I have constructed these stability phase diagrams as shown below. Note for our current analysis, we only investigate the surfaces decorated with the dissociated particles (you might have molecular water directly adsorbed but this is quite computationally expensive to run). Here, you are only responsible for being able to intrepret from the diagrams. If you are interested in how to derive the equations leading to the diagrams, we can discuss later. In these diagrams, the black dashed line falls on the chemical potential of saturated water. This means water reaches an equilibrium between liquid and gaseous phases at this chemical potential. Right to the line means water can condense as a liquid and left to the line means water is in its vapor phase. Base on your knowledge of thermodynamics, identify the most stable (likely) hydrated surfaces when saturated water is present and add these particles to your structure.
 
-<center><img src="../Images/MgO.png" alt="window" style="width: 1000px;"/><br>
-<img src="../Images/CaO.png" alt="window" style="width: 1000px;"/><br>
+<center><img src="../Images/MgO.png" alt="window" style="width: 800px;"/><br>
+<img src="../Images/CaO.png" alt="window" style="width: 800px;"/><br>
 </center>
 
 Recall from HW5 on how to add atoms on top of another. Note by our convention, we only adsorb `OH` on the metals and `H` on the oxygens. If you need to add `H and OH`, please makes sure these particles are right next to each other.
@@ -110,7 +110,7 @@ Recall from HW5 on how to add atoms on top of another. Note by our convention, w
 
 As we have briefly touched on in HW5, the CO<sub>2</sub> adsorption can take place on many sites in addition to the lattice oxygen, and the CO<sub>2</sub> molecule can line up differently. DFT calculations can give reliable results for finding local minima in the total energy as the positions of the nuclei vary, but they do not provide any guarantee that the global energy minimum has been found. To use our best efforts to find the global minimum, we need to comprehensively walk through the many different possibilites. I have summarized the adsorption sites and initial configurations you need to investigate. The original paper to propose this method can be found here: (https://www.sciencedirect.com/science/article/pii/S1383586621010327).
 
-<center><img src="../Images/position.png" alt="window" style="width: 700px;"/><br>
+<center><img src="../Images/position.png" alt="window" style="width: 1000px;"/><br>
 </center>
 
 Recall in HW5 that you have manually added a CO<sub>2</sub> molecule on the MgO (100) surface and ran the calculations. Although you are not asked to do so, you may have access to my automation scripts for adding CO<sub>2</sub> on different sites with different initial configurations, in accordance to the diagram shown above. `CO2_M_ads.py` can automatically add CO<sub>2</sub> on `M_site` and `O_site`, `CO2_MO_ads.py` can automatically add CO<sub>2</sub> on the `M-O` bond, and `CO2_center_ads.py` as automatically add CO<sub>2</sub> on the center (four-fold center on (100) and three-fold center on (111)). I recommend you to download and understand these scripts. You are also welcome to play around with using the scripts to add CO<sub>2</sub> on your assigned surfaces, for familiarization purposes. But remember DO NOT submit jobs for CO<sub>2</sub>.
