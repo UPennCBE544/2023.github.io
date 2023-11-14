@@ -135,7 +135,7 @@ Once each calculation is done, you can visualize the final relaxed structure by 
 
 Below shows an example of a summary of CO<sub>2</sub> adsorption calculations:
 
-<center><img src="Images/example.png" alt="window" style="width: 800px;"/><br>
+<center><img src="Images/example1.png" alt="window" style="width: 800px;"/><br>
   
 Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>* like the example shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>* (trigonal planar). I would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
 
