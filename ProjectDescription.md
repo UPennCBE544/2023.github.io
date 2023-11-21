@@ -142,9 +142,13 @@ Below shows an example of a summary of CO<sub>2</sub> adsorption calculations:
 <center><img src="../Images/example1.png" alt="window" style="width: 800px;"/><br>
 </center>
 
-Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>* like the example shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>* (trigonal planar). I would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
+Similarly, you may want to create a table for each of HCO<sub>3</sub>* and CO<sub>3</sub>* like the examples shown below. As you might have noticed, CO<sub>2</sub> (linear) is structurally very different from CO<sub>3</sub>* (trigonal planar). We would use `flat` to describe the horizontal configurations. Note you get `flat2` by rotating `flat1` by 30 degrees (check the automation scripts). 
 
-<center><img src="../Images/table.png" alt="window" style="width: 800px;"/><br>
+Please organize your summary tables as shown below. In the convergence column, you may fill it with the path to your folder if that job fails.
+
+<center><img src="../Images/CO3_table.png" alt="window" style="width: 800px;"/><br>
+</center>
+<center><img src="../Images/HCO3_table.png" alt="window" style="width: 600px;"/><br>
 </center>
 
 To make the automation scripts work, you are suggested to organize your directories in such a structure:
