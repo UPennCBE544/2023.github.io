@@ -148,7 +148,7 @@ Please organize your summary tables as shown below. In the convergence column, y
 
 <center><img src="../Images/CO3_table.png" alt="window" style="width: 800px;"/><br>
 </center>
-<center><img src="../Images/HCO3_table.png" alt="window" style="width: 600px;"/><br>
+<center><img src="../Images/HCO3_table.png" alt="window" style="width: 800px;"/><br>
 </center>
 
 To make the automation scripts work, you are suggested to organize your directories in such a structure:
