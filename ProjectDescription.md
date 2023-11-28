@@ -266,6 +266,8 @@ Please DO NOT proceed until Yingjie permits you so. We need to budget our comput
 
 This is part two of the final project. In this part, you will be studying your assigned silicate (forsterite, enstatite, larnite, wollastonite) surface with appropriate facet and termination. You will be carrying out similar calculations as before. You need less calculations but each calculations will take longer.
 
+Starting from here, you are suggested to work together with your assigned teammates for combined results and analysis.
+
 Although MgO and CaO are chemically the simpliest minerals for carbonation, you have already seen the thorough investigation of surface CO<sub>2</sub> adsorption is rather demanding. As we delve into more complex and asymmetric surfaces, the calculations that need to be done are skyrocketing. For example, for each larnite unit cell, there are four unique calciums and six oxygens exposed, whereas there are only one unqiue calcium and one oxygen in CaO. To fully cover every single site as what we have done for MgO and CaO, it requires 20 times as much as our previous work! Of course, the computational resources don't allow us to do this. Instead, we are going to start with focusing on one of the oxygen sites only, but note the oxygen sites are no longer equivalent, as the strucutre is highly assymmetric.
 
 **Task 1: Adsorption energy of CO<sub>2</sub>, CO<sub>3</sub>, and HCO<sub>3</sub>**
@@ -275,12 +277,12 @@ Now that you have mastered the adsorption energy calculations in part one, you s
 <center><img src="../Images/O_site.png" alt="window" style="width: 300px;"/><br>
 </center>
 
-Same as before, you will study three configurations for both CO<sub>3</sub> and HCO<sub>3</sub>, namely `on`, `flat1`, and `flat2`. For CO<sub>2</sub>, you will study `on`, `along_x`, and `along_y`. Hope these names are self-explanatory, but please let Yingjie know if you have confusion on this. Hence, in total you will have 9 calculations, along with one SCF calculation for each as you have done this before.
+Same as before, you will study three configurations for both CO<sub>3</sub> and HCO<sub>3</sub>, namely `on`, `flat1`, and `flat2`. For CO<sub>2</sub>, you will study `on`, `along_x`, and `along_y`. Hope these names are self-explanatory, but please let Yingjie know if you have confusion on this. Hence, in total you will have 9 calculations, along with one SCF calculation for each as you have done this before. Please make a similar table as you have done before. There should be three rows for each carbon species and hence nine rows in total.
 
 **Task 2: Reaction pathways**
 
-Once you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie will provide you with the data of CO<sub>2</sub> on alkaline oxide), you will construct a plot with adsorption energy on the y-axis and carbon species on the x-axis. Connect the three data points for the same material surface. Therefore, everyone should have two individual curves.
+Once you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie will provide you with the data of CO<sub>2</sub> on alkaline oxide), you will construct a plot showing the reaction pathway of mineral carbonation. Details will be provided soon.
 
 **Task 3: Group study on the reaction pathways**
 
-Upon obtaining the reaction pathways for your two material surfaces, you are asked to combine your data with your group members. Summarize any trends that your team observes. A key question to be answered is: Does presence of Si improve or hinder carbon mineralization? Support your hypothesis with geometric argument and/or Bader charge analysis. Please notify Yingjie beforehand if you plan to run additional Bader charge analysis. 
+Upon obtaining the reaction pathways for your two material surfaces, you are asked to compare your results with your group members. Summarize any trends that your team observes. A key question to be answered is: Does presence of Si improve or hinder carbon mineralization? Support your hypothesis with geometric argument and/or Bader charge analysis. Please notify Yingjie beforehand if you plan to run additional Bader charge analysis. 
