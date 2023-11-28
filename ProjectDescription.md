@@ -274,7 +274,7 @@ Although MgO and CaO are chemically the simpliest minerals for carbonation, you 
 
 Now that you have mastered the adsorption energy calculations in part one, you should find it relatively easy to work on this task. You only need one site, which is one of the oxygen sites. Please check your assigned material and find the oxygen site to be studied (marked in a black circle), as shown in the image below:
 
-<center><img src="../Images/O_site.png" alt="window" style="width: 700px;"/><br>
+<center><img src="../Images/O_site.png" alt="window" style="width: 800px;"/><br>
 </center>
 
 Same as before, you will study three configurations for both CO<sub>3</sub> and HCO<sub>3</sub>, namely `on`, `flat1`, and `flat2`. For CO<sub>2</sub>, you will study `on`, `along_x`, and `along_y`. Hope these names are self-explanatory, but please let Yingjie know if you have confusion on this. Hence, in total you will have 9 calculations, along with one SCF calculation for each as you have done this before. Please make a similar table as you have done before. There should be three rows for each carbon species and hence nine rows in total.
