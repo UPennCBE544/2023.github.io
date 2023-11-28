@@ -272,7 +272,7 @@ Although MgO and CaO are chemically the simpliest minerals for carbonation, you 
 
 **Task 1: Adsorption energy of CO<sub>2</sub>, CO<sub>3</sub>, and HCO<sub>3</sub>**
 
-Now that you have mastered the adsorption energy calculations in part one, you should find it relatively easy to work on this task. You only need one site, which is one of the oxygen sites. Please check your assigned material and find the oxygen site to be studied, as shown in the image below:
+Now that you have mastered the adsorption energy calculations in part one, you should find it relatively easy to work on this task. You only need one site, which is one of the oxygen sites. Please check your assigned material and find the oxygen site to be studied (marked in a black circle), as shown in the image below:
 
 <center><img src="../Images/O_site.png" alt="window" style="width: 700px;"/><br>
 </center>
