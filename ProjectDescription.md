@@ -169,7 +169,7 @@ $$
 \Delta E_\mathrm{ads} = E_\mathrm{slab+CO_{2}}  - E_\mathrm{slab} - E_\mathrm{CO_{2}}
 $$
 
-The calculated adsorption energy is a result of both CO<sub>2</sub> interaction with a surface AND surface relaxation. But we are only interested in the contribution from CO<sub>2</sub> interaction with the surface. To eliminate the interference of surface relaxation, we need to use the energy for the relaxed surface (but without the adsorbed CO<sub>2</sub>) for $E_\mathrm{slab}$ (in HW5 you were not asked to do so because the surface was barely relaxed, thus the relaxation effect was negligible). To proceed, you first translate `pw.out` into `rlx.traj` as previously discussed. Then you want to remove the CO<sub>3</sub>* or HCO<sub>3</sub>* from the relaxed structure and perform an SCF calculation. An SCF calculation computes the total energy of the given structure without performing geometric optimization. Make a directory and store the `rlx.traj` under the new directory. Go to the directory and type `scf` that calls the alias to automatically perform the atom deletion and job submission. Note this script only works for CO<sub>3</sub>*, and you need to make modification for removing HCO<sub>3</sub>*.  **You need to do this step for each completed relax calculations!** 
+The calculated adsorption energy is a result of both CO<sub>2</sub> interaction with a surface AND surface relaxation. But we are only interested in the contribution from CO<sub>2</sub> interaction with the surface. To eliminate the interference of surface relaxation, we need to use the energy for the relaxed surface (but without the adsorbed CO<sub>2</sub>) for $$E_\mathrm{slab}$$ (in HW5 you were not asked to do so because the surface was barely relaxed, thus the relaxation effect was negligible). To proceed, you first translate `pw.out` into `rlx.traj` as previously discussed. Then you want to remove the CO<sub>3</sub>* or HCO<sub>3</sub>* from the relaxed structure and perform an SCF calculation. An SCF calculation computes the total energy of the given structure without performing geometric optimization. Make a directory and store the `rlx.traj` under the new directory. Go to the directory and type `scf` that calls the alias to automatically perform the atom deletion and job submission. Note this script only works for CO<sub>3</sub>*, and you need to make modification for removing HCO<sub>3</sub>*.  **You need to do this step for each completed relax calculations!** 
 
 Note: Please use -1570.466 eV for the energy of HCO<sub>3</sub>* and -1554.607 eV for the energy of CO<sub>3</sub>*.
 
@@ -252,7 +252,7 @@ Plot DOS using the script that Yingjie provides for you. This can be found by ru
 cp /home/x-syj1022/scripts/dosplot.py ./
 ```
 
-**Task 5: Bader charge analysis**
+**Task 6: Bader charge analysis**
 
 In order to determine the charge redistribution throughout the adsorption processes, we will perform a Bader charge analysis. For each adsorption case, you need to run three calculations: one for the system (slab + carbon intermediate), slab only, and carbon intermediate only. You will need the following scripts and they can be found in Yingjie's `scripts`: `bader.sub`, `relax-create-bader.py`, `dos.in`, and `fast_bader.py`. Check the script `fast_bader.py` and you will find that the script can automatically help you submit jobs.
 
