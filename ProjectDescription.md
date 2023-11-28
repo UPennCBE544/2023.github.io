@@ -161,6 +161,16 @@ Upon completing CO<sub>3</sub>*, please write your own scripts to add HCO<sub>3<
 <center><img src="../Images/showcase.png" alt="window" style="width: 800px;"/><br>
 </center>
 
+If you run into job failing situations due to "invalid memory allocation", you may resume your jobs at the point they fail. To do this, please copy the `auto_cont.py` script and run it. This automatically submits a resumed job.
+
+```bash
+cp /home/x-syj1022/scripts/auto_cont.py ./
+```
+
+```python
+python auto_cont.py
+```
+
 **Task 4: Self-consistent Field (SCF) calculations**
 
 Referring back to the formula for adsorption energy calculation:
