@@ -245,6 +245,17 @@ cp pw.out $SLURM_SUBMIT_DIR
 cp dos.out $SLURM_SUBMIT_DIR
 cp dos.dos $SLURM_SUBMIT_DIR
 ```
+Please make sure you have `dos.in` in your directory. This file can be found in my script or from your HW5 folder:
+
+```bash
+&dos
+   prefix='calc',
+   outdir='.'
+   Emin=-80.0
+   Emax=20.0
+   fildos='dos.dos'
+/
+```
 
 Plot DOS using the script that Yingjie provides for you. This can be found by running:
 
