@@ -27,8 +27,8 @@ permalink: Project_Assignments/
 **Group 1: Mg-containing silicate**
 
 1. Igor Guranovic:    forsterite (010)
-2. Simeng Zhang:      forsterite (100-polar)
-3. Joseph Nicolas:    forsterite (100-nonpolar)
+2. Simeng Zhang:      forsterite (100)
+3. Joseph Nicolas:    enstatite (010)
 4. Joey Vitale:       enstatite (001)
 5. Stuti Dureja:      enstatite (100)
 
