@@ -245,7 +245,13 @@ cp pw.out $SLURM_SUBMIT_DIR
 cp dos.out $SLURM_SUBMIT_DIR
 cp dos.dos $SLURM_SUBMIT_DIR
 ```
-Please make sure you have `dos.in` in your directory. This file can be found in my script or from your HW5 folder:
+Please make sure you have `dos.in` in your directory. You can find it from my scripts:
+
+```bash
+cp /home/x-syj1022/scripts/dos.in ./
+```
+
+It should look like this:
 
 ```bash
 &dos
@@ -259,7 +265,7 @@ Please make sure you have `dos.in` in your directory. This file can be found in 
 
 Plot DOS using the script that Yingjie provides for you. This can be found by running:
 
-```python
+```bash
 cp /home/x-syj1022/scripts/dosplot.py ./
 ```
 
