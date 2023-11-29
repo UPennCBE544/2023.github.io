@@ -304,6 +304,15 @@ Now that you have mastered the adsorption energy calculations in part one, you s
 <center><img src="../Images/O_site.png" alt="window" style="width: 800px;"/><br>
 </center>
 
+The silicate surface structures can be obtained from Yingjie's directory:
+
+```bash
+cp /home/x-syj1022/CBE544/Bulks/(your silicate)/(your facet)/init.traj
+
+##For example, if you are assigned with forsterite (010)
+cp /home/x-syj1022/CBE544/Bulks/forsterite/010/init.traj
+```
+
 Same as before, you will study three configurations for both CO<sub>3</sub> and HCO<sub>3</sub>, namely `on`, `flat1`, and `flat2`. For CO<sub>2</sub>, you will study `on`, `along_x`, and `along_y`. Hope these names are self-explanatory, but please let Yingjie know if you have confusion on this. Hence, in total you will have 9 calculations, along with one SCF calculation for each as you have done this before. Please make a similar table as you have done before. There should be three rows for each carbon species and hence nine rows in total.
 
 **Task 2: Reaction pathways**
