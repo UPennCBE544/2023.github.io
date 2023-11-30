@@ -281,7 +281,7 @@ cp /home/x-syj1022/scripts/dosplot.py ./
 
 **Task 6: Bader charge analysis**
 
-In order to determine the charge redistribution throughout the adsorption processes, we will perform a Bader charge analysis. For each adsorption case, you need to run three calculations: one for the system (slab + carbon intermediate), slab only, and carbon intermediate only. You will need the following scripts and they can be found in Yingjie's `scripts`: `bader.sub`, `relax-create-bader.py`, `dos.in`, and `fast_bader.py`. Check the script `fast_bader.py` and you will find that the script can automatically help you submit jobs.
+In order to determine the charge redistribution throughout the adsorption processes, we will perform a Bader charge analysis. For each adsorption case, you need to run three calculations: one for the system (slab + carbon intermediate), slab only, and carbon intermediate only. You will need the following scripts and they can be found in Yingjie's `scripts`: `bader.sub`, `relax-create-bader.py`, `pp.in`, and `fast_bader.py`. Check the script `fast_bader.py` and you will find that the script can automatically help you submit jobs.
 
 <a name='silicate'></a>
 
