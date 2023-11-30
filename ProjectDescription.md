@@ -229,7 +229,7 @@ calc = espresso(mode='scf',         #perform an scf calculation
                  spinpol=False,
                  parflags='-npool 1',
                  onlycreatepwinp='pw.in',
-                 outdir='calcdir')   #output directory for Quantum Espresso files
+                 outdir='.')   #output directory for Quantum Espresso files
 
 
 slab.set_calculator(calc)
