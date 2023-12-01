@@ -315,6 +315,8 @@ cp /home/x-syj1022/CBE544/Bulks/forsterite/010/init.traj
 
 Same as before, you will study three configurations for both CO<sub>3</sub> and HCO<sub>3</sub>, namely `on`, `flat1`, and `flat2`. For CO<sub>2</sub>, you will study `on`, `along_x`, and `along_y`. Hope these names are self-explanatory, but please let Yingjie know if you have confusion on this. Hence, in total you will have 9 calculations, along with one SCF calculation for each as you have done this before. Please make a similar table as you have done before. There should be three rows for each carbon species and hence nine rows in total.
 
+The reference energy for CO<sub>2</sub> is -1090.607 eV.
+
 **Task 2: Reaction pathways**
 
 Once you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie will provide you with the data of CO<sub>2</sub> on alkaline oxide), you will construct a plot showing the reaction pathway of mineral carbonation. Details will be provided soon.
