@@ -319,9 +319,11 @@ The reference energy for CO<sub>2</sub> is -1090.607 eV.
 
 **Task 2: Reaction pathways**
 
-Once you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie will provide you with the data of CO<sub>2</sub> on alkaline oxide), you will construct a plot showing the reaction pathway of mineral carbonation. Details will be provided soon.
+Once you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie provides you with the data of CO<sub>2</sub> on alkaline oxide, as shown below), you will construct a plot showing the reaction pathway of mineral carbonation.
 
 <center><img src="../Images/MO_CO2.png" alt="window" style="width: 800px;"/><br>
+</center>
+<center><img src="../Images/pathway.png" alt="window" style="width: 800px;"/><br>
 </center>
 
 You will need the following references while constructing your reaction pathways: energy for H<sub>2</sub>O is -496.271 eV, energy for H<sub>2</sub> is -32.942 eV, energy for H is -16.471 eV.
