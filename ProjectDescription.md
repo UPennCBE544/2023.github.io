@@ -321,6 +321,11 @@ The reference energy for CO<sub>2</sub> is -1090.607 eV.
 
 Once you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie will provide you with the data of CO<sub>2</sub> on alkaline oxide), you will construct a plot showing the reaction pathway of mineral carbonation. Details will be provided soon.
 
+<center><img src="../Images/MO_CO2.png" alt="window" style="width: 800px;"/><br>
+</center>
+
+You will need the following references while constructing your reaction pathways: energy for H<sub>2</sub>O is -496.271 eV, energy for H<sub>2</sub> is -32.942 eV, energy for H is -16.471 eV.
+
 **Task 3: Group study on the reaction pathways**
 
-Upon obtaining the reaction pathways for your two material surfaces, you are asked to compare your results with your group members. Summarize any trends that your team observes. A key question to be answered is: Does presence of Si improve or hinder carbon mineralization? Support your hypothesis with geometric argument and/or Bader charge analysis. Please notify Yingjie beforehand if you plan to run additional Bader charge analysis. 
+Upon obtaining the reaction pathways for your two material surfaces, you are asked to compare your results with your group members. Summarize any trends that your team observes. Key questions to be answered can be found in the final presentation and report requirements slides. Support your hypotheses with geometric arguments and/or Bader charge analysis. Please notify Yingjie beforehand if you plan to run additional Bader charge analysis. 
