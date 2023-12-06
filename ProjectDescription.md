@@ -321,10 +321,10 @@ The reference energy for CO<sub>2</sub> is -1090.607 eV.
 
 Now you have all the adsorption energies of the three carbon species on both your assigned alkaline oxide and silicate (Yingjie provides you with the data of CO<sub>2</sub> on alkaline oxide along with the energies for bare surfaces, as shown below). Note if you need more geometric details, you may request from Yingjie. 
 
-<center><img src="../Images/MO_CO2.png" alt="window" style="width: 800px;"/><br>
+<center><img src="../Images/MO_CO2.png" alt="window" style="width: 900px;"/><br>
 </center>
 
-<center><img src="../Images/bare.png" alt="window" style="width: 500px;"/><br>
+<center><img src="../Images/bare.png" alt="window" style="width: 400px;"/><br>
 </center>
 
 You will construct a plot showing the reaction pathway of mineral carbonation. A demonstration is given below:
